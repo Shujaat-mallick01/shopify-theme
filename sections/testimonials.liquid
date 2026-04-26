@@ -1,0 +1,88 @@
+{% comment %}
+  Section: Testimonials
+  File: sections/testimonials.liquid
+{% endcomment %}
+
+<section class="testimonials-section">
+  <div class="container-sm">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="section-title">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subheading != blank -%}
+      <p class="section-sub">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+
+    <div class="testimonials-grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'testimonial' -%}
+          <article class="testimonial" {{ block.shopify_attributes }}>
+            {%- if block.settings.logo != blank -%}
+              <div class="testimonial-logo">
+                {{ block.settings.logo | image_url: width: 200 | image_tag: alt: '', loading: 'lazy' }}
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.quote != blank -%}
+              <p>"{{ block.settings.quote }}"</p>
+            {%- endif -%}
+
+            <div class="testimonial-author">
+              <div class="avatar">
+                {%- if block.settings.avatar != blank -%}
+                  {{ block.settings.avatar | image_url: width: 80 | image_tag: alt: block.settings.author_name, loading: 'lazy' }}
+                {%- endif -%}
+              </div>
+              <div>
+                <strong>{{ block.settings.author_name }}</strong>
+                <span>{{ block.settings.author_role }}</span>
+              </div>
+            </div>
+
+            {%- if block.settings.link_text != blank -%}
+              <a href="{{ block.settings.link | default: '#' }}" class="link-arrow small">
+                {{ block.settings.link_text }}
+                {% render 'icon-arrow-right', size: 15, height: 16, color: 'current' %}
+              </a>
+            {%- endif -%}
+          </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "settings": [
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Trusted by healthcare providers <em>and</em> moms</p>" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "What they're saying" }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "image_picker", "id": "logo", "label": "Logo image" },
+        { "type": "textarea", "id": "quote", "label": "Quote" },
+        { "type": "image_picker", "id": "avatar", "label": "Avatar image" },
+        { "type": "text", "id": "author_name", "label": "Author name" },
+        { "type": "text", "id": "author_role", "label": "Author role / title" },
+        { "type": "text", "id": "link_text", "label": "Link text", "default": "Read her story" },
+        { "type": "url", "id": "link", "label": "Link URL" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        { "type": "testimonial", "settings": { "author_name": "Sarah Mitchell", "author_role": "Mother of two", "quote": "This pump made going back to work possible." } },
+        { "type": "testimonial", "settings": { "author_name": "Jessica Chen", "author_role": "New mother" } },
+        { "type": "testimonial", "settings": { "author_name": "Maria Rodriguez", "author_role": "Breastfeeding mother" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

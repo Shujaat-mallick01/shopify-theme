@@ -1,0 +1,86 @@
+{% comment %}
+  Section: Steps (3 Simple Steps)
+  File: sections/steps.liquid
+{% endcomment %}
+
+<section class="steps-section">
+  <div class="container">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="section-title">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.subheading != blank -%}
+      <p class="section-sub">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+
+    <div class="steps-grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'step' -%}
+          <article class="step-card" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 1000 | image_tag: alt: block.settings.heading, loading: 'lazy' }}
+            {%- endif -%}
+            <div class="step-content">
+              {%- if block.settings.step_number != blank -%}
+                <span class="step-number">{{ block.settings.step_number }}</span>
+              {%- endif -%}
+              {%- if block.settings.heading != blank -%}
+                <h3>{{ block.settings.heading }}</h3>
+              {%- endif -%}
+              {%- if block.settings.description != blank -%}
+                <p>{{ block.settings.description }}</p>
+              {%- endif -%}
+              {%- if block.settings.link_text != blank -%}
+                <a href="{{ block.settings.link | default: '#' }}" class="link-arrow">
+                  {{ block.settings.link_text }}
+                  {% render 'icon-arrow-right', color: 'white' %}
+                </a>
+              {%- endif -%}
+            </div>
+          </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Steps",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "3 SIMPLE STEPS TO" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Get the Maternity Products You Need Through Every Stage of Motherhood Covered Through Insurance" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "From breast pumps, to milk bags and belly bands, we've got you covered." }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "step_number", "label": "Step number", "default": "Step 1" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Check your coverage" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        { "type": "text", "id": "link_text", "label": "Link text", "default": "Learn More" },
+        { "type": "url", "id": "link", "label": "Link URL" }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Steps",
+      "blocks": [
+        { "type": "step", "settings": { "step_number": "Step 1", "heading": "Check your coverage", "description": "Check your insurance, and let's verify what's covered.", "link_text": "Check Coverage" } },
+        { "type": "step", "settings": { "step_number": "Step 2", "heading": "Shop our products", "description": "Browse breast pumps, belly bands, and maternity essentials you need.", "link_text": "Shop Now" } },
+        { "type": "step", "settings": { "step_number": "Step 3", "heading": "Focus on your baby", "description": "We handle everything: from insurance, to your door, and beyond.", "link_text": "Learn More" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

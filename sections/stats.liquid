@@ -1,0 +1,72 @@
+{% comment %}
+  Section: Stats
+  File: sections/stats.liquid
+{% endcomment %}
+
+<section class="stats-section">
+  <div class="container stats-grid">
+    <div class="stats-copy">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2>{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <p>{{ section.settings.description }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="stats-cards">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'stat' -%}
+          <div class="stat-card" {{ block.shopify_attributes }}>
+            {%- if block.settings.label != blank -%}
+              <p class="stat-label">{{ block.settings.label }}</p>
+            {%- endif -%}
+            {%- if block.settings.value != blank -%}
+              <p class="stat-value">{{ block.settings.value }}</p>
+            {%- endif -%}
+            {%- if block.settings.description != blank -%}
+              <p class="stat-desc">{{ block.settings.description }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Stats",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Trust" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Trusted by families and providers for over 20 years</p>" },
+    { "type": "textarea", "id": "description", "label": "Description" }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat card",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "text", "id": "value", "label": "Value", "default": "20+" },
+        { "type": "textarea", "id": "description", "label": "Description" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stats",
+      "blocks": [
+        { "type": "stat", "settings": { "label": "Years of experience", "value": "20+" } },
+        { "type": "stat", "settings": { "label": "Brooklyn-based operation", "value": "1" } },
+        { "type": "stat", "settings": { "label": "Support in three languages", "value": "3" } },
+        { "type": "stat", "settings": { "label": "New moms/Providers/Returning Moms", "value": "10,000+" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,119 @@
+{% comment %}
+  Section: Feature List (a.k.a. "Deserves" - icon checklist + image)
+  File: sections/feature-list.liquid
+{% endcomment %}
+
+<section class="deserves-section">
+  <div class="container deserves-grid">
+    {%- if section.settings.image_position == 'left' -%}
+      <div class="deserves-image">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1200 | image_tag: alt: section.settings.heading, loading: 'lazy' }}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="deserves-copy">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2>{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <p>{{ section.settings.description }}</p>
+      {%- endif -%}
+
+      <ul class="check-list">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'feature' -%}
+            <li {{ block.shopify_attributes }}>
+              {%- if block.settings.icon != blank -%}
+                {{ block.settings.icon | image_url: width: 30 | image_tag: alt: '', loading: 'lazy' }}
+              {%- else -%}
+                {%- comment -%} fallback default check svg {%- endcomment -%}
+                <svg width="15" height="15" viewBox="0 0 13 13" fill="#000" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.10067 10.1315C4.98089 10.1315 4.02944 9.73989 3.24633 8.95667C2.46333 8.17344 2.07183 7.22239 2.07183 6.1035C2.07183 4.9845 2.46344 4.03278 3.24667 3.24833C4.02989 2.464 4.98094 2.07183 6.09983 2.07183C7.21883 2.07183 8.17055 2.46372 8.955 3.2475C9.73933 4.03128 10.1315 4.983 10.1315 6.10267C10.1315 7.22244 9.73961 8.17389 8.95583 8.957C8.17205 9.74 7.22033 10.1315 6.10067 10.1315Z" fill="black"/>
+                </svg>
+              {%- endif -%}
+              {{ block.settings.text }}
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+
+      <div class="products-cta">
+        {%- if section.settings.primary_cta_text != blank -%}
+          <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="btn btn-primary">
+            {{ section.settings.primary_cta_text }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.secondary_cta_text != blank -%}
+          <a href="{{ section.settings.secondary_cta_link | default: '#' }}" class="link-arrow">
+            {{ section.settings.secondary_cta_text }}
+            {% render 'icon-arrow-right', size: 15, height: 16, color: 'current' %}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if section.settings.image_position != 'left' -%}
+      <div class="deserves-image">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1200 | image_tag: alt: section.settings.heading, loading: 'lazy' }}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Feature List",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "richtext", "id": "heading", "label": "Heading" },
+    { "type": "textarea", "id": "description", "label": "Description" },
+
+    { "type": "header", "content": "Primary CTA" },
+    { "type": "text", "id": "primary_cta_text", "label": "Primary button text", "default": "Check Coverage" },
+    { "type": "url", "id": "primary_cta_link", "label": "Primary button link" },
+
+    { "type": "header", "content": "Secondary CTA" },
+    { "type": "text", "id": "secondary_cta_text", "label": "Secondary link text", "default": "Shop Products" },
+    { "type": "url", "id": "secondary_cta_link", "label": "Secondary link URL" }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon (optional)" },
+        { "type": "text", "id": "text", "label": "Feature text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature List",
+      "blocks": [
+        { "type": "feature", "settings": { "text": "Insurance covers breast pumps for most mothers" } },
+        { "type": "feature", "settings": { "text": "Many plans also cover storage bags and postpartum supports" } },
+        { "type": "feature", "settings": { "text": "We handle verification so you don't have to guess" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

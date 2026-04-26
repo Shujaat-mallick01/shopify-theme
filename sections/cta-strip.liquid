@@ -1,0 +1,50 @@
+{% comment %}
+  Section: CTA Strip
+  File: sections/cta-strip.liquid
+{% endcomment %}
+
+<section class="cta-strip">
+  <div class="container">
+    {%- if section.settings.heading != blank -%}
+      <h2>{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.description != blank -%}
+      <p>{{ section.settings.description }}</p>
+    {%- endif -%}
+
+    <div class="hero-buttons center">
+      {%- if section.settings.primary_cta_text != blank -%}
+        <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="btn btn-primary">
+          {{ section.settings.primary_cta_text }}
+        </a>
+      {%- endif -%}
+      {%- if section.settings.secondary_cta_text != blank -%}
+        <a href="{{ section.settings.secondary_cta_link | default: '#' }}" class="btn btn-ghost-light">
+          {{ section.settings.secondary_cta_text }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CTA Strip",
+  "tag": "div",
+  "settings": [
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Less insurance stress. More baby time.</p>" },
+    { "type": "richtext", "id": "description", "label": "Description" },
+
+    { "type": "header", "content": "Primary CTA" },
+    { "type": "text", "id": "primary_cta_text", "label": "Button text", "default": "Check Coverage" },
+    { "type": "url", "id": "primary_cta_link", "label": "Button link" },
+
+    { "type": "header", "content": "Secondary CTA" },
+    { "type": "text", "id": "secondary_cta_text", "label": "Button text", "default": "Shop Products" },
+    { "type": "url", "id": "secondary_cta_link", "label": "Button link" }
+  ],
+  "presets": [
+    { "name": "CTA Strip" }
+  ]
+}
+{% endschema %}

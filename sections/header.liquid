@@ -1,0 +1,181 @@
+{% comment %}
+  Section: Header
+  File: sections/header.liquid
+  Reusable site header with logo, nav links, action buttons & mega menu.
+{% endcomment %}
+
+<header class="site-header">
+  <div class="header">
+    <div class="header-container">
+      <div class="header-content">
+
+        {%- comment -%} Logo {%- endcomment -%}
+        <a href="{{ routes.root_url }}" class="logo-wrap" aria-label="{{ shop.name }}">
+          <div class="logo-wide">
+            {%- if section.settings.logo != blank -%}
+              {{ section.settings.logo | image_url: width: 140 | image_tag: alt: shop.name, loading: 'eager', class: 'logo-img' }}
+            {%- else -%}
+              <span class="logo-text">{{ section.settings.logo_text | default: 'Logo' }}</span>
+            {%- endif -%}
+          </div>
+        </a>
+
+        {%- comment -%} Nav links (blocks: type: "nav_link") {%- endcomment -%}
+        <nav class="nav-column" aria-label="Main">
+          <div class="link-one"></div>
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'nav_link' -%}
+              <a href="{{ block.settings.link | default: '#' }}" class="nav-link" {{ block.shopify_attributes }}>
+                <span class="nav-link-text">{{ block.settings.label }}</span>
+                {%- if block.settings.show_chevron -%}
+                  {% render 'icon-chevron-down' %}
+                {%- endif -%}
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+        </nav>
+      </div>
+
+      {%- comment -%} Actions {%- endcomment -%}
+      <div class="header-actions">
+        {%- if section.settings.show_phone -%}
+          <div class="btn-action">
+            <div class="talk-to-team">
+              <span>{{ section.settings.phone_label }}</span>
+              <span>{{ section.settings.phone_hours }}</span>
+              <span>{{ section.settings.phone_number }}</span>
+            </div>
+          </div>
+        {%- endif -%}
+
+        <a href="{{ section.settings.cta_link | default: '#' }}" class="btn-action primary">
+          <span>{{ section.settings.cta_text | default: 'Shop Now' }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} Mega menu — rendered from "menu_row" blocks containing item groups {%- endcomment -%}
+  {%- assign menu_rows = section.blocks | where: 'type', 'menu_row' -%}
+  {%- if menu_rows.size > 0 -%}
+    <div class="mega-menu">
+      {%- for row in menu_rows -%}
+        <div class="menu-row">
+          <div class="menu-row-inner">
+            {%- for i in (1..4) -%}
+              {%- assign title_key = 'item_' | append: i | append: '_title' -%}
+              {%- assign desc_key  = 'item_' | append: i | append: '_desc' -%}
+              {%- assign link_key  = 'item_' | append: i | append: '_link' -%}
+              {%- assign title = row.settings[title_key] -%}
+              {%- assign desc  = row.settings[desc_key] -%}
+              {%- assign link  = row.settings[link_key] -%}
+              {%- if title != blank -%}
+                <a href="{{ link | default: '#' }}" class="menu-item">
+                  <div class="menu-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M20.3 6.3a1 1 0 0 1 0 1.4l-10 10a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4L9.6 15.6l9.3-9.3a1 1 0 0 1 1.4 0z"
+                        fill="#000" stroke="#000" stroke-width="0.5" />
+                    </svg>
+                  </div>
+                  <div class="menu-content">
+                    <p class="menu-title">{{ title }}</p>
+                    <p class="menu-desc">{{ desc }}</p>
+                  </div>
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endfor -%}
+
+      {%- if section.settings.mega_footer_text != blank -%}
+        <div class="mega-footer">
+          <div class="mega-footer-inner">
+            <div class="mega-footer-content">
+              <span>{{ section.settings.mega_footer_text }}</span>
+              <a href="{{ section.settings.mega_footer_link | default: '#' }}" class="mega-footer-link">
+                {{ section.settings.mega_footer_link_text }}
+              </a>
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "tag": "div",
+  "class": "section-header-wrapper",
+  "settings": [
+    { "type": "header", "content": "Logo" },
+    { "type": "image_picker", "id": "logo", "label": "Logo image" },
+    { "type": "text", "id": "logo_text", "label": "Logo text (fallback)", "default": "Logo" },
+
+    { "type": "header", "content": "Phone / Contact" },
+    { "type": "checkbox", "id": "show_phone", "label": "Show phone block", "default": true },
+    { "type": "text", "id": "phone_label", "label": "Phone label", "default": "Talk To Our Team" },
+    { "type": "text", "id": "phone_hours", "label": "Phone hours", "default": "9:30-5:30" },
+    { "type": "text", "id": "phone_number", "label": "Phone number", "default": "xxx-xxx-xxxx" },
+
+    { "type": "header", "content": "CTA Button" },
+    { "type": "text", "id": "cta_text", "label": "CTA text", "default": "Shop Now" },
+    { "type": "url", "id": "cta_link", "label": "CTA link" },
+
+    { "type": "header", "content": "Mega Menu Footer" },
+    { "type": "text", "id": "mega_footer_text", "label": "Footer text", "default": "Questions about your coverage?" },
+    { "type": "text", "id": "mega_footer_link_text", "label": "Footer link text", "default": "Contact our team" },
+    { "type": "url", "id": "mega_footer_link", "label": "Footer link URL" }
+  ],
+  "blocks": [
+    {
+      "type": "nav_link",
+      "name": "Nav Link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Menu Item" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "checkbox", "id": "show_chevron", "label": "Show chevron", "default": true }
+      ]
+    },
+    {
+      "type": "menu_row",
+      "name": "Mega Menu Row",
+      "settings": [
+        { "type": "header", "content": "Item 1" },
+        { "type": "text", "id": "item_1_title", "label": "Title" },
+        { "type": "text", "id": "item_1_desc", "label": "Description" },
+        { "type": "url",  "id": "item_1_link", "label": "Link" },
+
+        { "type": "header", "content": "Item 2" },
+        { "type": "text", "id": "item_2_title", "label": "Title" },
+        { "type": "text", "id": "item_2_desc", "label": "Description" },
+        { "type": "url",  "id": "item_2_link", "label": "Link" },
+
+        { "type": "header", "content": "Item 3" },
+        { "type": "text", "id": "item_3_title", "label": "Title" },
+        { "type": "text", "id": "item_3_desc", "label": "Description" },
+        { "type": "url",  "id": "item_3_link", "label": "Link" },
+
+        { "type": "header", "content": "Item 4" },
+        { "type": "text", "id": "item_4_title", "label": "Title" },
+        { "type": "text", "id": "item_4_desc", "label": "Description" },
+        { "type": "url",  "id": "item_4_link", "label": "Link" }
+      ]
+    }
+  ],
+  "default": {
+    "settings": {},
+    "blocks": [
+      { "type": "nav_link", "settings": { "label": "For Moms" } },
+      { "type": "nav_link", "settings": { "label": "For Providers" } },
+      { "type": "nav_link", "settings": { "label": "Become A Partner" } },
+      { "type": "nav_link", "settings": { "label": "Resources" } }
+    ]
+  },
+  "presets": [
+    { "name": "Header" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,123 @@
+{% comment %}
+  Section: Image With Text
+  File: sections/image-with-text.liquid
+  Reusable for Experts / Providers / any side-by-side image+text block.
+{% endcomment %}
+
+{%- liquid
+  assign section_class = 'experts-section'
+  assign grid_class = 'experts-grid'
+  assign image_class = 'experts-image'
+  assign copy_class = 'experts-copy'
+
+  if section.settings.style == 'providers'
+    assign section_class = 'providers-section'
+    assign grid_class = 'providers-grid'
+    assign image_class = 'providers-image'
+    assign copy_class = 'providers-copy'
+  endif
+-%}
+
+<section class="{{ section_class }}">
+  <div class="container {{ grid_class }}">
+    {%- if section.settings.image_position == 'left' -%}
+      <div class="{{ image_class }}">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1200 | image_tag: alt: section.settings.heading, loading: 'lazy' }}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="{{ copy_class }}">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2>{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <p>{{ section.settings.description }}</p>
+      {%- endif -%}
+
+      <div class="expert-buttons">
+        {%- if section.settings.primary_cta_text != blank -%}
+          <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="btn {{ section.settings.primary_cta_style | default: 'btn-primary' }}">
+            {{ section.settings.primary_cta_text }}
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.secondary_cta_text != blank -%}
+          <a href="{{ section.settings.secondary_cta_link | default: '#' }}" class="link-arrow">
+            {{ section.settings.secondary_cta_text }}
+            {% render 'icon-arrow-right', size: 15, height: 16, color: 'current' %}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if section.settings.image_position != 'left' -%}
+      <div class="{{ image_class }}">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1200 | image_tag: alt: section.settings.heading, loading: 'lazy' }}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image With Text",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Section style",
+      "options": [
+        { "value": "experts", "label": "Experts (mint bg, full padding)" },
+        { "value": "providers", "label": "Providers (mint bg, top padding reduced)" }
+      ],
+      "default": "experts"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "richtext", "id": "heading", "label": "Heading" },
+    { "type": "textarea", "id": "description", "label": "Description" },
+
+    { "type": "header", "content": "Primary CTA" },
+    { "type": "text", "id": "primary_cta_text", "label": "Primary button text" },
+    { "type": "url", "id": "primary_cta_link", "label": "Primary button link" },
+    {
+      "type": "select",
+      "id": "primary_cta_style",
+      "label": "Primary button style",
+      "options": [
+        { "value": "btn-primary", "label": "Primary (pink)" },
+        { "value": "btn-dark", "label": "Dark" },
+        { "value": "btn-outline", "label": "Outline" }
+      ],
+      "default": "btn-primary"
+    },
+
+    { "type": "header", "content": "Secondary CTA (link arrow)" },
+    { "type": "text", "id": "secondary_cta_text", "label": "Secondary link text" },
+    { "type": "url", "id": "secondary_cta_link", "label": "Secondary link URL" }
+  ],
+  "presets": [
+    {
+      "name": "Image With Text"
+    }
+  ]
+}
+{% endschema %}

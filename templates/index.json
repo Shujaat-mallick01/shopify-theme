@@ -1,0 +1,210 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "heading": "<p>Maternity products you need, covered by insurance, delivered to your door</p>",
+        "subheading": "Ardent simplifies the whole process — from checking your coverage to doorstep delivery — so you can focus on your baby.",
+        "primary_cta_text": "Check Your Insurance Coverage",
+        "secondary_cta_text": "Shop Products"
+      }
+    },
+    "steps": {
+      "type": "steps",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "step_number": "Step 1",
+            "heading": "Check your coverage",
+            "description": "Check your insurance, and let's verify what's covered. When it's time to ship, we'll take care of your order directly.",
+            "link_text": "Check Coverage"
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "step_number": "Step 2",
+            "heading": "Shop our products",
+            "description": "Browse breast pumps, belly bands, and maternity essentials you need.",
+            "link_text": "Shop Now"
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "step_number": "Step 3",
+            "heading": "Focus on your baby",
+            "description": "We handle everything: from insurance, to your door, and beyond for all new mothers.",
+            "link_text": "Learn More"
+          }
+        }
+      },
+      "block_order": ["s1", "s2", "s3"],
+      "settings": {
+        "eyebrow": "3 SIMPLE STEPS TO",
+        "heading": "Get the Maternity Products You Need Through Every Stage of Motherhood Covered Through Insurance",
+        "subheading": "From breast pumps, to milk bags and belly bands, we've got you covered."
+      }
+    },
+    "experts": {
+      "type": "image-with-text",
+      "settings": {
+        "style": "experts",
+        "image_position": "right",
+        "eyebrow": "Moms",
+        "heading": "<p>Our Maternity Experts will tell you <em>all</em> the products you're covered for</p>",
+        "description": "We verify your coverage, get your prescription, process your order, and deliver products directly to your door. No waiting. No confusion.",
+        "primary_cta_text": "Check Coverage",
+        "primary_cta_style": "btn-primary",
+        "secondary_cta_text": "Shop Products"
+      }
+    },
+    "providers": {
+      "type": "image-with-text",
+      "settings": {
+        "style": "providers",
+        "image_position": "left",
+        "eyebrow": "Providers",
+        "heading": "<p>Less follow-up. Better patient outcomes.</p>",
+        "description": "Submit the prescription once. We handle insurance verification, fulfillment, and delivery so you can focus on what matters — your patients.",
+        "primary_cta_text": "Submit A Prescription",
+        "primary_cta_style": "btn-dark"
+      }
+    },
+    "products": {
+      "type": "product-categories",
+      "blocks": {
+        "p1": { "type": "category", "settings": { "title": "Breast Pumps" } },
+        "p2": { "type": "category", "settings": { "title": "Belly Bands" } },
+        "p3": { "type": "category", "settings": { "title": "Postpartum Garments" } },
+        "p4": { "type": "category", "settings": { "title": "Maternity Bundles" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4"],
+      "settings": {
+        "eyebrow": "Products",
+        "heading": "Everything you need for pregnancy and beyond",
+        "subheading": "From breast pumps to belly bands and postpartum recovery, we carry the maternity essentials your insurance covers.",
+        "primary_cta_text": "Check Coverage",
+        "secondary_cta_text": "Shop Products"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "This pump made going back to work possible. It's quiet, reliable, and I didn't have to fight with insurance to get it.",
+            "author_name": "Sarah Mitchell",
+            "author_role": "Mother of two",
+            "link_text": "Read her story"
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I was overwhelmed by the insurance process until Ardent stepped in. They handled everything and I got my pump in a week.",
+            "author_name": "Jessica Chen",
+            "author_role": "New mother",
+            "link_text": "Read her story"
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The quality is there and the price is right. No hassle, no confusion, just what I needed when I needed it.",
+            "author_name": "Maria Rodriguez",
+            "author_role": "Breastfeeding mother",
+            "link_text": "Read her story"
+          }
+        }
+      },
+      "block_order": ["t1", "t2", "t3"],
+      "settings": {
+        "heading": "<p>Trusted by healthcare providers <em>and</em> moms</p>",
+        "subheading": "What they're saying"
+      }
+    },
+    "feature-list": {
+      "type": "feature-list",
+      "blocks": {
+        "f1": { "type": "feature", "settings": { "text": "Insurance covers breast pumps for most mothers" } },
+        "f2": { "type": "feature", "settings": { "text": "Many plans also cover storage bags and postpartum supports" } },
+        "f3": { "type": "feature", "settings": { "text": "We handle verification so you don't have to guess" } }
+      },
+      "block_order": ["f1", "f2", "f3"],
+      "settings": {
+        "eyebrow": "GET HELP FROM REAL MATERNITY EXPERTS",
+        "heading": "<p>Your baby deserves the best. Your insurance should cover it.</p>",
+        "description": "Not sure what your insurance covers? We'll help you find out and ship the maternity products you need directly to your door.",
+        "image_position": "right",
+        "primary_cta_text": "Check Coverage",
+        "secondary_cta_text": "Shop Products"
+      }
+    },
+    "stats": {
+      "type": "stats",
+      "blocks": {
+        "st1": {
+          "type": "stat",
+          "settings": {
+            "label": "Years of experience",
+            "value": "20+",
+            "description": "Serving hospitals and healthcare providers throughout New York"
+          }
+        },
+        "st2": {
+          "type": "stat",
+          "settings": {
+            "label": "Brooklyn-based operation",
+            "value": "1",
+            "description": "Storefront and ecommerce operation serving families nationwide"
+          }
+        },
+        "st3": {
+          "type": "stat",
+          "settings": {
+            "label": "Support in three languages",
+            "value": "3",
+            "description": "Tri-lingual team ready to help you navigate coverage"
+          }
+        },
+        "st4": {
+          "type": "stat",
+          "settings": {
+            "label": "New moms/Providers/Returning Moms",
+            "value": "10,000+",
+            "description": "We're the preferred vendor"
+          }
+        }
+      },
+      "block_order": ["st1", "st2", "st3", "st4"],
+      "settings": {
+        "eyebrow": "Trust",
+        "heading": "<p>Trusted by families and providers for over 20 years</p>",
+        "description": "Ardent has been serving hospitals, healthcare providers, and families across New York for more than two decades. We know what works because we've been doing this since the beginning."
+      }
+    },
+    "cta-strip": {
+      "type": "cta-strip",
+      "settings": {
+        "heading": "<p>Less insurance stress. More baby time.</p>",
+        "description": "<p>Our team simplifies the insurance process, so you know exactly what's covered for real.</p>",
+        "primary_cta_text": "Check Coverage",
+        "secondary_cta_text": "Shop Products"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "steps",
+    "experts",
+    "providers",
+    "products",
+    "testimonials",
+    "feature-list",
+    "stats",
+    "cta-strip"
+  ]
+}

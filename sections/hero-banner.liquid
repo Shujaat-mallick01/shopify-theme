@@ -1,0 +1,64 @@
+{% comment %}
+  Section: Hero Banner
+  File: sections/hero-banner.liquid
+{% endcomment %}
+
+{%- liquid
+  assign bg_url = ''
+  if section.settings.background_image != blank
+    assign bg_url = section.settings.background_image | image_url: width: 2000
+  endif
+-%}
+
+<section class="hero">
+  <div class="hero-image" {% if bg_url != blank %}style="background-image: url('{{ bg_url }}');"{% endif %}>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      {%- if section.settings.heading != blank -%}
+        <h1>{{ section.settings.heading }}</h1>
+      {%- endif -%}
+
+      {%- if section.settings.subheading != blank -%}
+        <p class="hero-sub">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+
+      <div class="hero-buttons">
+        {%- if section.settings.primary_cta_text != blank -%}
+          <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="btn btn-primary">
+            {{ section.settings.primary_cta_text }}
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.secondary_cta_text != blank -%}
+          <a href="{{ section.settings.secondary_cta_link | default: '#' }}" class="btn btn-ghost">
+            {{ section.settings.secondary_cta_text }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "tag": "section",
+  "class": "shopify-section-hero",
+  "settings": [
+    { "type": "image_picker", "id": "background_image", "label": "Background image" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Maternity products you need, covered by insurance, delivered to your door</p>" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Ardent simplifies the whole process — from checking your coverage to doorstep delivery — so you can focus on your baby." },
+
+    { "type": "header", "content": "Primary CTA" },
+    { "type": "text", "id": "primary_cta_text", "label": "Primary button text", "default": "Check Your Insurance Coverage" },
+    { "type": "url", "id": "primary_cta_link", "label": "Primary button link" },
+
+    { "type": "header", "content": "Secondary CTA" },
+    { "type": "text", "id": "secondary_cta_text", "label": "Secondary button text", "default": "Shop Products" },
+    { "type": "url", "id": "secondary_cta_link", "label": "Secondary button link" }
+  ],
+  "presets": [
+    { "name": "Hero Banner" }
+  ]
+}
+{% endschema %}
