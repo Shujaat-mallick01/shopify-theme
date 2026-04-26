@@ -1,38 +1,45 @@
 {% comment %}
-  Section: Stats
+  Section: Stats (Stats43 layout — left copy + 2×2 bordered cards on mint)
   File: sections/stats.liquid
 {% endcomment %}
 
 <section class="stats-section">
-  <div class="container stats-grid">
-    <div class="stats-copy">
-      {%- if section.settings.eyebrow != blank -%}
-        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
-      {%- endif -%}
-      {%- if section.settings.heading != blank -%}
-        <h2>{{ section.settings.heading }}</h2>
-      {%- endif -%}
-      {%- if section.settings.description != blank -%}
-        <p>{{ section.settings.description }}</p>
-      {%- endif -%}
-    </div>
+  <div class="stats-inner">
+    <div class="stats-grid">
 
-    <div class="stats-cards">
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'stat' -%}
-          <div class="stat-card" {{ block.shopify_attributes }}>
-            {%- if block.settings.label != blank -%}
-              <p class="stat-label">{{ block.settings.label }}</p>
-            {%- endif -%}
-            {%- if block.settings.value != blank -%}
-              <p class="stat-value">{{ block.settings.value }}</p>
-            {%- endif -%}
-            {%- if block.settings.description != blank -%}
-              <p class="stat-desc">{{ block.settings.description }}</p>
-            {%- endif -%}
-          </div>
+      <div class="stats-copy">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="stats-eyebrow">{{ section.settings.eyebrow }}</p>
         {%- endif -%}
-      {%- endfor -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="stats-heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+          <p class="stats-description">{{ section.settings.description }}</p>
+        {%- endif -%}
+      </div>
+
+      <div class="stats-cards">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'stat' -%}
+            <div class="stat-card" {{ block.shopify_attributes }}>
+              {%- if block.settings.label != blank -%}
+                <p class="stat-label">{{ block.settings.label }}</p>
+              {%- endif -%}
+              <div class="stat-body">
+                {%- if block.settings.value != blank -%}
+                  <p class="stat-value">{{ block.settings.value }}</p>
+                {%- endif -%}
+                <hr class="stat-divider" aria-hidden="true">
+                {%- if block.settings.description != blank -%}
+                  <p class="stat-desc">{{ block.settings.description }}</p>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
     </div>
   </div>
 </section>
@@ -44,16 +51,16 @@
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Trust" },
     { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Trusted by families and providers for over 20 years</p>" },
-    { "type": "textarea", "id": "description", "label": "Description" }
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Ardent has been serving hospitals, healthcare providers, and families across New York for more than two decades. We know what works because we've been doing this since the beginning." }
   ],
   "blocks": [
     {
       "type": "stat",
       "name": "Stat card",
       "settings": [
-        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Years of experience" },
         { "type": "text", "id": "value", "label": "Value", "default": "20+" },
-        { "type": "textarea", "id": "description", "label": "Description" }
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Serving hospitals and healthcare providers throughout New York" }
       ]
     }
   ],
@@ -61,10 +68,10 @@
     {
       "name": "Stats",
       "blocks": [
-        { "type": "stat", "settings": { "label": "Years of experience", "value": "20+" } },
-        { "type": "stat", "settings": { "label": "Brooklyn-based operation", "value": "1" } },
-        { "type": "stat", "settings": { "label": "Support in three languages", "value": "3" } },
-        { "type": "stat", "settings": { "label": "New moms/Providers/Returning Moms", "value": "10,000+" } }
+        { "type": "stat", "settings": { "label": "Years of experience", "value": "20+", "description": "Serving hospitals and healthcare providers throughout New York" } },
+        { "type": "stat", "settings": { "label": "Brooklyn-based operation", "value": "1", "description": "Storefront and ecommerce serving families nationwide" } },
+        { "type": "stat", "settings": { "label": "Support in three languages", "value": "3", "description": "Tri-lingual team ready to help you navigate coverage" } },
+        { "type": "stat", "settings": { "label": "New moms/Providers/Returning Moms", "value": "10,000+", "description": "We're the preferred vendor" } }
       ]
     }
   ]
