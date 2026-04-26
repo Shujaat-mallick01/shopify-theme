@@ -1,7 +1,7 @@
 {% comment %}
   Section: Header
   File: sections/header.liquid
-  Reusable site header with logo, nav links, action buttons & mega menu.
+  Logo + nav with per-link mega-menu panels and shared "Contact our team" footer.
 {% endcomment %}
 
 <header class="site-header">
@@ -20,17 +20,62 @@
           </div>
         </a>
 
-        {%- comment -%} Nav links (blocks: type: "nav_link") {%- endcomment -%}
+        {%- comment -%} Nav links — each can carry its own 4-item mega panel {%- endcomment -%}
         <nav class="nav-column" aria-label="Main">
-          <div class="link-one"></div>
           {%- for block in section.blocks -%}
             {%- if block.type == 'nav_link' -%}
-              <a href="{{ block.settings.link | default: '#' }}" class="nav-link" {{ block.shopify_attributes }}>
-                <span class="nav-link-text">{{ block.settings.label }}</span>
-                {%- if block.settings.show_chevron -%}
-                  {% render 'icon-chevron-down' %}
+              {%- assign has_mega = false -%}
+              {%- if block.settings.item_1_title != blank or block.settings.item_2_title != blank or block.settings.item_3_title != blank or block.settings.item_4_title != blank -%}
+                {%- assign has_mega = true -%}
+              {%- endif -%}
+
+              <div class="nav-item{% if has_mega %} nav-item-mega{% endif %}" {{ block.shopify_attributes }}>
+                <a href="{{ block.settings.link | default: '#' }}" class="nav-link">
+                  <span class="nav-link-text">{{ block.settings.label }}</span>
+                  {%- if block.settings.show_chevron -%}
+                    {% render 'icon-chevron-down' %}
+                  {%- endif -%}
+                </a>
+
+                {%- if has_mega -%}
+                  <div class="mega-panel" role="menu" aria-label="{{ block.settings.label }}">
+                    <div class="mega-panel-inner">
+                      {%- for i in (1..4) -%}
+                        {%- assign t_key = 'item_' | append: i | append: '_title' -%}
+                        {%- assign d_key = 'item_' | append: i | append: '_desc' -%}
+                        {%- assign l_key = 'item_' | append: i | append: '_link' -%}
+                        {%- assign mega_title = block.settings[t_key] -%}
+                        {%- assign mega_desc  = block.settings[d_key] -%}
+                        {%- assign mega_link  = block.settings[l_key] -%}
+                        {%- if mega_title != blank -%}
+                          <a href="{{ mega_link | default: '#' }}" class="mega-item">
+                            <span class="mega-item-icon" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.3 6.3a1 1 0 0 1 0 1.4l-10 10a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4L9.6 15.6l9.3-9.3a1 1 0 0 1 1.4 0z" fill="#000" stroke="#000" stroke-width="0.5"/>
+                              </svg>
+                            </span>
+                            <span class="mega-item-content">
+                              <span class="mega-item-title">{{ mega_title }}</span>
+                              {%- if mega_desc != blank -%}
+                                <span class="mega-item-desc">{{ mega_desc }}</span>
+                              {%- endif -%}
+                            </span>
+                          </a>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </div>
+
+                    {%- if section.settings.mega_footer_text != blank -%}
+                      <div class="mega-panel-footer">
+                        <span>{{ section.settings.mega_footer_text }}</span>
+                        {%- if section.settings.mega_footer_link_text != blank -%}
+                          <a href="{{ section.settings.mega_footer_link | default: '#' }}">{{ section.settings.mega_footer_link_text }}</a>
+                        {%- endif -%}
+                      </div>
+                    {%- endif -%}
+                  </div>
                 {%- endif -%}
-              </a>
+              </div>
             {%- endif -%}
           {%- endfor -%}
         </nav>
@@ -54,54 +99,6 @@
       </div>
     </div>
   </div>
-
-  {%- comment -%} Mega menu — rendered from "menu_row" blocks containing item groups {%- endcomment -%}
-  {%- assign menu_rows = section.blocks | where: 'type', 'menu_row' -%}
-  {%- if menu_rows.size > 0 -%}
-    <div class="mega-menu">
-      {%- for row in menu_rows -%}
-        <div class="menu-row">
-          <div class="menu-row-inner">
-            {%- for i in (1..4) -%}
-              {%- assign title_key = 'item_' | append: i | append: '_title' -%}
-              {%- assign desc_key  = 'item_' | append: i | append: '_desc' -%}
-              {%- assign link_key  = 'item_' | append: i | append: '_link' -%}
-              {%- assign title = row.settings[title_key] -%}
-              {%- assign desc  = row.settings[desc_key] -%}
-              {%- assign link  = row.settings[link_key] -%}
-              {%- if title != blank -%}
-                <a href="{{ link | default: '#' }}" class="menu-item">
-                  <div class="menu-icon">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M20.3 6.3a1 1 0 0 1 0 1.4l-10 10a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4L9.6 15.6l9.3-9.3a1 1 0 0 1 1.4 0z"
-                        fill="#000" stroke="#000" stroke-width="0.5" />
-                    </svg>
-                  </div>
-                  <div class="menu-content">
-                    <p class="menu-title">{{ title }}</p>
-                    <p class="menu-desc">{{ desc }}</p>
-                  </div>
-                </a>
-              {%- endif -%}
-            {%- endfor -%}
-          </div>
-        </div>
-      {%- endfor -%}
-
-      {%- if section.settings.mega_footer_text != blank -%}
-        <div class="mega-footer">
-          <div class="mega-footer-inner">
-            <div class="mega-footer-content">
-              <span>{{ section.settings.mega_footer_text }}</span>
-              <a href="{{ section.settings.mega_footer_link | default: '#' }}" class="mega-footer-link">
-                {{ section.settings.mega_footer_link_text }}
-              </a>
-            </div>
-          </div>
-        </div>
-      {%- endif -%}
-    </div>
-  {%- endif -%}
 </header>
 
 {% schema %}
@@ -136,42 +133,89 @@
       "settings": [
         { "type": "text", "id": "label", "label": "Label", "default": "Menu Item" },
         { "type": "url", "id": "link", "label": "Link" },
-        { "type": "checkbox", "id": "show_chevron", "label": "Show chevron", "default": true }
-      ]
-    },
-    {
-      "type": "menu_row",
-      "name": "Mega Menu Row",
-      "settings": [
-        { "type": "header", "content": "Item 1" },
+        { "type": "checkbox", "id": "show_chevron", "label": "Show chevron", "default": true },
+
+        { "type": "header", "content": "Mega Menu — Item 1" },
         { "type": "text", "id": "item_1_title", "label": "Title" },
-        { "type": "text", "id": "item_1_desc", "label": "Description" },
-        { "type": "url",  "id": "item_1_link", "label": "Link" },
+        { "type": "text", "id": "item_1_desc",  "label": "Description" },
+        { "type": "url",  "id": "item_1_link",  "label": "Link" },
 
-        { "type": "header", "content": "Item 2" },
+        { "type": "header", "content": "Mega Menu — Item 2" },
         { "type": "text", "id": "item_2_title", "label": "Title" },
-        { "type": "text", "id": "item_2_desc", "label": "Description" },
-        { "type": "url",  "id": "item_2_link", "label": "Link" },
+        { "type": "text", "id": "item_2_desc",  "label": "Description" },
+        { "type": "url",  "id": "item_2_link",  "label": "Link" },
 
-        { "type": "header", "content": "Item 3" },
+        { "type": "header", "content": "Mega Menu — Item 3" },
         { "type": "text", "id": "item_3_title", "label": "Title" },
-        { "type": "text", "id": "item_3_desc", "label": "Description" },
-        { "type": "url",  "id": "item_3_link", "label": "Link" },
+        { "type": "text", "id": "item_3_desc",  "label": "Description" },
+        { "type": "url",  "id": "item_3_link",  "label": "Link" },
 
-        { "type": "header", "content": "Item 4" },
+        { "type": "header", "content": "Mega Menu — Item 4" },
         { "type": "text", "id": "item_4_title", "label": "Title" },
-        { "type": "text", "id": "item_4_desc", "label": "Description" },
-        { "type": "url",  "id": "item_4_link", "label": "Link" }
+        { "type": "text", "id": "item_4_desc",  "label": "Description" },
+        { "type": "url",  "id": "item_4_link",  "label": "Link" }
       ]
     }
   ],
   "default": {
     "settings": {},
     "blocks": [
-      { "type": "nav_link", "settings": { "label": "For Moms" } },
-      { "type": "nav_link", "settings": { "label": "For Providers" } },
-      { "type": "nav_link", "settings": { "label": "Become A Partner" } },
-      { "type": "nav_link", "settings": { "label": "Resources" } }
+      {
+        "type": "nav_link",
+        "settings": {
+          "label": "For Moms",
+          "item_1_title": "Check Insurance Coverage",
+          "item_1_desc": "See if you qualify for free maternity products",
+          "item_2_title": "Shop Maternity Products",
+          "item_2_desc": "Browse our full range of insurance-covered essentials",
+          "item_3_title": "How It Works",
+          "item_3_desc": "Learn the simple 3-step process",
+          "item_4_title": "Success Stories",
+          "item_4_desc": "Read how we've helped thousands of moms"
+        }
+      },
+      {
+        "type": "nav_link",
+        "settings": {
+          "label": "For Providers",
+          "item_1_title": "Submit Prescriptions",
+          "item_1_desc": "Send prescriptions for your patients",
+          "item_2_title": "Provider Portal",
+          "item_2_desc": "Manage your patient orders",
+          "item_3_title": "Resources & Education",
+          "item_3_desc": "Materials for your patient consultations",
+          "item_4_title": "Become a Partner",
+          "item_4_desc": "Join our network of healthcare providers"
+        }
+      },
+      {
+        "type": "nav_link",
+        "settings": {
+          "label": "Become A Partner",
+          "item_1_title": "Healthcare Provider",
+          "item_1_desc": "Partner with us as a doctor or clinic",
+          "item_2_title": "Insurance Network",
+          "item_2_desc": "Join our insurance partnership program",
+          "item_3_title": "Distributor Program",
+          "item_3_desc": "Distribute Ardent products",
+          "item_4_title": "Affiliate Program",
+          "item_4_desc": "Earn commissions promoting Ardent"
+        }
+      },
+      {
+        "type": "nav_link",
+        "settings": {
+          "label": "Resources",
+          "item_1_title": "Maternity Guide",
+          "item_1_desc": "Comprehensive pregnancy & postpartum tips",
+          "item_2_title": "Insurance Helper",
+          "item_2_desc": "Understand your coverage benefits",
+          "item_3_title": "Blog & News",
+          "item_3_desc": "Latest updates and parenting advice",
+          "item_4_title": "FAQs",
+          "item_4_desc": "Find answers to common questions"
+        }
+      }
     ]
   }
 }

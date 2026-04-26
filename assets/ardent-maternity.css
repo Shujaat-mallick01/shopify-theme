@@ -59,10 +59,12 @@ ul {
    HEADER
 ========================================================= */
 .site-header {
+    position: relative;
     max-width: 1440px;
     width: 100%;
     margin: auto;
     background: #fff;
+    z-index: 50;
 }
 
 .header {
@@ -123,10 +125,10 @@ ul {
     overflow: hidden;
 }
 
-.link-one {
-    height: 24px;
-    width: 118px;
-    flex-shrink: 0;
+.nav-item {
+    position: static;
+    display: flex;
+    align-items: center;
 }
 
 .nav-link {
@@ -208,107 +210,109 @@ ul {
     white-space: nowrap;
 }
 
-.mega-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
-    width: 100%;
+/* Per-link mega menu panel */
+.mega-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.15s ease, visibility 0s linear 0.15s;
+    z-index: 60;
 }
 
-.menu-row {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 32px 15px;
+.nav-item-mega:hover > .mega-panel,
+.nav-item-mega:focus-within > .mega-panel,
+.mega-panel:hover {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.15s ease, visibility 0s;
 }
 
-.menu-row-inner {
-    display: flex;
-    flex: 1 0 0;
+.mega-panel-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 32px;
-    align-items: flex-start;
-    min-width: 0;
+    padding: 32px 64px;
 }
 
-.menu-item {
+.mega-item {
     display: flex;
-    flex: 1 0 0;
     gap: 12px;
     align-items: flex-start;
     padding: 8px 0;
-    min-width: 0;
+    text-decoration: none;
+    color: #000;
 }
 
-.menu-icon {
+.mega-item:hover .mega-item-title {
+    color: var(--color-primary);
+}
+
+.mega-item-icon {
     width: 24px;
     height: 24px;
     flex-shrink: 0;
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.menu-icon svg {
+.mega-item-icon svg {
     width: 100%;
     height: 100%;
     display: block;
 }
 
-.menu-content {
+.mega-item-content {
     display: flex;
-    flex: 1 0 0;
     flex-direction: column;
-    align-items: flex-start;
+    gap: 2px;
     min-width: 0;
-    line-height: 1.5;
-    color: #000;
 }
 
-.menu-title {
+.mega-item-title {
     font-family: var(--font);
     font-weight: 600;
     font-size: 16px;
-    width: 100%;
-    margin: 0;
+    line-height: 1.5;
     color: #000;
+    transition: color 0.2s ease;
 }
 
-.menu-desc {
+.mega-item-desc {
     font-family: var(--font);
     font-weight: 400;
     font-size: 14px;
-    width: 100%;
-    margin: 0;
+    line-height: 1.5;
     color: #000;
 }
 
-.mega-footer {
-    background: #fff;
-    width: 100%;
-}
-
-.mega-footer-inner {
+.mega-panel-footer {
+    border-top: 1px solid #000;
+    padding: 16px 24px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    padding: 16px 64px;
-}
-
-.mega-footer-content {
-    display: flex;
     gap: 8px;
-    align-items: flex-start;
     font-family: var(--font);
     font-weight: 400;
     font-size: 16px;
     line-height: 1.5;
     color: #000;
-    white-space: nowrap;
 }
 
-.mega-footer-link {
+.mega-panel-footer a {
     text-decoration: underline;
     text-decoration-skip-ink: none;
-    text-decoration-style: solid;
+}
+
+.mega-panel-footer a:hover {
+    color: var(--color-primary);
 }
 
 /* =========================================================
@@ -1391,8 +1395,7 @@ p {
     h3, .step-content h3 { font-size: 32px; }
     .stats-heading { font-size: 40px; }
     .stat-value { font-size: 64px; }
-    .menu-row-inner { flex-wrap: wrap; }
-    .menu-item { flex: 1 0 45%; }
+    .mega-panel-inner { padding: 24px; gap: 20px; }
 }
 
 @media (max-width: 1024px) {
@@ -1415,8 +1418,8 @@ p {
     .footer-links { max-width: none; }
     .footer-inner { gap: 60px; }
     .header { padding: 0 24px; }
-    .menu-row { padding: 24px; }
-    .mega-footer-inner { padding: 16px 24px; }
+    .mega-panel-inner { grid-template-columns: 1fr 1fr; gap: 24px; padding: 24px; }
+    .mega-panel-footer { padding: 16px 24px; }
     .stats-section { padding: 80px 24px; }
     .stats-grid { flex-direction: column; align-items: stretch; gap: 40px; }
     .stats-copy { max-width: none; }
@@ -1426,7 +1429,7 @@ p {
 @media (max-width: 820px) {
     .nav-column { display: none; }
     .header-container { gap: 16px; }
-    .mega-menu { display: none; }
+    .mega-panel { display: none; }
 }
 
 @media (max-width: 768px) {
