@@ -1,28 +1,34 @@
 {% comment %}
-  Section: CTA Strip
+  Section: CTA Strip (Cta25 — black banner, centered copy + actions)
   File: sections/cta-strip.liquid
 {% endcomment %}
 
 <section class="cta-strip">
-  <div class="container">
-    {%- if section.settings.heading != blank -%}
-      <h2>{{ section.settings.heading }}</h2>
-    {%- endif -%}
-    {%- if section.settings.description != blank -%}
-      <p>{{ section.settings.description }}</p>
-    {%- endif -%}
+  <div class="cta-container">
+    <div class="cta-content">
 
-    <div class="hero-buttons center">
-      {%- if section.settings.primary_cta_text != blank -%}
-        <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="btn btn-primary">
-          {{ section.settings.primary_cta_text }}
-        </a>
-      {%- endif -%}
-      {%- if section.settings.secondary_cta_text != blank -%}
-        <a href="{{ section.settings.secondary_cta_link | default: '#' }}" class="btn btn-ghost-light">
-          {{ section.settings.secondary_cta_text }}
-        </a>
-      {%- endif -%}
+      <div class="cta-text">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="cta-heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+          <div class="cta-description">{{ section.settings.description }}</div>
+        {%- endif -%}
+      </div>
+
+      <div class="cta-actions">
+        {%- if section.settings.primary_cta_text != blank -%}
+          <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="cta-btn cta-btn-primary">
+            {{ section.settings.primary_cta_text }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.secondary_cta_text != blank -%}
+          <a href="{{ section.settings.secondary_cta_link | default: '#' }}" class="cta-btn cta-btn-secondary">
+            {{ section.settings.secondary_cta_text }}
+          </a>
+        {%- endif -%}
+      </div>
+
     </div>
   </div>
 </section>
@@ -33,7 +39,7 @@
   "tag": "div",
   "settings": [
     { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Less insurance stress. More baby time.</p>" },
-    { "type": "richtext", "id": "description", "label": "Description" },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Our team simplifies the insurance process, so you know exactly what you're covered for and more.</p>" },
 
     { "type": "header", "content": "Primary CTA" },
     { "type": "text", "id": "primary_cta_text", "label": "Button text", "default": "Check Coverage" },
