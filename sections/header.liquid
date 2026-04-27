@@ -13,7 +13,8 @@
         <a href="{{ routes.root_url }}" class="logo-wrap" aria-label="{{ shop.name }}">
           <div class="logo-wide">
             {%- if section.settings.logo != blank -%}
-              {{ section.settings.logo | image_url: width: 140 | image_tag: alt: shop.name, loading: 'eager', class: 'logo-img' }}
+              {{ section.settings.logo | image_url: width: 400 | image_tag: alt: shop.name, loading: 'eager', class: 'logo-img' }}
+              {% comment %} {{ section.settings.logo | image_url: width: 140 | image_tag: alt: shop.name, loading: 'eager', class: 'logo-img' }} {% endcomment %}
             {%- else -%}
               <span class="logo-text">{{ section.settings.logo_text | default: 'Logo' }}</span>
             {%- endif -%}
