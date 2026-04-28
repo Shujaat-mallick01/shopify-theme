@@ -87,25 +87,34 @@ ul {
 
 .header-content {
     display: flex;
-    gap: 210px;
+    gap: 50px;
     align-items: center;
 }
 
-.logo-wrap {
+/* .logo-wrap {
     height: 36px;
     width: 84px;
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
-}
+} */
 
-.logo-wide {
+/* .logo-wide {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     width: 70px;
     height: 36px;
+} */
+
+.logo-img {
+    width: 250px;
+    height: 80px;
+    max-width: 250px;
+    max-height: 80px;
+    object-fit: contain;
+    display: block;
 }
 
 .logo-text {
