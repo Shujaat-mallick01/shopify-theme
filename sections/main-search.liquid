@@ -1,0 +1,51 @@
+{% comment %}
+  Section: Main Search
+  File: sections/main-search.liquid
+{% endcomment %}
+
+<section class="search-main">
+  <div class="container">
+    <h1>Search</h1>
+
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search-form">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="Search">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    {%- if search.performed -%}
+      <p class="search-results-count">
+        {{ search.results_count }} result{% if search.results_count != 1 %}s{% endif %} for "{{ search.terms }}"
+      </p>
+
+      {%- if search.results_count > 0 -%}
+        <ul class="search-results">
+          {%- for item in search.results -%}
+            <li class="search-result">
+              <a href="{{ item.url }}">
+                {%- if item.featured_image -%}
+                  {{ item.featured_image | image_url: width: 400 | image_tag: alt: item.title, loading: 'lazy' }}
+                {%- elsif item.image -%}
+                  {{ item.image | image_url: width: 400 | image_tag: alt: item.title, loading: 'lazy' }}
+                {%- endif -%}
+                <h3>{{ item.title }}</h3>
+                {%- if item.object_type == 'product' -%}
+                  <p>{{ item.price | money }}</p>
+                {%- else -%}
+                  <p>{{ item.content | strip_html | truncate: 200 }}</p>
+                {%- endif -%}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Search",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

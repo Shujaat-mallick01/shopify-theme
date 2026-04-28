@@ -1,0 +1,56 @@
+{% comment %}
+  Section: Main Cart
+  File: sections/main-cart.liquid
+{% endcomment %}
+
+<section class="cart-main">
+  <div class="container">
+    <h1>Your Cart</h1>
+
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post" novalidate class="cart-form">
+        <ul class="cart-items">
+          {%- for item in cart.items -%}
+            <li class="cart-item">
+              {%- if item.image != blank -%}
+                <a href="{{ item.url }}" class="cart-item-image">
+                  {{ item.image | image_url: width: 200 | image_tag: alt: item.title, loading: 'lazy' }}
+                </a>
+              {%- endif -%}
+
+              <div class="cart-item-info">
+                <a href="{{ item.url }}" class="cart-item-title">{{ item.product.title }}</a>
+                {%- unless item.variant.title == 'Default Title' -%}
+                  <p class="cart-item-variant">{{ item.variant.title }}</p>
+                {%- endunless -%}
+                <p class="cart-item-price">{{ item.final_line_price | money }}</p>
+
+                <label>
+                  Qty
+                  <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" aria-label="Quantity">
+                </label>
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        <div class="cart-totals">
+          <p>Subtotal: <strong>{{ cart.total_price | money }}</strong></p>
+          <button type="submit" name="update" class="btn btn-outline">Update cart</button>
+          <button type="submit" name="checkout" class="btn btn-primary">Check out</button>
+        </div>
+      </form>
+    {%- else -%}
+      <p class="cart-empty">Your cart is empty.</p>
+      <a href="{{ routes.root_url }}" class="btn btn-primary">Continue shopping</a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

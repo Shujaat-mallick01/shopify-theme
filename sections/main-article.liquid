@@ -1,0 +1,43 @@
+{% comment %}
+  Section: Main Article
+  File: sections/main-article.liquid
+{% endcomment %}
+
+<section class="article-main">
+  <div class="container article-container">
+    <h1 class="article-title">{{ article.title }}</h1>
+    <p class="article-meta">
+      {{ article.published_at | date: '%b %d, %Y' }}
+      {%- if article.author != blank %} · {{ article.author }}{% endif -%}
+    </p>
+
+    {%- if article.image != blank -%}
+      <div class="article-image">
+        {{ article.image | image_url: width: 1600 | image_tag: alt: article.title, loading: 'eager' }}
+      </div>
+    {%- endif -%}
+
+    <div class="article-content rte">
+      {{ article.content }}
+    </div>
+
+    {%- if blog.next_article or blog.previous_article -%}
+      <nav class="article-nav" aria-label="Articles">
+        {%- if blog.previous_article -%}
+          <a href="{{ blog.previous_article }}" class="link-arrow">← Previous</a>
+        {%- endif -%}
+        {%- if blog.next_article -%}
+          <a href="{{ blog.next_article }}" class="link-arrow">Next →</a>
+        {%- endif -%}
+      </nav>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Article",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

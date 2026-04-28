@@ -1,0 +1,23 @@
+{% comment %}
+  Section: Main 404
+  File: sections/main-404.liquid
+{% endcomment %}
+
+<section class="error-main">
+  <div class="container error-content">
+    <h1>{{ section.settings.heading | default: 'Page not found' }}</h1>
+    <p>{{ section.settings.description | default: "Sorry, the page you're looking for doesn't exist." }}</p>
+    <a href="{{ routes.root_url }}" class="btn btn-primary">Back to home</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "404",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Page not found" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Sorry, the page you're looking for doesn't exist." }
+  ]
+}
+{% endschema %}
