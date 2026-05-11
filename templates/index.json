@@ -27,6 +27,7 @@
         "s1": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/img-1.jpg",
             "step_number": "Step 1",
             "heading": "Check your coverage",
             "description": "Check your insurance, and let's verify what's covered. When it's time to ship, we'll take care of your order directly.",
@@ -37,6 +38,7 @@
         "s2": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/img-2.jpg",
             "step_number": "Step 2",
             "heading": "Shop our products",
             "description": "Browse breast pumps, belly bands, and maternity essentials you need.",
@@ -47,6 +49,7 @@
         "s3": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/img-3.png",
             "step_number": "Step 3",
             "heading": "Focus on your baby",
             "description": "We handle everything: from insurance, to your door, and beyond for all new mothers.",
