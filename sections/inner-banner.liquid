@@ -1,0 +1,70 @@
+{% comment %}
+  Section: Inner Banner
+  File: sections/inner-banner.liquid
+  Page-level banner used on inner pages (About, How it works, etc.).
+  Sits inside a 1280px container with white outer padding (Figma "Header / 98").
+{% endcomment %}
+
+{%- liquid
+  assign bg_url = ''
+  if section.settings.background_image != blank
+    assign bg_url = section.settings.background_image | image_url: width: 2000
+  endif
+-%}
+
+<section class="inner-banner">
+  <div class="inner-banner-container">
+    <div class="inner-banner-card" {% if bg_url != blank %}style="background-image: url('{{ bg_url }}');"{% endif %}>
+      <div class="inner-banner-overlay" aria-hidden="true"></div>
+      <div class="inner-banner-inner">
+        <div class="inner-banner-content">
+          {%- if section.settings.heading != blank -%}
+            <h1 class="inner-banner-heading" data-reveal data-reveal-delay="100">{{ section.settings.heading }}</h1>
+          {%- endif -%}
+
+          {%- if section.settings.description != blank -%}
+            <div class="inner-banner-text" data-reveal data-reveal-delay="200">{{ section.settings.description }}</div>
+          {%- endif -%}
+
+          {%- if section.settings.primary_cta_text != blank or section.settings.secondary_cta_text != blank -%}
+            <div class="inner-banner-actions" data-reveal data-reveal-delay="300">
+              {%- if section.settings.primary_cta_text != blank -%}
+                <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="inner-banner-btn inner-banner-btn--primary">
+                  {{ section.settings.primary_cta_text }}
+                </a>
+              {%- endif -%}
+              {%- if section.settings.secondary_cta_text != blank -%}
+                <a href="{{ section.settings.secondary_cta_link | default: '#' }}" class="inner-banner-btn inner-banner-btn--secondary">
+                  {{ section.settings.secondary_cta_text }}
+                </a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Inner Banner",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "background_image", "label": "Background image" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Your baby deserves the best. Your insurance should cover it.</p>" },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Not sure what your plan covers? We'll figure it out for you, then ship the maternity products you need, direct to your door.</p>" },
+
+    { "type": "header", "content": "Primary CTA" },
+    { "type": "text", "id": "primary_cta_text", "label": "Primary button text", "default": "Check" },
+    { "type": "url", "id": "primary_cta_link", "label": "Primary button link" },
+
+    { "type": "header", "content": "Secondary CTA" },
+    { "type": "text", "id": "secondary_cta_text", "label": "Secondary button text", "default": "Shop" },
+    { "type": "url", "id": "secondary_cta_link", "label": "Secondary button link" }
+  ],
+  "presets": [
+    { "name": "Inner Banner" }
+  ]
+}
+{% endschema %}

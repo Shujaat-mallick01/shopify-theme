@@ -742,8 +742,7 @@ p {
 .hero-image {
     position: relative;
     min-height: 620px;
-    background-size: cover;
-    background-position: center;
+    background-position: 15% 20%;
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
@@ -1403,6 +1402,133 @@ p {
 }
 
 /* =========================================================
+   INNER BANNER (page-level banner inside container)
+========================================================= */
+.inner-banner {
+    background: #fff;
+    padding: 80px 64px;
+    display: flex;
+    justify-content: center;
+}
+
+.inner-banner-container {
+    width: 100%;
+    max-width: 1280px;
+}
+
+.inner-banner-card {
+    position: relative;
+    width: 100%;
+    height: 640px;
+    background-color: #8a8a8a;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.inner-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.inner-banner-inner {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 64px;
+}
+
+.inner-banner-content {
+    width: 100%;
+    max-width: 768px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    text-align: center;
+    color: #fff;
+}
+
+.inner-banner-heading {
+    font-family: var(--font-heading);
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    color: #fff;
+}
+
+.inner-banner-heading p {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    line-height: inherit;
+}
+
+.inner-banner-text {
+    font-family: var(--font);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+}
+
+.inner-banner-text p {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    line-height: inherit;
+}
+
+.inner-banner-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.inner-banner-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    font-family: var(--font);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    border: 1px solid #fff;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.inner-banner-btn--primary {
+    background: #fff;
+    color: #000;
+}
+
+.inner-banner-btn--primary:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+}
+
+.inner-banner-btn--secondary {
+    background: transparent;
+    color: #fff;
+}
+
+.inner-banner-btn--secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* =========================================================
    FOOTER  (Footer3 — white footer, brand left + link lists right)
 ========================================================= */
 .site-footer {
@@ -1703,6 +1829,12 @@ p {
     .header-actions .btn-action.primary { display: none; }
     .header-actions { gap: 8px; }
     .header-container { gap: 16px; }
+
+    /* Inner banner */
+    .inner-banner { padding: 60px 32px; }
+    .inner-banner-card { height: 520px; }
+    .inner-banner-inner { padding: 0 40px; }
+    .inner-banner-heading { font-size: 44px; }
 }
 
 @media (max-width: 768px) {
@@ -1756,6 +1888,14 @@ p {
     .experts-copy p,
     .providers-copy p { max-width: none; }
     .deserves-image { display: flex; justify-content: center; }
+
+    /* Inner banner */
+    .inner-banner { padding: 48px 20px; }
+    .inner-banner-card { height: 440px; }
+    .inner-banner-inner { padding: 0 24px; }
+    .inner-banner-heading { font-size: 32px; }
+    .inner-banner-text { font-size: 16px; }
+    .inner-banner-content { gap: 24px; }
 }
 
 @media (max-width: 480px) {
@@ -1802,6 +1942,14 @@ p {
     .hero-buttons .btn { width: 100%; }
     .cta-actions { flex-direction: column; align-items: stretch; width: 100%; }
     .cta-btn { width: 100%; }
+
+    /* Inner banner */
+    .inner-banner { padding: 32px 16px; }
+    .inner-banner-card { height: 380px; }
+    .inner-banner-inner { padding: 0 20px; }
+    .inner-banner-heading { font-size: 26px; }
+    .inner-banner-actions { flex-direction: column; width: 100%; }
+    .inner-banner-btn { width: 100%; }
 }
 
 /* =========================================================
