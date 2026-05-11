@@ -11,10 +11,27 @@
   "sections": {
     "main": {
       "type": "main-page",
-      "settings": {}
+      "disabled": true,
+      "settings": {
+        "show_title": true
+      }
+    },
+    "inner_banner_mPincG": {
+      "type": "inner-banner",
+      "name": "Inner Banner",
+      "settings": {
+        "background_image": "shopify://shop_images/img-9.jpg",
+        "heading": "<p>Your baby deserves the best. Your insurance should cover it.</p>",
+        "description": "<p>Not sure what your plan covers? We'll figure it out for you, then ship the maternity products you need, direct to your door.</p>",
+        "primary_cta_text": "Check",
+        "primary_cta_link": "#",
+        "secondary_cta_text": "Shop",
+        "secondary_cta_link": "#"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "inner_banner_mPincG"
   ]
 }
