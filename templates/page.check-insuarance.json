@@ -145,6 +145,75 @@
         "heading": "<h2><strong>Trusted by doctors and <br/>lactation consultants, and <br/>moms </strong></h2>",
         "subheading": "What they're saying"
       }
+    },
+    "faq_LjwKJq": {
+      "type": "faq",
+      "blocks": {
+        "question_MW8mKT": {
+          "type": "question",
+          "settings": {
+            "question": "What does insurance cover?",
+            "answer": "<p>Most plans cover breast pumps, storage bags, and postpartum essentials. We verify your specific benefits once you submit your information.</p>",
+            "open_by_default": true
+          }
+        },
+        "question_qUm7Yj": {
+          "type": "question",
+          "settings": {
+            "question": "How long does verification take?",
+            "answer": "<p>We typically verify coverage within 24 hours. You'll receive an email with your results and next steps.</p>",
+            "open_by_default": false
+          }
+        },
+        "question_PE4TRh": {
+          "type": "question",
+          "settings": {
+            "question": "Is my information private?",
+            "answer": "<p>Yes. We protect your data and use it only to verify your insurance coverage. Your privacy matters to us.</p>",
+            "open_by_default": false
+          }
+        },
+        "question_crUkyF": {
+          "type": "question",
+          "settings": {
+            "question": "What if I'm not covered?",
+            "answer": "<p>We'll let you know what your plan includes and help you explore options.</p>",
+            "open_by_default": false
+          }
+        },
+        "question_qHDPpW": {
+          "type": "question",
+          "settings": {
+            "question": "Can I shop before verification?",
+            "answer": "<p>You can browse and buy our products anytime without insurance coverage.</p>",
+            "open_by_default": false
+          }
+        }
+      },
+      "block_order": [
+        "question_MW8mKT",
+        "question_qUm7Yj",
+        "question_PE4TRh",
+        "question_crUkyF",
+        "question_qHDPpW"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "heading": "Questions",
+        "subheading": "Find answers about your coverage and what happens next."
+      }
+    },
+    "cta_strip_NNrEfd": {
+      "type": "cta-strip",
+      "name": "CTA Strip",
+      "settings": {
+        "heading": "<p>Less insurance stress. More baby time.</p>",
+        "description": "<p>Our team simplifies the insurance process, so you know exactly what you're covered for and more.</p>",
+        "primary_cta_text": "Check Coverage",
+        "primary_cta_link": "",
+        "secondary_cta_text": "Shop Products",
+        "secondary_cta_link": ""
+      }
     }
   },
   "order": [
@@ -152,6 +221,8 @@
     "inner_banner_mPincG",
     "step_cards_XPRA7F",
     "insurance_form_qz8iCp",
-    "testimonials_MbTtrM"
+    "testimonials_MbTtrM",
+    "faq_LjwKJq",
+    "cta_strip_NNrEfd"
   ]
 }
