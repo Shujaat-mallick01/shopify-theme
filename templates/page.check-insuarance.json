@@ -96,12 +96,58 @@
         "success_message": "Thanks — we'll be in touch within 24 hours.",
         "footnote": "<p>Your information is secure and used only for insurance verification purposes.</p>"
       }
+    },
+    "testimonials_UXmGpt": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_aRJgbG": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "This pump made going back to work possible.",
+            "author_name": "Sarah Mitchell",
+            "author_role": "Mother of two",
+            "link_text": "Read her story",
+            "link": ""
+          }
+        },
+        "testimonial_9TPqNE": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "",
+            "author_name": "Jessica Chen",
+            "author_role": "New mother",
+            "link_text": "Read her story",
+            "link": ""
+          }
+        },
+        "testimonial_9N6pUh": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "",
+            "author_name": "Maria Rodriguez",
+            "author_role": "Breastfeeding mother",
+            "link_text": "Read her story",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_aRJgbG",
+        "testimonial_9TPqNE",
+        "testimonial_9N6pUh"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "heading": "<p>Trusted by healthcare providers <em>and</em> moms</p>",
+        "subheading": "What they're saying"
+      }
     }
   },
   "order": [
     "main",
     "inner_banner_mPincG",
     "step_cards_XPRA7F",
-    "insurance_form_qz8iCp"
+    "insurance_form_qz8iCp",
+    "testimonials_UXmGpt"
   ]
 }
