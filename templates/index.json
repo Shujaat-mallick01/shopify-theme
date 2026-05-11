@@ -288,7 +288,7 @@
       "type": "cta-strip",
       "settings": {
         "heading": "<p>Less insurance stress. <br/>More baby time.</p>",
-        "description": "<p>Our team simplifies the insurance process, so you know exactly what's covered for real.</p>",
+        "description": "<p>Our team simplifies the insurance process, <br/>so you know exactly what's covered for real.</p>",
         "primary_cta_text": "Check Coverage",
         "primary_cta_link": "",
         "secondary_cta_text": "Shop Products",
