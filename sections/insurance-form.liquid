@@ -1,0 +1,133 @@
+{% comment %}
+  Section: Insurance Form (lead-gen form for coverage verification)
+  File: sections/insurance-form.liquid
+  Figma: "CTA / 58"
+  Uses Shopify's built-in {% form 'contact' %} — submissions go to the store's contact email.
+  Note: Shopify's contact form does not store file uploads; the field is present but the file
+  is not retained. Swap to a custom action (Klaviyo / Formspree / etc.) if uploads matter.
+{% endcomment %}
+
+<section class="ins-form-section">
+  <div class="ins-form-container">
+    <div class="ins-form-column">
+
+      <div class="ins-form-content">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="ins-form-heading" data-reveal>{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+          <div class="ins-form-desc" data-reveal data-reveal-delay="100">{{ section.settings.description }}</div>
+        {%- endif -%}
+      </div>
+
+      {%- form 'contact', class: 'ins-form', enctype: 'multipart/form-data' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="ins-form-success" role="status">
+            {{ section.settings.success_message | default: "Thanks — we'll be in touch within 24 hours." }}
+          </div>
+        {%- elsif form.errors -%}
+          <div class="ins-form-error" role="alert">
+            {{ form.errors | default_errors }}
+          </div>
+        {%- endif -%}
+
+        <input type="hidden" name="contact[Form type]" value="Insurance verification">
+
+        <div class="ins-form-field">
+          <label for="ins-name" class="visually-hidden">Your First and Last Name</label>
+          <input type="text" id="ins-name" name="contact[Name]" placeholder="Your First and Last Name*" required>
+        </div>
+
+        <div class="ins-form-field">
+          <label for="ins-state" class="visually-hidden">State</label>
+          <input type="text" id="ins-state" name="contact[State]" placeholder="State*" required>
+        </div>
+
+        <div class="ins-form-field">
+          <label for="ins-plan" class="visually-hidden">Insurance plan name</label>
+          <input type="text" id="ins-plan" name="contact[Insurance plan name]" placeholder="Insurance plan name*" required>
+        </div>
+
+        <div class="ins-form-field">
+          <label for="ins-member" class="visually-hidden">Insurance member ID</label>
+          <input type="text" id="ins-member" name="contact[Insurance member ID]" placeholder="Insurance member ID*" required>
+        </div>
+
+        <div class="ins-form-field">
+          <label for="ins-phone" class="visually-hidden">Your phone number</label>
+          <input type="tel" id="ins-phone" name="contact[phone]" placeholder="Your Phone Number*" required>
+        </div>
+
+        <div class="ins-form-field">
+          <label for="ins-email" class="visually-hidden">Your email</label>
+          <input type="email" id="ins-email" name="contact[email]" placeholder="Your Email*" required>
+        </div>
+
+        <div class="ins-form-field">
+          <label for="ins-doc-name" class="visually-hidden">Doctor's name</label>
+          <input type="text" id="ins-doc-name" name="contact[Doctor name]" placeholder="Doctor's Name">
+        </div>
+
+        <div class="ins-form-field">
+          <label for="ins-doc-phone" class="visually-hidden">Doctor's phone number</label>
+          <input type="tel" id="ins-doc-phone" name="contact[Doctor phone]" placeholder="Doctor's Phone Number">
+        </div>
+
+        <div class="ins-form-field ins-form-file">
+          <input type="file" id="ins-prescription" name="contact[Prescription]" accept="image/*,.pdf">
+          <label for="ins-prescription" class="ins-form-file-label">
+            <span class="ins-form-file-text">Upload Prescription (Optional)</span>
+            <span class="ins-form-file-btn">Browse</span>
+          </label>
+        </div>
+
+        <button type="submit" class="ins-form-submit">
+          {{ section.settings.button_text | default: 'Verify coverage' }}
+        </button>
+      {%- endform -%}
+
+      {%- if section.settings.footnote != blank -%}
+        <div class="ins-form-footnote" data-reveal data-reveal-delay="300">
+          {{ section.settings.footnote }}
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var fileInput = document.getElementById('ins-prescription');
+    if (!fileInput) return;
+    var label = fileInput.nextElementSibling;
+    if (!label) return;
+    var text = label.querySelector('.ins-form-file-text');
+    fileInput.addEventListener('change', function () {
+      if (fileInput.files && fileInput.files.length) {
+        text.textContent = fileInput.files[0].name;
+        label.classList.add('has-file');
+      } else {
+        text.textContent = 'Upload Prescription (Optional)';
+        label.classList.remove('has-file');
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Insurance Form",
+  "tag": "section",
+  "settings": [
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Less insurance hassle. More baby time.</p>" },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Enter your details and one of our team will check what your plan covers. You'll receive a personalized email within 24 hours detailing <strong>all the products you're covered for</strong>.</p>" },
+    { "type": "text", "id": "button_text", "label": "Submit button text", "default": "Verify coverage" },
+    { "type": "text", "id": "success_message", "label": "Success message", "default": "Thanks — we'll be in touch within 24 hours." },
+    { "type": "richtext", "id": "footnote", "label": "Footnote", "default": "<p>Your information is secure and used only for insurance verification purposes.</p>" }
+  ],
+  "presets": [
+    { "name": "Insurance Form" }
+  ]
+}
+{% endschema %}
