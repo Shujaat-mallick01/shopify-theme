@@ -1761,6 +1761,12 @@ p {
 /* =========================================================
    RESPONSIVE
 ========================================================= */
+@media (min-width: 1441px) {
+    .hero-image {
+        background-size: cover;
+    }
+}
+
 @media (max-width: 1280px) {
     .header-container { gap: 24px; }
     .header-content { gap: 32px; }
