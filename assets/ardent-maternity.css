@@ -14,7 +14,8 @@
     --color-pink: #fce4e6;
     --color-dark: #0e0e0e;
     --color-white: #ffffff;
-    --font: 'Roboto', sans-serif;
+    --font: 'Inter', sans-serif;
+    --font-heading: 'Fraunces', serif;
     --radius: 6px;
     --radius-lg: 12px;
 }
@@ -340,7 +341,7 @@ ul {
 }
 
 h1 {
-    font-family: var(--font);
+    font-family: var(--font-heading);
     font-size: 56px;
     font-weight: 700;
     line-height: 1.08;
@@ -348,7 +349,7 @@ h1 {
 }
 
 h2 {
-    font-family: var(--font);
+    font-family: var(--font-heading);
     font-size: 48px;
     font-weight: 700;
     line-height: 1.1;
@@ -356,7 +357,7 @@ h2 {
 }
 
 h3 {
-    font-family: var(--font);
+    font-family: var(--font-heading);
     font-size: 40px;
     font-weight: 700;
     line-height: 1.15;
@@ -364,7 +365,7 @@ h3 {
 }
 
 h4 {
-    font-family: var(--font);
+    font-family: var(--font-heading);
     font-size: 32px;
     font-weight: 700;
     line-height: 1.2;
@@ -372,7 +373,7 @@ h4 {
 }
 
 h5 {
-    font-family: var(--font);
+    font-family: var(--font-heading);
     font-size: 24px;
     font-weight: 600;
     line-height: 1.25;
@@ -380,7 +381,7 @@ h5 {
 }
 
 h6 {
-    font-family: var(--font);
+    font-family: var(--font-heading);
     font-size: 20px;
     font-weight: 600;
     line-height: 1.3;
@@ -951,7 +952,7 @@ p {
 }
 
 .stats-heading {
-    font-family: var(--font);
+    font-family: var(--font-heading);
     font-size: 48px;
     font-weight: 700;
     line-height: 1.2;
@@ -1081,7 +1082,7 @@ p {
 }
 
 .cta-heading {
-    font-family: var(--font);
+    font-family: var(--font-heading);
     font-size: 48px;
     font-weight: 700;
     line-height: 1.2;
