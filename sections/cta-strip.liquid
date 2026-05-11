@@ -3,7 +3,17 @@
   File: sections/cta-strip.liquid
 {% endcomment %}
 
-<section class="cta-strip">
+<section class="cta-strip" style="
+  --cta-bg: {{ section.settings.background_color | default: '#000000' }};
+  --cta-heading-color: {{ section.settings.heading_color | default: '#ffffff' }};
+  --cta-text-color: {{ section.settings.text_color | default: '#ffffff' }};
+  --cta-primary-bg: {{ section.settings.primary_btn_bg | default: '#e14e6b' }};
+  --cta-primary-text: {{ section.settings.primary_btn_text | default: '#ffffff' }};
+  --cta-primary-border: {{ section.settings.primary_btn_border | default: '#000000' }};
+  --cta-secondary-bg: {{ section.settings.secondary_btn_bg | default: 'transparent' }};
+  --cta-secondary-text: {{ section.settings.secondary_btn_text | default: '#ffffff' }};
+  --cta-secondary-border: {{ section.settings.secondary_btn_border | default: '#ffffff' }};
+">
   <div class="cta-container">
     <div class="cta-content">
 
@@ -41,13 +51,24 @@
     { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Less insurance stress. More baby time.</p>" },
     { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Our team simplifies the insurance process, so you know exactly what you're covered for and more.</p>" },
 
+    { "type": "header", "content": "Section colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#000000" },
+    { "type": "color", "id": "heading_color", "label": "Heading text", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Body text", "default": "#ffffff" },
+
     { "type": "header", "content": "Primary CTA" },
     { "type": "text", "id": "primary_cta_text", "label": "Button text", "default": "Check Coverage" },
     { "type": "url", "id": "primary_cta_link", "label": "Button link" },
+    { "type": "color", "id": "primary_btn_bg", "label": "Background", "default": "#e14e6b" },
+    { "type": "color", "id": "primary_btn_text", "label": "Text", "default": "#ffffff" },
+    { "type": "color", "id": "primary_btn_border", "label": "Border", "default": "#000000" },
 
     { "type": "header", "content": "Secondary CTA" },
     { "type": "text", "id": "secondary_cta_text", "label": "Button text", "default": "Shop Products" },
-    { "type": "url", "id": "secondary_cta_link", "label": "Button link" }
+    { "type": "url", "id": "secondary_cta_link", "label": "Button link" },
+    { "type": "color", "id": "secondary_btn_bg", "label": "Background (leave empty for transparent)" },
+    { "type": "color", "id": "secondary_btn_text", "label": "Text", "default": "#ffffff" },
+    { "type": "color", "id": "secondary_btn_border", "label": "Border", "default": "#ffffff" }
   ],
   "presets": [
     { "name": "CTA Strip" }
