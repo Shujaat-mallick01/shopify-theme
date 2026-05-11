@@ -23,7 +23,7 @@
             {%- if block.settings.image != blank -%}
               {{ block.settings.image | image_url: width: 1200 | image_tag: alt: block.settings.title, loading: 'lazy' }}
             {%- endif -%}
-            <h3>{{ block.settings.title }}</h3>
+            <h3 data-reveal data-reveal-delay="{{ card_delay | plus: 200 }}">{{ block.settings.title }}</h3>
           </a>
         {%- endif -%}
       {%- endfor -%}

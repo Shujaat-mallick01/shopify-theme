@@ -25,15 +25,15 @@
             {%- assign stat_delay = forloop.index0 | times: 100 -%}
             <div class="stat-card u-hover-lift" data-reveal data-reveal-delay="{{ stat_delay }}" {{ block.shopify_attributes }}>
               {%- if block.settings.label != blank -%}
-                <p class="stat-label">{{ block.settings.label }}</p>
+                <p class="stat-label" data-reveal data-reveal-delay="{{ stat_delay | plus: 150 }}">{{ block.settings.label }}</p>
               {%- endif -%}
               <div class="stat-body">
                 {%- if block.settings.value != blank -%}
-                  <p class="stat-value">{{ block.settings.value }}</p>
+                  <p class="stat-value" data-reveal data-reveal-delay="{{ stat_delay | plus: 250 }}">{{ block.settings.value }}</p>
                 {%- endif -%}
                 <hr class="stat-divider" aria-hidden="true">
                 {%- if block.settings.description != blank -%}
-                  <p class="stat-desc">{{ block.settings.description }}</p>
+                  <p class="stat-desc" data-reveal data-reveal-delay="{{ stat_delay | plus: 350 }}">{{ block.settings.description }}</p>
                 {%- endif -%}
               </div>
             </div>

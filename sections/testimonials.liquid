@@ -18,16 +18,16 @@
           {%- assign t_delay = forloop.index0 | times: 120 -%}
           <article class="testimonial u-hover-lift" data-reveal data-reveal-delay="{{ t_delay }}" {{ block.shopify_attributes }}>
             {%- if block.settings.logo != blank -%}
-              <div class="testimonial-logo">
+              <div class="testimonial-logo" data-reveal data-reveal-delay="{{ t_delay | plus: 150 }}">
                 {{ block.settings.logo | image_url: width: 200 | image_tag: alt: '', loading: 'lazy' }}
               </div>
             {%- endif -%}
 
             {%- if block.settings.quote != blank -%}
-              <p>"{{ block.settings.quote }}"</p>
+              <p data-reveal data-reveal-delay="{{ t_delay | plus: 200 }}">"{{ block.settings.quote }}"</p>
             {%- endif -%}
 
-            <div class="testimonial-author">
+            <div class="testimonial-author" data-reveal data-reveal-delay="{{ t_delay | plus: 300 }}">
               <div class="avatar">
                 {%- if block.settings.avatar != blank -%}
                   {{ block.settings.avatar | image_url: width: 80 | image_tag: alt: block.settings.author_name, loading: 'lazy' }}
