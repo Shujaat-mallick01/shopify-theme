@@ -107,6 +107,7 @@
         "p1": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/img-6.jpg",
             "title": "Breast Pumps",
             "link": ""
           }
@@ -114,6 +115,7 @@
         "p2": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/img-7.jpg",
             "title": "Belly Bands",
             "link": ""
           }
@@ -121,6 +123,7 @@
         "p3": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/img-8.jpg",
             "title": "Postpartum Garments",
             "link": ""
           }
@@ -128,6 +131,7 @@
         "p4": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/img-9.jpg",
             "title": "Maternity Bundles",
             "link": ""
           }
