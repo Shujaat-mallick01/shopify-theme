@@ -28,10 +28,68 @@
         "secondary_cta_text": "Shop",
         "secondary_cta_link": "#"
       }
+    },
+    "step_cards_XPRA7F": {
+      "type": "step-cards",
+      "blocks": {
+        "step_FLaKbE": {
+          "type": "step",
+          "settings": {
+            "background_image": "shopify://shop_images/img-2.jpg",
+            "heading": "Submit your insurance information",
+            "description": "Tell us about your plan and coverage details.",
+            "link_text": "Next",
+            "link": ""
+          }
+        },
+        "step_Bg9Xki": {
+          "type": "step",
+          "settings": {
+            "background_image": "shopify://shop_images/img-1.jpg",
+            "heading": "We verify your coverage",
+            "description": "Our team checks what your insurance will cover.",
+            "link_text": "Next",
+            "link": ""
+          }
+        },
+        "step_KxBwfz": {
+          "type": "step",
+          "settings": {
+            "background_image": "shopify://shop_images/img-4.jpg",
+            "heading": "Choose your products",
+            "description": "Browse breast pumps, storage bags, and essentials.",
+            "link_text": "Next",
+            "link": ""
+          }
+        },
+        "step_fpaTmF": {
+          "type": "step",
+          "settings": {
+            "background_image": "shopify://shop_images/original_c530abfc-a507-4c45-8595-528e59ab6eff.jpg",
+            "heading": "We deliver direct to your door",
+            "description": "Your maternity products arrive when you need them.",
+            "link_text": "Done",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "step_FLaKbE",
+        "step_Bg9Xki",
+        "step_KxBwfz",
+        "step_fpaTmF"
+      ],
+      "name": "Step Cards",
+      "settings": {
+        "eyebrow": "Simple",
+        "heading": "Four steps to coverage",
+        "description": "We handle the paperwork so you don't have to."
+      }
     }
   },
   "order": [
     "main",
-    "inner_banner_mPincG"
+    "inner_banner_mPincG",
+    "step_cards_XPRA7F"
   ]
 }
