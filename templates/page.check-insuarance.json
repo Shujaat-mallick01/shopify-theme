@@ -90,7 +90,7 @@
       "type": "insurance-form",
       "name": "Insurance Form",
       "settings": {
-        "heading": "<p>Less insurance hassle. More baby time.</p>",
+        "heading": "<p>Less insurance hassle. <br/>More baby time.</p>",
         "description": "<p>Enter your details and one of our team will check what your plan covers. You'll receive a personalized email within 24 hours detailing <strong>all the products you're covered for</strong>.</p>",
         "button_text": "Verify coverage",
         "success_message": "Thanks — we'll be in touch within 24 hours.",
