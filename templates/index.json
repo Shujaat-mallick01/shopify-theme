@@ -225,9 +225,10 @@
         "f3"
       ],
       "settings": {
+        "image": "shopify://shop_images/img-10.jpg",
         "image_position": "right",
         "eyebrow": "GET HELP FROM REAL MATERNITY EXPERTS",
-        "heading": "<p>Your baby deserves the best. Your insurance should cover it.</p>",
+        "heading": "<h2>Your baby deserves the best. Your insurance <br/>should cover it.</h2>",
         "description": "Not sure what your insurance covers? We'll help you find out and ship the maternity products you need directly to your door.",
         "primary_cta_text": "Check Coverage",
         "primary_cta_link": "",
@@ -286,8 +287,8 @@
     "cta-strip": {
       "type": "cta-strip",
       "settings": {
-        "heading": "<p>Less insurance stress. More baby time.</p>",
-        "description": "<p>Our team simplifies the insurance process, so you know exactly what's covered for real.</p>",
+        "heading": "<p>Less insurance stress. <br/>More baby time.</p>",
+        "description": "<p>Our team simplifies the insurance process, <br/>so you know exactly what's covered for real.</p>",
         "primary_cta_text": "Check Coverage",
         "primary_cta_link": "",
         "secondary_cta_text": "Shop Products",
