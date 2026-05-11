@@ -154,7 +154,7 @@
           "settings": {
             "question": "What does insurance cover?",
             "answer": "<p>Most plans cover breast pumps, storage bags, and postpartum essentials. We verify your specific benefits once you submit your information.</p>",
-            "open_by_default": false
+            "open_by_default": true
           }
         },
         "question_qUm7Yj": {
