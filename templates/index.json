@@ -74,6 +74,7 @@
       "settings": {
         "style": "experts",
         "image_position": "right",
+        "image": "shopify://shop_images/img-4.jpg",
         "eyebrow": "Moms",
         "heading": "<h2>Our Maternity Experts will tell you <em>all</em> the products you're covered for</h2>",
         "description": "We verify your coverage, get your prescription, process your order, and deliver products directly to your door. No waiting. No confusion.",
@@ -89,6 +90,7 @@
       "settings": {
         "style": "providers",
         "image_position": "left",
+        "image": "shopify://shop_images/img-5.jpg",
         "eyebrow": "Providers",
         "heading": "<h2>Less follow-up. Better patient outcomes.</h2>",
         "description": "Submit the prescription once. We handle insurance verification, fulfillment, and delivery so you can focus on what matters — your patients.",
