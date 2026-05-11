@@ -832,6 +832,11 @@ p {
     object-fit: cover;
     position: absolute;
     inset: 0;
+    transition: transform 0.5s ease;
+}
+
+.step-card:hover img {
+    transform: scale(1.06);
 }
 
 .step-card::after {
@@ -992,6 +997,11 @@ p {
     object-fit: cover;
     position: absolute;
     inset: 0;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.06);
 }
 
 .product-card::after {
