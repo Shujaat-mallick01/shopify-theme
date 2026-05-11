@@ -142,7 +142,7 @@
       "name": "Testimonials",
       "settings": {
         "background_color": "#ffffff",
-        "heading": "<p>Trusted by healthcare providers <em>and</em> moms</p>",
+        "heading": "<h2><strong>Trusted by doctors and lactation consultants, and moms </strong></h2>",
         "subheading": "What they're saying"
       }
     }
