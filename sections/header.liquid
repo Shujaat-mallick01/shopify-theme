@@ -97,10 +97,111 @@
         <a href="{{ section.settings.cta_link | default: '#' }}" class="btn-action primary">
           <span>{{ section.settings.cta_text | default: 'Shop Now' }}</span>
         </a>
+
+        <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="MobileNav">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
       </div>
     </div>
   </div>
+
+  {%- comment -%} Mobile drawer {%- endcomment -%}
+  <div class="mobile-nav-backdrop" hidden></div>
+
+  <aside id="MobileNav" class="mobile-nav" aria-hidden="true" aria-label="Mobile menu">
+    <div class="mobile-nav-header">
+      <span class="mobile-nav-title">Menu</span>
+      <button type="button" class="mobile-nav-close" aria-label="Close menu">&times;</button>
+    </div>
+
+    <nav class="mobile-nav-links" aria-label="Mobile">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'nav_link' -%}
+          {%- assign has_mega = false -%}
+          {%- if block.settings.item_1_title != blank or block.settings.item_2_title != blank or block.settings.item_3_title != blank or block.settings.item_4_title != blank -%}
+            {%- assign has_mega = true -%}
+          {%- endif -%}
+
+          {%- if has_mega -%}
+            <details class="mobile-nav-group">
+              <summary class="mobile-nav-link">
+                <span>{{ block.settings.label }}</span>
+                {% render 'icon-chevron-down' %}
+              </summary>
+              <div class="mobile-nav-sub">
+                {%- for i in (1..4) -%}
+                  {%- assign t_key = 'item_' | append: i | append: '_title' -%}
+                  {%- assign l_key = 'item_' | append: i | append: '_link' -%}
+                  {%- assign mega_title = block.settings[t_key] -%}
+                  {%- assign mega_link  = block.settings[l_key] -%}
+                  {%- if mega_title != blank -%}
+                    <a href="{{ mega_link | default: '#' }}">{{ mega_title }}</a>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </details>
+          {%- else -%}
+            <a href="{{ block.settings.link | default: '#' }}" class="mobile-nav-link">{{ block.settings.label }}</a>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+
+    <div class="mobile-nav-footer">
+      {%- if section.settings.show_phone -%}
+        <div class="mobile-nav-phone">
+          <span class="mobile-nav-phone-label">{{ section.settings.phone_label }}</span>
+          <span class="mobile-nav-phone-hours">{{ section.settings.phone_hours }}</span>
+          <a href="tel:{{ section.settings.phone_number | replace: ' ', '' | replace: '-', '' }}" class="mobile-nav-phone-number">{{ section.settings.phone_number }}</a>
+        </div>
+      {%- endif -%}
+      <a href="{{ section.settings.cta_link | default: '#' }}" class="btn btn-primary">
+        {{ section.settings.cta_text | default: 'Shop Now' }}
+      </a>
+    </div>
+  </aside>
 </header>
+
+<script>
+  (function () {
+    var toggle = document.querySelector('.nav-toggle');
+    var nav = document.getElementById('MobileNav');
+    var backdrop = document.querySelector('.mobile-nav-backdrop');
+    var closeBtn = document.querySelector('.mobile-nav-close');
+    if (!toggle || !nav || !backdrop) return;
+
+    function open() {
+      backdrop.hidden = false;
+      requestAnimationFrame(function () {
+        nav.classList.add('is-open');
+        backdrop.classList.add('is-visible');
+      });
+      toggle.setAttribute('aria-expanded', 'true');
+      nav.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      nav.classList.remove('is-open');
+      backdrop.classList.remove('is-visible');
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      setTimeout(function () { backdrop.hidden = true; }, 250);
+    }
+
+    toggle.addEventListener('click', function () {
+      if (nav.classList.contains('is-open')) close(); else open();
+    });
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    backdrop.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('is-open')) close();
+    });
+  })();
+</script>
 
 {% schema %}
 {
