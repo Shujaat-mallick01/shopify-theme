@@ -135,7 +135,7 @@
       ],
       "settings": {
         "eyebrow": "Products",
-        "heading": "Everything you need for pregnancy and beyond",
+        "heading": "Everything you need for <br> pregnancy and beyond",
         "subheading": "From breast pumps to belly bands and postpartum recovery, we carry the maternity essentials your insurance covers.",
         "primary_cta_text": "Check Coverage",
         "primary_cta_link": "",
@@ -183,7 +183,7 @@
         "t3"
       ],
       "settings": {
-        "heading": "<p>Trusted by healthcare providers <em>and</em> moms</p>",
+        "heading": "<h2>Trusted by healthcare <br/>providers <em>and</em> moms</h2>",
         "subheading": "What they're saying"
       }
     },
