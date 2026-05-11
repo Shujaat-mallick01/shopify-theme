@@ -115,7 +115,9 @@
         "testimonial_9TPqNE": {
           "type": "testimonial",
           "settings": {
-            "quote": "",
+            "logo": "shopify://shop_images/Logo_b1f857c9-5ba1-4b9b-ae3f-fc6a3fb877cc.png",
+            "quote": "I was overwhelmed by the insurance process until Ardent stepped in. They handled everything and I got my pump in a week.",
+            "avatar": "shopify://shop_images/img-4.jpg",
             "author_name": "Jessica Chen",
             "author_role": "New mother",
             "link_text": "Read her story",
@@ -125,7 +127,9 @@
         "testimonial_9N6pUh": {
           "type": "testimonial",
           "settings": {
-            "quote": "",
+            "logo": "shopify://shop_images/Logo_b1f857c9-5ba1-4b9b-ae3f-fc6a3fb877cc.png",
+            "quote": "The quality is there and the price is right. No hassle, no confusion, just what I needed when I needed it.",
+            "avatar": "shopify://shop_images/img-7.jpg",
             "author_name": "Maria Rodriguez",
             "author_role": "Breastfeeding mother",
             "link_text": "Read her story",
