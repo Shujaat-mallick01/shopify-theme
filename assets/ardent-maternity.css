@@ -911,8 +911,7 @@ p {
     width: 100%;
     aspect-ratio: 5 / 4;
     object-fit: cover;
-    height: auto;
-    max-height: 640px;
+    height: 640px;
 }
 
 .providers-copy p {
@@ -1094,12 +1093,9 @@ p {
 }
 
 .deserves-image img {
-    width: 100%;
-    max-width: 600px;
+    width: 600px;
+    height: 640px;
     object-fit: cover;
-    height: auto;
-    aspect-ratio: 15 / 16;
-    max-height: 640px;
     object-position: 85%;
 }
 
@@ -1601,6 +1597,15 @@ p {
     .header-actions .btn-action:not(.primary) { display: none; }
 }
 
+@media (max-width: 1200px) {
+    .stats-section { padding: 80px 32px; }
+    .stats-grid { flex-direction: column; align-items: stretch; gap: 48px; }
+    .stats-copy { max-width: none; }
+    .stats-heading { font-size: 40px; }
+    .stat-value { font-size: 64px; }
+    .stat-card { padding: 28px; gap: 36px; }
+}
+
 @media (max-width: 1100px) {
     h1 { font-size: 44px; }
     h2 { font-size: 38px; }
@@ -1637,8 +1642,6 @@ p {
     .mega-panel-inner { grid-template-columns: 1fr 1fr; gap: 24px; padding: 24px; }
     .mega-panel-footer { padding: 16px 24px; }
     .stats-section { padding: 80px 24px; }
-    .stats-grid { flex-direction: column; align-items: stretch; gap: 40px; }
-    .stats-copy { max-width: none; }
     .cta-strip { padding: 80px 24px; }
 
     /* Section padding + heights */
@@ -1651,9 +1654,10 @@ p {
     .step-card { min-height: 520px; }
     .step-content { padding: 28px; }
     .product-card { height: 460px; }
-    .experts-image img,
-    .providers-image img,
-    .deserves-image img { max-height: 520px; }
+    .deserves-image { display: flex; justify-content: center; }
+    .deserves-image img { width: 100%; max-width: 600px; height: 520px; }
+    .providers-image img { height: 520px; }
+    .experts-image img { max-height: 520px; }
     .experts-copy p,
     .providers-copy p { max-width: none; }
 }
@@ -1709,9 +1713,9 @@ p {
     .step-content p { margin-bottom: 18px; }
     .product-card { height: 380px; }
     .product-card h3 { font-size: 24px; left: 20px; bottom: 20px; }
-    .experts-image img,
-    .providers-image img,
-    .deserves-image img { max-height: 460px; }
+    .deserves-image img { height: 440px; }
+    .providers-image img { height: 440px; }
+    .experts-image img { max-height: 440px; }
 
     /* CTA buttons stack inside text blocks */
     .expert-buttons,
@@ -1737,6 +1741,9 @@ p {
     .step-card { min-height: 400px; }
     .product-card { height: 340px; }
     .product-card h3 { font-size: 20px; }
+    .deserves-image img { height: 360px; }
+    .providers-image img { height: 360px; }
+    .experts-image img { max-height: 360px; }
 
     .steps-section,
     .experts-section,
