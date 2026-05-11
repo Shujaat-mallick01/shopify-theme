@@ -1,0 +1,76 @@
+{% comment %}
+  Section: FAQ
+  File: sections/faq.liquid
+  Figma: "FAQ / 4"
+  Uses native <details>/<summary> — no JS needed for the accordion.
+{% endcomment %}
+
+<section class="faq-section">
+  <div class="faq-container">
+
+    <div class="faq-title">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="faq-heading" data-reveal>{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="faq-sub" data-reveal data-reveal-delay="100">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="faq-list">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'question' -%}
+          {%- assign d = forloop.index0 | times: 80 -%}
+          <details class="faq-item" data-reveal data-reveal-delay="{{ d }}" {% if block.settings.open_by_default %}open{% endif %} {{ block.shopify_attributes }}>
+            <summary class="faq-question">
+              <span class="faq-question-text">{{ block.settings.question }}</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="faq-answer">{{ block.settings.answer }}</div>
+          </details>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Questions" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Find answers about your coverage and what happens next." }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Question goes here" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Answer goes here.</p>" },
+        { "type": "checkbox", "id": "open_by_default", "label": "Open by default", "default": false }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "question", "settings": { "question": "What does insurance cover?", "answer": "<p>Most plans cover breast pumps, storage bags, and postpartum essentials. We verify your specific benefits once you submit your information.</p>" } },
+        { "type": "question", "settings": { "question": "How long does verification take?", "answer": "<p>We typically verify coverage within 24 hours. You'll receive an email with your results and next steps.</p>" } },
+        { "type": "question", "settings": { "question": "Is my information private?", "answer": "<p>Yes. We protect your data and use it only to verify your insurance coverage. Your privacy matters to us.</p>" } },
+        { "type": "question", "settings": { "question": "What if I'm not covered?", "answer": "<p>We'll let you know what your plan includes and help you explore options.</p>" } },
+        { "type": "question", "settings": { "question": "Can I shop before verification?", "answer": "<p>You can browse and buy our products anytime without insurance coverage.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
