@@ -85,11 +85,75 @@
         "heading": "Four steps to coverage",
         "description": "We handle the paperwork so you don't have to."
       }
+    },
+    "insurance_form_qz8iCp": {
+      "type": "insurance-form",
+      "name": "Insurance Form",
+      "settings": {
+        "heading": "<p>Less insurance hassle. <br/>More baby time.</p>",
+        "description": "<p>Enter your details and one of our team will check what your plan covers. You'll receive a personalized email within 24 hours detailing <strong>all the products you're covered for</strong>.</p>",
+        "button_text": "Verify coverage",
+        "success_message": "Thanks — we'll be in touch within 24 hours.",
+        "footnote": "<p>Your information is secure and used only for insurance verification purposes.</p>"
+      }
+    },
+    "testimonials_UXmGpt": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_aRJgbG": {
+          "type": "testimonial",
+          "settings": {
+            "logo": "shopify://shop_images/Logo_b1f857c9-5ba1-4b9b-ae3f-fc6a3fb877cc.png",
+            "quote": "This pump made going back to work possible. It's quiet, reliable, and I didn't have to fight with insurance to get it.",
+            "avatar": "shopify://shop_images/original_5ae6179e-7daa-4d34-8054-6acd244fb4e2.jpg",
+            "author_name": "Sarah Mitchell",
+            "author_role": "Mother of two",
+            "link_text": "Read her story",
+            "link": ""
+          }
+        },
+        "testimonial_9TPqNE": {
+          "type": "testimonial",
+          "settings": {
+            "logo": "shopify://shop_images/Logo_b1f857c9-5ba1-4b9b-ae3f-fc6a3fb877cc.png",
+            "quote": "I was overwhelmed by the insurance process until Ardent stepped in. They handled everything and I got my pump in a week.",
+            "avatar": "shopify://shop_images/img-4.jpg",
+            "author_name": "Jessica Chen",
+            "author_role": "New mother",
+            "link_text": "Read her story",
+            "link": ""
+          }
+        },
+        "testimonial_9N6pUh": {
+          "type": "testimonial",
+          "settings": {
+            "logo": "shopify://shop_images/Logo_b1f857c9-5ba1-4b9b-ae3f-fc6a3fb877cc.png",
+            "quote": "The quality is there and the price is right. No hassle, no confusion, just what I needed when I needed it.",
+            "avatar": "shopify://shop_images/img-7.jpg",
+            "author_name": "Maria Rodriguez",
+            "author_role": "Breastfeeding mother",
+            "link_text": "Read her story",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_aRJgbG",
+        "testimonial_9TPqNE",
+        "testimonial_9N6pUh"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "heading": "<h2><strong>Trusted by doctors and<br/>lactation consultants, and <br/>moms</strong></h2>",
+        "subheading": "What they're saying"
+      }
     }
   },
   "order": [
     "main",
     "inner_banner_mPincG",
-    "step_cards_XPRA7F"
+    "step_cards_XPRA7F",
+    "insurance_form_qz8iCp",
+    "testimonials_UXmGpt"
   ]
 }
