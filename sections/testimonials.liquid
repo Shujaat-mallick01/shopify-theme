@@ -3,7 +3,7 @@
   File: sections/testimonials.liquid
 {% endcomment %}
 
-<section class="testimonials-section">
+<section class="testimonials-section" style="--testimonials-bg: {{ section.settings.background_color | default: '#fce4e6' }};">
   <div class="container-sm">
     {%- if section.settings.heading != blank -%}
       <h2 class="section-title" data-reveal>{{ section.settings.heading }}</h2>
@@ -57,6 +57,7 @@
   "name": "Testimonials",
   "tag": "section",
   "settings": [
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#fce4e6" },
     { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Trusted by healthcare providers <em>and</em> moms</p>" },
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "What they're saying" }
   ],

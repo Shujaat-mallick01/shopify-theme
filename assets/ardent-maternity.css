@@ -1033,7 +1033,7 @@ p {
    TESTIMONIALS
 ========================================================= */
 .testimonials-section {
-    background: var(--color-pink);
+    background: var(--testimonials-bg, var(--color-pink));
     padding: 100px 0;
     text-align: left;
 }
