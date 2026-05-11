@@ -49,8 +49,7 @@
         {%- if section.settings.secondary_cta_text != blank -%}
           <a href="{{ section.settings.secondary_cta_link | default: '#' }}" class="link-arrow">
             {{ section.settings.secondary_cta_text }}
-            {% render 'icon-arrow-right', size: 15, height: 16, color: 'current' %}
-            {% render 'icon-arrow-right', color: 'white' %}
+            {% render 'icon-arrow-right', size: 15, height: 16, color: 'black' %}
           </a>
         {%- endif -%}
       </div>
