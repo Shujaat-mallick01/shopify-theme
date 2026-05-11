@@ -1820,7 +1820,7 @@ p {
     .products-section,
     .testimonials-section,
     .deserves-section { padding: 80px 0; }
-    .hero-image { min-height: 520px; padding: 80px 0; }
+    .hero-image { min-height: 520px; padding: 80px 0; background-size: cover; }
     .step-card { min-height: 520px; }
     .step-content { padding: 28px; }
     .product-card { height: 460px; }
