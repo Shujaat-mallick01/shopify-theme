@@ -6,7 +6,7 @@
 <section class="deserves-section">
   <div class="container deserves-grid">
     {%- if section.settings.image_position == 'left' -%}
-      <div class="deserves-image">
+      <div class="deserves-image" data-reveal>
         {%- if section.settings.image != blank -%}
           {{ section.settings.image | image_url: width: 1200 | image_tag: alt: section.settings.heading, loading: 'lazy' }}
         {%- endif -%}
@@ -15,19 +15,20 @@
 
     <div class="deserves-copy">
       {%- if section.settings.eyebrow != blank -%}
-        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        <p class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
       {%- endif -%}
       {%- if section.settings.heading != blank -%}
-        <h2>{{ section.settings.heading }}</h2>
+        <h2 data-reveal data-reveal-delay="80">{{ section.settings.heading }}</h2>
       {%- endif -%}
       {%- if section.settings.description != blank -%}
-        <p>{{ section.settings.description }}</p>
+        <p data-reveal data-reveal-delay="160">{{ section.settings.description }}</p>
       {%- endif -%}
 
       <ul class="check-list">
         {%- for block in section.blocks -%}
           {%- if block.type == 'feature' -%}
-            <li {{ block.shopify_attributes }}>
+            {%- assign li_delay = forloop.index0 | times: 80 | plus: 200 -%}
+            <li data-reveal data-reveal-delay="{{ li_delay }}" {{ block.shopify_attributes }}>
               {%- if block.settings.icon != blank -%}
                 {{ block.settings.icon | image_url: width: 30 | image_tag: alt: '', loading: 'lazy' }}
               {%- else -%}
@@ -58,7 +59,7 @@
     </div>
 
     {%- if section.settings.image_position != 'left' -%}
-      <div class="deserves-image">
+      <div class="deserves-image" data-reveal>
         {%- if section.settings.image != blank -%}
           {{ section.settings.image | image_url: width: 1200 | image_tag: alt: section.settings.heading, loading: 'lazy' }}
         {%- endif -%}

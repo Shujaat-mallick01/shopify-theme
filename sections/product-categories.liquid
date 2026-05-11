@@ -6,19 +6,20 @@
 <section class="products-section">
   <div class="container-sm">
     {%- if section.settings.eyebrow != blank -%}
-      <p class="eyebrow center">{{ section.settings.eyebrow }}</p>
+      <p class="eyebrow center" data-reveal>{{ section.settings.eyebrow }}</p>
     {%- endif -%}
     {%- if section.settings.heading != blank -%}
-      <h2 class="section-title center">{{ section.settings.heading }}</h2>
+      <h2 class="section-title center" data-reveal data-reveal-delay="80">{{ section.settings.heading }}</h2>
     {%- endif -%}
     {%- if section.settings.subheading != blank -%}
-      <p class="section-sub center">{{ section.settings.subheading }}</p>
+      <p class="section-sub center" data-reveal data-reveal-delay="160">{{ section.settings.subheading }}</p>
     {%- endif -%}
 
     <div class="products-grid">
       {%- for block in section.blocks -%}
         {%- if block.type == 'category' -%}
-          <a href="{{ block.settings.link | default: '#' }}" class="product-card" {{ block.shopify_attributes }}>
+          {%- assign card_delay = forloop.index0 | times: 100 -%}
+          <a href="{{ block.settings.link | default: '#' }}" class="product-card" data-reveal data-reveal-delay="{{ card_delay }}" {{ block.shopify_attributes }}>
             {%- if block.settings.image != blank -%}
               {{ block.settings.image | image_url: width: 1200 | image_tag: alt: block.settings.title, loading: 'lazy' }}
             {%- endif -%}

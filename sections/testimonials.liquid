@@ -6,16 +6,17 @@
 <section class="testimonials-section">
   <div class="container-sm">
     {%- if section.settings.heading != blank -%}
-      <h2 class="section-title">{{ section.settings.heading }}</h2>
+      <h2 class="section-title" data-reveal>{{ section.settings.heading }}</h2>
     {%- endif -%}
     {%- if section.settings.subheading != blank -%}
-      <p class="section-sub">{{ section.settings.subheading }}</p>
+      <p class="section-sub" data-reveal data-reveal-delay="80">{{ section.settings.subheading }}</p>
     {%- endif -%}
 
     <div class="testimonials-grid">
       {%- for block in section.blocks -%}
         {%- if block.type == 'testimonial' -%}
-          <article class="testimonial" {{ block.shopify_attributes }}>
+          {%- assign t_delay = forloop.index0 | times: 120 -%}
+          <article class="testimonial u-hover-lift" data-reveal data-reveal-delay="{{ t_delay }}" {{ block.shopify_attributes }}>
             {%- if block.settings.logo != blank -%}
               <div class="testimonial-logo">
                 {{ block.settings.logo | image_url: width: 200 | image_tag: alt: '', loading: 'lazy' }}

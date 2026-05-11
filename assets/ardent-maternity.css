@@ -698,6 +698,45 @@ p {
 }
 
 /* =========================================================
+   ANIMATIONS / UTILITIES  (reusable)
+   - data-reveal[, data-reveal-delay] → fade-up on scroll
+   - .u-hover-lift                    → soft lift + shadow on hover
+========================================================= */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: opacity, transform;
+}
+
+[data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-reveal="fade"] { transform: none; }
+
+.u-hover-lift {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    will-change: transform;
+}
+
+.u-hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    .u-hover-lift { transition: none; }
+    .u-hover-lift:hover { transform: none; box-shadow: none; }
+}
+
+/* =========================================================
    HERO
 ========================================================= */
 .hero-image {

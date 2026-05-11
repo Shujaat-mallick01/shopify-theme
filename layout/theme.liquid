@@ -29,6 +29,9 @@
   {%- comment -%} Main stylesheet from assets folder {%- endcomment -%}
   {{ 'ardent-maternity.css' | asset_url | stylesheet_tag }}
 
+  {%- comment -%} Reveal-on-scroll observer (uses [data-reveal]) {%- endcomment -%}
+  <script src="{{ 'animations.js' | asset_url }}" defer></script>
+
   {{ content_for_header }}
 </head>
 

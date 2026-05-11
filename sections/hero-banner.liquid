@@ -15,14 +15,14 @@
     <div class="hero-overlay"></div>
     <div class="container hero-content">
       {%- if section.settings.heading != blank -%}
-        <h1>{{ section.settings.heading }}</h1>
+        <h1 data-reveal data-reveal-delay="100">{{ section.settings.heading }}</h1>
       {%- endif -%}
 
       {%- if section.settings.subheading != blank -%}
-        <p class="hero-sub">{{ section.settings.subheading }}</p>
+        <p class="hero-sub" data-reveal data-reveal-delay="200">{{ section.settings.subheading }}</p>
       {%- endif -%}
 
-      <div class="hero-buttons">
+      <div class="hero-buttons" data-reveal data-reveal-delay="300">
         {%- if section.settings.primary_cta_text != blank -%}
           <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="btn btn-primary">
             {{ section.settings.primary_cta_text }}

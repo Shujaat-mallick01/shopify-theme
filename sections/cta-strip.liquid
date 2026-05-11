@@ -9,14 +9,14 @@
 
       <div class="cta-text">
         {%- if section.settings.heading != blank -%}
-          <h2 class="cta-heading">{{ section.settings.heading }}</h2>
+          <h2 class="cta-heading" data-reveal>{{ section.settings.heading }}</h2>
         {%- endif -%}
         {%- if section.settings.description != blank -%}
-          <div class="cta-description">{{ section.settings.description }}</div>
+          <div class="cta-description" data-reveal data-reveal-delay="100">{{ section.settings.description }}</div>
         {%- endif -%}
       </div>
 
-      <div class="cta-actions">
+      <div class="cta-actions" data-reveal data-reveal-delay="200">
         {%- if section.settings.primary_cta_text != blank -%}
           <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="cta-btn cta-btn-primary">
             {{ section.settings.primary_cta_text }}

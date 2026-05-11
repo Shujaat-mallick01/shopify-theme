@@ -21,7 +21,7 @@
 <section class="{{ section_class }}">
   <div class="container {{ grid_class }}">
     {%- if section.settings.image_position == 'left' -%}
-      <div class="{{ image_class }}">
+      <div class="{{ image_class }}" data-reveal>
         {%- if section.settings.image != blank -%}
           {{ section.settings.image | image_url: width: 1200 | image_tag: alt: section.settings.heading, loading: 'lazy' }}
         {%- endif -%}
@@ -30,16 +30,16 @@
 
     <div class="{{ copy_class }}">
       {%- if section.settings.eyebrow != blank -%}
-        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        <p class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
       {%- endif -%}
       {%- if section.settings.heading != blank -%}
-        <h2>{{ section.settings.heading }}</h2>
+        <h2 data-reveal data-reveal-delay="80">{{ section.settings.heading }}</h2>
       {%- endif -%}
       {%- if section.settings.description != blank -%}
-        <p>{{ section.settings.description }}</p>
+        <p data-reveal data-reveal-delay="160">{{ section.settings.description }}</p>
       {%- endif -%}
 
-      <div class="expert-buttons">
+      <div class="expert-buttons" data-reveal data-reveal-delay="220">
         {%- if section.settings.primary_cta_text != blank -%}
           <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="btn {{ section.settings.primary_cta_style | default: 'btn-primary' }}">
             {{ section.settings.primary_cta_text }}
@@ -56,7 +56,7 @@
     </div>
 
     {%- if section.settings.image_position != 'left' -%}
-      <div class="{{ image_class }}">
+      <div class="{{ image_class }}" data-reveal>
         {%- if section.settings.image != blank -%}
           {{ section.settings.image | image_url: width: 1200 | image_tag: alt: section.settings.heading, loading: 'lazy' }}
         {%- endif -%}
