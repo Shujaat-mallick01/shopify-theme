@@ -42,7 +42,7 @@
             {%- if block.settings.link_text != blank -%}
               <a href="{{ block.settings.link | default: '#' }}" class="link-arrow small">
                 {{ block.settings.link_text }}
-                {% render 'icon-arrow-right', size: 15, height: 16, color: 'current' %}
+                {% render 'icon-arrow-right', size: 15, height: 16, color: 'back' %}
               </a>
             {%- endif -%}
           </article>
