@@ -1,5 +1,187 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-  "current": {},
+  "current": {
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "header-0": {
+            "type": "nav_link",
+            "settings": {
+              "label": "For Moms",
+              "link": "",
+              "show_chevron": true,
+              "item_1_title": "Check Insurance Coverage",
+              "item_1_desc": "See if you qualify for free maternity products",
+              "item_1_link": "",
+              "item_2_title": "Shop Maternity Products",
+              "item_2_desc": "Browse our full range of insurance-covered essentials",
+              "item_2_link": "",
+              "item_3_title": "How It Works",
+              "item_3_desc": "Learn the simple 3-step process",
+              "item_3_link": "",
+              "item_4_title": "Success Stories",
+              "item_4_desc": "Read how we've helped thousands of moms",
+              "item_4_link": ""
+            }
+          },
+          "header-1": {
+            "type": "nav_link",
+            "settings": {
+              "label": "For Providers",
+              "link": "",
+              "show_chevron": true,
+              "item_1_title": "Submit Prescriptions",
+              "item_1_desc": "Send prescriptions for your patients",
+              "item_1_link": "",
+              "item_2_title": "Provider Portal",
+              "item_2_desc": "Manage your patient orders",
+              "item_2_link": "",
+              "item_3_title": "Resources & Education",
+              "item_3_desc": "Materials for your patient consultations",
+              "item_3_link": "",
+              "item_4_title": "Become a Partner",
+              "item_4_desc": "Join our network of healthcare providers",
+              "item_4_link": ""
+            }
+          },
+          "header-2": {
+            "type": "nav_link",
+            "settings": {
+              "label": "Become A Partner",
+              "link": "",
+              "show_chevron": true,
+              "item_1_title": "Healthcare Provider",
+              "item_1_desc": "Partner with us as a doctor or clinic",
+              "item_1_link": "",
+              "item_2_title": "Insurance Network",
+              "item_2_desc": "Join our insurance partnership program",
+              "item_2_link": "",
+              "item_3_title": "Distributor Program",
+              "item_3_desc": "Distribute Ardent products",
+              "item_3_link": "",
+              "item_4_title": "Affiliate Program",
+              "item_4_desc": "Earn commissions promoting Ardent",
+              "item_4_link": ""
+            }
+          },
+          "header-3": {
+            "type": "nav_link",
+            "settings": {
+              "label": "Resources",
+              "link": "",
+              "show_chevron": true,
+              "item_1_title": "Maternity Guide",
+              "item_1_desc": "Comprehensive pregnancy & postpartum tips",
+              "item_1_link": "",
+              "item_2_title": "Insurance Helper",
+              "item_2_desc": "Understand your coverage benefits",
+              "item_2_link": "",
+              "item_3_title": "Blog & News",
+              "item_3_desc": "Latest updates and parenting advice",
+              "item_3_link": "",
+              "item_4_title": "FAQs",
+              "item_4_desc": "Find answers to common questions",
+              "item_4_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "header-0",
+          "header-1",
+          "header-2",
+          "header-3"
+        ],
+        "settings": {
+          "logo": "shopify://shop_images/web-logo.webp",
+          "logo_text": "Logo",
+          "show_phone": true,
+          "phone_label": "Talk To Our Team",
+          "phone_hours": "9:30-5:30",
+          "phone_number": "xxx-xxx-xxxx",
+          "cta_text": "Shop Now",
+          "cta_link": "",
+          "mega_footer_text": "Questions about your coverage?",
+          "mega_footer_link_text": "Contact our team",
+          "mega_footer_link": ""
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "link_column",
+            "settings": {
+              "heading": "Check Insurance",
+              "heading_link": "",
+              "link_1_label": "Shop Products",
+              "link_1_url": "",
+              "link_2_label": "Healthcare Providers",
+              "link_2_url": "",
+              "link_3_label": "About us",
+              "link_3_url": "",
+              "link_4_label": "How it works",
+              "link_4_url": "",
+              "link_5_label": "",
+              "link_5_url": "",
+              "link_6_label": "",
+              "link_6_url": ""
+            }
+          },
+          "footer-1": {
+            "type": "link_column",
+            "settings": {
+              "heading": "Breast pumps",
+              "heading_link": "",
+              "link_1_label": "Milk storage",
+              "link_1_url": "",
+              "link_2_label": "Maternity supports",
+              "link_2_url": "",
+              "link_3_label": "Postpartum essentials",
+              "link_3_url": "",
+              "link_4_label": "",
+              "link_4_url": "",
+              "link_5_label": "",
+              "link_5_url": "",
+              "link_6_label": "",
+              "link_6_url": ""
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "footer-1"
+        ],
+        "settings": {
+          "logo_text": "Logo",
+          "address": "<p><strong>Brooklyn</strong><br>Ardent Maternity, Brooklyn, New York</p>",
+          "phone": "1-844-923-7356",
+          "email": "hello@ardentmaternity.com",
+          "facebook": "",
+          "instagram": "",
+          "twitter": "",
+          "linkedin": "",
+          "youtube": "",
+          "copyright": "© 2025 Ardent Maternity. All rights reserved.",
+          "legal_1_label": "Terms of Service",
+          "legal_1_link": "",
+          "legal_2_label": "Privacy Policy",
+          "legal_2_link": "",
+          "legal_3_label": "Cookies Settings",
+          "legal_3_link": ""
+        }
+      }
+    },
+    "content_for_index": []
+  },
   "presets": {
     "Default": {}
   }
