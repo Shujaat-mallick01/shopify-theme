@@ -96,12 +96,62 @@
         "success_message": "Thanks — we'll be in touch within 24 hours.",
         "footnote": "<p>Your information is secure and used only for insurance verification purposes.</p>"
       }
+    },
+    "testimonials_MbTtrM": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_8yUm3b": {
+          "type": "testimonial",
+          "settings": {
+            "logo": "shopify://shop_images/Logo_b1f857c9-5ba1-4b9b-ae3f-fc6a3fb877cc.png",
+            "quote": "This pump made going back to work possible. It's quiet, reliable, and I didn't have to fight with insurance to get it.",
+            "author_name": "Sarah Mitchell",
+            "author_role": "Mother of two",
+            "link_text": "Read her story",
+            "link": ""
+          }
+        },
+        "testimonial_CWjeJY": {
+          "type": "testimonial",
+          "settings": {
+            "logo": "shopify://shop_images/Logo_b1f857c9-5ba1-4b9b-ae3f-fc6a3fb877cc.png",
+            "quote": "I was overwhelmed by the insurance process until Ardent stepped in. They handled everything and I got my pump in a week.",
+            "author_name": "Jessica Chen",
+            "author_role": "New mother",
+            "link_text": "Read her story",
+            "link": ""
+          }
+        },
+        "testimonial_fdeNyN": {
+          "type": "testimonial",
+          "settings": {
+            "logo": "shopify://shop_images/Logo_b1f857c9-5ba1-4b9b-ae3f-fc6a3fb877cc.png",
+            "quote": "The quality is there and the price is right. No hassle, no confusion, just what I needed when I needed it.",
+            "author_name": "Maria Rodriguez",
+            "author_role": "Breastfeeding mother",
+            "link_text": "Read her story",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_8yUm3b",
+        "testimonial_CWjeJY",
+        "testimonial_fdeNyN"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "background_color": "#ffffff",
+        "heading": "<p>Trusted by healthcare providers <em>and</em> moms</p>",
+        "subheading": "What they're saying"
+      }
     }
   },
   "order": [
     "main",
     "inner_banner_mPincG",
     "step_cards_XPRA7F",
-    "insurance_form_qz8iCp"
+    "insurance_form_qz8iCp",
+    "testimonials_MbTtrM"
   ]
 }
