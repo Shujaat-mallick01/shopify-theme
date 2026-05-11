@@ -1622,7 +1622,6 @@ p {
         max-width: 560px;
         margin-inline: auto;
     }
-    .experts-grid,
     .providers-grid,
     .deserves-grid {
         grid-template-columns: 1fr;
@@ -1630,7 +1629,6 @@ p {
     }
     .providers-grid .providers-image { order: 2; }
     .testimonials-grid { grid-template-columns: 1fr; }
-    .products-grid { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; }
     .site-footer { padding: 60px 24px; }
     .footer-content { flex-direction: column; gap: 48px; }
     .footer-links { max-width: none; }
@@ -1655,7 +1653,6 @@ p {
     .deserves-image img { width: 100%; max-width: 600px; height: 520px; }
     .providers-image img { height: 520px; }
     .experts-image img { max-height: 520px; }
-    .experts-copy p,
     .providers-copy p { max-width: none; }
 
     /* Header → hamburger */
@@ -1713,13 +1710,10 @@ p {
     .providers-image img { height: 440px; }
     .experts-image img { max-height: 440px; }
 
-    /* CTA buttons stack inside text blocks */
-    .expert-buttons,
-    .products-cta,
-    .deserves-copy .products-cta { gap: 12px; width: 100%; }
-    .expert-buttons .btn,
-    .products-cta .btn,
-    .deserves-copy .btn { width: 100%; justify-content: center; }
+    /* Experts + products go single column at mobile */
+    .experts-grid { grid-template-columns: 1fr; gap: 32px; }
+    .products-grid { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; }
+    .experts-copy p { max-width: none; }
 }
 
 @media (max-width: 480px) {
@@ -1754,6 +1748,14 @@ p {
     .testimonial { padding: 20px; }
     .site-footer { padding: 40px 16px; }
     .mobile-nav { width: 100vw; }
+
+    /* Section CTAs full-width on small phones */
+    .expert-buttons,
+    .products-cta,
+    .deserves-copy .products-cta { gap: 12px; width: 100%; }
+    .expert-buttons .btn,
+    .products-cta .btn,
+    .deserves-copy .btn { width: 100%; justify-content: center; }
 }
 
 /* =========================================================
