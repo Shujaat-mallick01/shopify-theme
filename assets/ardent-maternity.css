@@ -1622,12 +1622,6 @@ p {
         max-width: 560px;
         margin-inline: auto;
     }
-    .providers-grid,
-    .deserves-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    .providers-grid .providers-image { order: 2; }
     .testimonials-grid { grid-template-columns: 1fr; }
     .site-footer { padding: 60px 24px; }
     .footer-content { flex-direction: column; gap: 48px; }
@@ -1649,11 +1643,9 @@ p {
     .step-card { min-height: 520px; }
     .step-content { padding: 28px; }
     .product-card { height: 460px; }
-    .deserves-image { display: flex; justify-content: center; }
     .deserves-image img { width: 100%; max-width: 600px; height: 520px; }
     .providers-image img { height: 520px; }
     .experts-image img { max-height: 520px; }
-    .providers-copy p { max-width: none; }
 
     /* Header → hamburger */
     .nav-column { display: none; }
@@ -1675,8 +1667,6 @@ p {
     .stats-description { font-size: 16px; }
     .cta-heading { font-size: 32px; }
     .cta-description { font-size: 16px; }
-    .cta-actions { flex-direction: column; align-items: stretch; width: 100%; }
-    .cta-btn { width: 100%; }
     .testimonial p { font-size: 17px; }
     .testimonial { padding: 24px; }
     .testimonial-logo { margin-bottom: 24px; }
@@ -1687,8 +1677,6 @@ p {
     .footer-links { flex-direction: column; gap: 0; }
     .footer-credits-row { flex-direction: column; align-items: flex-start; gap: 16px; }
     .footer-legal { justify-content: flex-start; }
-    .hero-buttons { flex-direction: column; align-items: stretch; width: 100%; }
-    .hero-buttons .btn { width: 100%; }
     .steps-section,
     .experts-section,
     .products-section,
@@ -1710,10 +1698,15 @@ p {
     .providers-image img { height: 440px; }
     .experts-image img { max-height: 440px; }
 
-    /* Experts + products go single column at mobile */
-    .experts-grid { grid-template-columns: 1fr; gap: 32px; }
+    /* Experts / providers / deserves / products go single column at mobile */
+    .experts-grid,
+    .providers-grid,
+    .deserves-grid { grid-template-columns: 1fr; gap: 32px; }
+    .providers-grid .providers-image { order: 2; }
     .products-grid { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; }
-    .experts-copy p { max-width: none; }
+    .experts-copy p,
+    .providers-copy p { max-width: none; }
+    .deserves-image { display: flex; justify-content: center; }
 }
 
 @media (max-width: 480px) {
@@ -1749,13 +1742,17 @@ p {
     .site-footer { padding: 40px 16px; }
     .mobile-nav { width: 100vw; }
 
-    /* Section CTAs full-width on small phones */
+    /* All section CTAs full-width on small phones */
     .expert-buttons,
     .products-cta,
     .deserves-copy .products-cta { gap: 12px; width: 100%; }
     .expert-buttons .btn,
     .products-cta .btn,
     .deserves-copy .btn { width: 100%; justify-content: center; }
+    .hero-buttons { flex-direction: column; align-items: stretch; width: 100%; }
+    .hero-buttons .btn { width: 100%; }
+    .cta-actions { flex-direction: column; align-items: stretch; width: 100%; }
+    .cta-btn { width: 100%; }
 }
 
 /* =========================================================
