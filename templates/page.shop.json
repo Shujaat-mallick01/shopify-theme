@@ -85,11 +85,58 @@
         "heading": "Maternity Products You Need, Covered by Insurance, Delivered to Your Door",
         "description": "Select from four categories of maternity essentials."
       }
+    },
+    "testimonials_RxtaAg": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_G8jEAj": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "This pump made going back to work possible.",
+            "author_name": "Sarah Mitchell",
+            "author_role": "Mother of two",
+            "link_text": "Read her story",
+            "link": ""
+          }
+        },
+        "testimonial_jKCdp9": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "",
+            "author_name": "Jessica Chen",
+            "author_role": "New mother",
+            "link_text": "Read her story",
+            "link": ""
+          }
+        },
+        "testimonial_6Hk9bC": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "",
+            "author_name": "Maria Rodriguez",
+            "author_role": "Breastfeeding mother",
+            "link_text": "Read her story",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_G8jEAj",
+        "testimonial_jKCdp9",
+        "testimonial_6Hk9bC"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "background_color": "#ffffff",
+        "heading": "<p>Trusted by healthcare providers <em>and</em> moms</p>",
+        "subheading": "What they're saying"
+      }
     }
   },
   "order": [
     "main",
     "inner_banner_eD8PH4",
-    "step_cards_VtK43K"
+    "step_cards_VtK43K",
+    "testimonials_RxtaAg"
   ]
 }
