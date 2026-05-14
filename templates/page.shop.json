@@ -128,7 +128,7 @@
       "name": "Testimonials",
       "settings": {
         "background_color": "#ffffff",
-        "heading": "<p>Trusted by healthcare providers <em>and</em> moms</p>",
+        "heading": "<p>Trusted by doctors and <br/>doulas, moms <br/>and midwives</p>",
         "subheading": "What they're saying"
       }
     }
