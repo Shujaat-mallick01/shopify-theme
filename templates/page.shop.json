@@ -35,8 +35,8 @@
         "step_mXHQnL": {
           "type": "step",
           "settings": {
-            "heading": "Submit your insurance information",
-            "description": "Tell us about your plan and coverage details.",
+            "heading": "Breast pumps",
+            "description": "Electric and manual options for every mother.",
             "link_text": "Next",
             "link": ""
           }
@@ -44,8 +44,8 @@
         "step_Bfj4mF": {
           "type": "step",
           "settings": {
-            "heading": "We verify your coverage",
-            "description": "Our team checks what your insurance will cover.",
+            "heading": "Milk storage bags",
+            "description": "Safe, sterile bags for storing and freezing milk.",
             "link_text": "Next",
             "link": ""
           }
@@ -53,7 +53,7 @@
         "step_PQ33Wc": {
           "type": "step",
           "settings": {
-            "heading": "Choose your products",
+            "heading": "Belly Bands & Compression Socks",
             "description": "Browse breast pumps, storage bags, and essentials.",
             "link_text": "Next",
             "link": ""
@@ -62,7 +62,7 @@
         "step_ja83em": {
           "type": "step",
           "settings": {
-            "heading": "We deliver direct to your door",
+            "heading": "Postpartum Recovery Garments",
             "description": "Your maternity products arrive when you need them.",
             "link_text": "Done",
             "link": ""
