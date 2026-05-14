@@ -28,10 +28,64 @@
         "secondary_cta_text": "Shop",
         "secondary_cta_link": ""
       }
+    },
+    "step_cards_VtK43K": {
+      "type": "step-cards",
+      "blocks": {
+        "step_mXHQnL": {
+          "type": "step",
+          "settings": {
+            "heading": "Submit your insurance information",
+            "description": "Tell us about your plan and coverage details.",
+            "link_text": "Next",
+            "link": ""
+          }
+        },
+        "step_Bfj4mF": {
+          "type": "step",
+          "settings": {
+            "heading": "We verify your coverage",
+            "description": "Our team checks what your insurance will cover.",
+            "link_text": "Next",
+            "link": ""
+          }
+        },
+        "step_PQ33Wc": {
+          "type": "step",
+          "settings": {
+            "heading": "Choose your products",
+            "description": "Browse breast pumps, storage bags, and essentials.",
+            "link_text": "Next",
+            "link": ""
+          }
+        },
+        "step_ja83em": {
+          "type": "step",
+          "settings": {
+            "heading": "We deliver direct to your door",
+            "description": "Your maternity products arrive when you need them.",
+            "link_text": "Done",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "step_mXHQnL",
+        "step_Bfj4mF",
+        "step_PQ33Wc",
+        "step_ja83em"
+      ],
+      "name": "Step Cards",
+      "settings": {
+        "eyebrow": "Browse",
+        "heading": "Four steps to coverage",
+        "description": "We handle the paperwork so you don't have to."
+      }
     }
   },
   "order": [
     "main",
-    "inner_banner_eD8PH4"
+    "inner_banner_eD8PH4",
+    "step_cards_VtK43K"
   ]
 }
