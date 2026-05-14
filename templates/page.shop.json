@@ -37,7 +37,7 @@
           "settings": {
             "heading": "Breast pumps",
             "description": "Electric and manual options for every mother.",
-            "link_text": "Next",
+            "link_text": "Shop",
             "link": ""
           }
         },
@@ -46,7 +46,7 @@
           "settings": {
             "heading": "Milk storage bags",
             "description": "Safe, sterile bags for storing and freezing milk.",
-            "link_text": "Next",
+            "link_text": "Shop",
             "link": ""
           }
         },
@@ -55,7 +55,7 @@
           "settings": {
             "heading": "Belly Bands & Compression Socks",
             "description": "Comfort and stability during pregnancy and recovery.",
-            "link_text": "Next",
+            "link_text": "Shop",
             "link": ""
           }
         },
@@ -64,7 +64,7 @@
           "settings": {
             "heading": "Postpartum Recovery Garments",
             "description": "Everything else you need for nine months and beyond.",
-            "link_text": "Done",
+            "link_text": "Shop",
             "link": ""
           }
         }
