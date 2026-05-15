@@ -86,6 +86,119 @@
         "description": "Select from four categories of maternity essentials."
       }
     },
+    "products_list_yabe9L": {
+      "type": "products-list",
+      "blocks": {
+        "product_t4FKm3": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/img-10.jpg",
+            "name": "Spectra S1",
+            "variant": "Electric",
+            "status_label": "Covered",
+            "link": ""
+          }
+        },
+        "product_KNWH8U": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/img-6.jpg",
+            "name": "Medela Pump",
+            "variant": "Electric",
+            "status_label": "Covered",
+            "link": ""
+          }
+        },
+        "product_FerpFx": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/img-7.jpg",
+            "name": "Lansinoh Manual",
+            "variant": "Manual",
+            "status_label": "Covered",
+            "link": ""
+          }
+        },
+        "product_3gbjN4": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/img-8.jpg",
+            "name": "Philips Avent",
+            "variant": "Electric",
+            "status_label": "Covered",
+            "link": ""
+          }
+        },
+        "product_8WTfHM": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/img-9.jpg",
+            "name": "Storage bags",
+            "variant": "Pack of 50",
+            "status_label": "Covered",
+            "link": ""
+          }
+        },
+        "product_ABg3wK": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/img-5.jpg",
+            "name": "Belly band",
+            "variant": "One size",
+            "status_label": "Covered",
+            "link": ""
+          }
+        },
+        "product_bFYTT3": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/img-10.jpg",
+            "name": "Nursing pads",
+            "variant": "Reusable",
+            "status_label": "Covered",
+            "link": ""
+          }
+        },
+        "product_wkdUeC": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/img-6.jpg",
+            "name": "Maternity pillow",
+            "variant": "Full body",
+            "status_label": "Covered",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_t4FKm3",
+        "product_KNWH8U",
+        "product_FerpFx",
+        "product_3gbjN4",
+        "product_8WTfHM",
+        "product_ABg3wK",
+        "product_bFYTT3",
+        "product_wkdUeC"
+      ],
+      "name": "Shop Products",
+      "settings": {
+        "eyebrow": "Shop",
+        "heading": "<p>From breast pumps, to milk bags and belly bands, we've got you covered.</p>",
+        "description": "<p>Shop now, or check your insurance coverage.</p><p>Our Maternity Experts simplify the whole process for you.</p>",
+        "button_text": "View all",
+        "button_link": "",
+        "background_color": "#ffffff",
+        "eyebrow_color": "#000000",
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "product_name_color": "#000000",
+        "product_variant_color": "#000000",
+        "status_label_color": "#000000",
+        "btn_bg": "#ffffff",
+        "btn_text": "#000000",
+        "btn_border": "#000000"
+      }
+    },
     "coverage_card_xwjN9m": {
       "type": "coverage-card",
       "name": "Coverage Card",
@@ -194,6 +307,7 @@
     "main",
     "inner_banner_eD8PH4",
     "step_cards_VtK43K",
+    "products_list_yabe9L",
     "coverage_card_xwjN9m",
     "testimonials_RxtaAg",
     "cta_strip_Jmqaj6"
