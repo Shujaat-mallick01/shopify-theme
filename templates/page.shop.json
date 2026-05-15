@@ -154,8 +154,8 @@
         "secondary_cta_text": "Shop",
         "secondary_cta_link": "",
         "secondary_btn_bg": "",
-        "secondary_btn_text": "#ffffff",
-        "secondary_btn_border": "#ffffff"
+        "secondary_btn_text": "#000000",
+        "secondary_btn_border": "#000000"
       }
     }
   },
