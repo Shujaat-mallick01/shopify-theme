@@ -103,7 +103,9 @@
         "testimonial_jKCdp9": {
           "type": "testimonial",
           "settings": {
-            "quote": "",
+            "logo": "shopify://shop_images/Placeholder_Logo.png",
+            "quote": "I was overwhelmed by the insurance process until Ardent stepped in. They handled everything and I got my pump in a week.",
+            "avatar": "shopify://shop_images/img-7.jpg",
             "author_name": "Jessica Chen",
             "author_role": "New mother",
             "link_text": "Read her story",
