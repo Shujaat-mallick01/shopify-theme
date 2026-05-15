@@ -115,7 +115,9 @@
         "testimonial_6Hk9bC": {
           "type": "testimonial",
           "settings": {
-            "quote": "",
+            "logo": "shopify://shop_images/Placeholder_Logo.png",
+            "quote": "The quality is there and the price is right. No hassle, no confusion, just what I needed when I needed it.",
+            "avatar": "shopify://shop_images/img-8.jpg",
             "author_name": "Maria Rodriguez",
             "author_role": "Breastfeeding mother",
             "link_text": "Read her story",
