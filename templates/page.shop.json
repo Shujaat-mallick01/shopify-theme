@@ -92,7 +92,8 @@
         "testimonial_G8jEAj": {
           "type": "testimonial",
           "settings": {
-            "quote": "This pump made going back to work possible.",
+            "logo": "shopify://shop_images/Placeholder_Logo.png",
+            "quote": "This pump made going back to work possible. It's quiet, reliable, and I didn't have to fight with insurance to get it.",
             "author_name": "Sarah Mitchell",
             "author_role": "Mother of two",
             "link_text": "Read her story",
