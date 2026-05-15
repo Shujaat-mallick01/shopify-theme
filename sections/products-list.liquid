@@ -35,11 +35,8 @@
       {%- for block in section.blocks -%}
         {%- if block.type == 'product' -%}
           {%- assign p_delay = forloop.index0 | times: 80 -%}
-          {%- assign has_link = block.settings.link != blank -%}
-          {%- assign tag = 'div' -%}
-          {%- if has_link -%}{%- assign tag = 'a' -%}{%- endif -%}
 
-          <{{ tag }} {% if has_link %}href="{{ block.settings.link }}"{% endif %} class="shop-product" data-reveal data-reveal-delay="{{ p_delay }}" {{ block.shopify_attributes }}>
+          {%- capture product_inner -%}
             <div class="shop-product-image">
               {%- if block.settings.image != blank -%}
                 {{ block.settings.image | image_url: width: 600 | image_tag: alt: block.settings.name, loading: 'lazy' }}
@@ -59,7 +56,17 @@
                 <p class="shop-product-status">{{ block.settings.status_label }}</p>
               {%- endif -%}
             </div>
-          </{{ tag }}>
+          {%- endcapture -%}
+
+          {%- if block.settings.link != blank -%}
+            <a href="{{ block.settings.link }}" class="shop-product" data-reveal data-reveal-delay="{{ p_delay }}" {{ block.shopify_attributes }}>
+              {{ product_inner }}
+            </a>
+          {%- else -%}
+            <div class="shop-product" data-reveal data-reveal-delay="{{ p_delay }}" {{ block.shopify_attributes }}>
+              {{ product_inner }}
+            </div>
+          {%- endif -%}
         {%- endif -%}
       {%- endfor -%}
     </div>
