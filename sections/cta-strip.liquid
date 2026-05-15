@@ -1,10 +1,21 @@
 {% comment %}
-  Section: CTA Strip (Cta25 — black banner, centered copy + actions)
+  Section: CTA Strip (Cta25 — banner, centered copy + actions)
   File: sections/cta-strip.liquid
+  Supports optional background image with adjustable overlay over the background color.
 {% endcomment %}
 
-<section class="cta-strip" style="
+{%- liquid
+  assign bg_url = ''
+  if section.settings.background_image != blank
+    assign bg_url = section.settings.background_image | image_url: width: 2400
+  endif
+  assign overlay_pct = section.settings.overlay_opacity | default: 40
+  assign overlay_alpha = overlay_pct | times: 0.01
+-%}
+
+<section class="cta-strip{% if bg_url != blank %} cta-strip--has-image{% endif %}" style="
   --cta-bg: {{ section.settings.background_color | default: '#000000' }};
+  --cta-overlay-alpha: {{ overlay_alpha }};
   --cta-heading-color: {{ section.settings.heading_color | default: '#ffffff' }};
   --cta-text-color: {{ section.settings.text_color | default: '#ffffff' }};
   --cta-primary-bg: {{ section.settings.primary_btn_bg | default: '#e14e6b' }};
@@ -13,7 +24,12 @@
   --cta-secondary-bg: {{ section.settings.secondary_btn_bg | default: 'transparent' }};
   --cta-secondary-text: {{ section.settings.secondary_btn_text | default: '#ffffff' }};
   --cta-secondary-border: {{ section.settings.secondary_btn_border | default: '#ffffff' }};
+  {% if bg_url != blank %}background-image: url('{{ bg_url }}');{% endif %}
 ">
+  {%- if bg_url != blank -%}
+    <div class="cta-overlay" aria-hidden="true"></div>
+  {%- endif -%}
+
   <div class="cta-container">
     <div class="cta-content">
 
@@ -27,15 +43,19 @@
       </div>
 
       <div class="cta-actions" data-reveal data-reveal-delay="200">
-        {%- if section.settings.primary_cta_text != blank -%}
-          <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="cta-btn cta-btn-primary">
-            {{ section.settings.primary_cta_text }}
-          </a>
+        {%- if section.settings.show_primary_cta -%}
+          {%- if section.settings.primary_cta_text != blank -%}
+            <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="cta-btn cta-btn-primary">
+              {{ section.settings.primary_cta_text }}
+            </a>
+          {%- endif -%}
         {%- endif -%}
-        {%- if section.settings.secondary_cta_text != blank -%}
-          <a href="{{ section.settings.secondary_cta_link | default: '#' }}" class="cta-btn cta-btn-secondary">
-            {{ section.settings.secondary_cta_text }}
-          </a>
+        {%- if section.settings.show_secondary_cta -%}
+          {%- if section.settings.secondary_cta_text != blank -%}
+            <a href="{{ section.settings.secondary_cta_link | default: '#' }}" class="cta-btn cta-btn-secondary">
+              {{ section.settings.secondary_cta_text }}
+            </a>
+          {%- endif -%}
         {%- endif -%}
       </div>
 
@@ -51,12 +71,17 @@
     { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Less insurance stress. More baby time.</p>" },
     { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Our team simplifies the insurance process, so you know exactly what you're covered for and more.</p>" },
 
-    { "type": "header", "content": "Section colors" },
-    { "type": "color", "id": "background_color", "label": "Background", "default": "#000000" },
+    { "type": "header", "content": "Background" },
+    { "type": "image_picker", "id": "background_image", "label": "Background image (optional)" },
+    { "type": "color", "id": "background_color", "label": "Background color (fallback / overlay)", "default": "#000000" },
+    { "type": "range", "id": "overlay_opacity", "label": "Overlay opacity (when image used)", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 40 },
+
+    { "type": "header", "content": "Text colors" },
     { "type": "color", "id": "heading_color", "label": "Heading text", "default": "#ffffff" },
     { "type": "color", "id": "text_color", "label": "Body text", "default": "#ffffff" },
 
     { "type": "header", "content": "Primary CTA" },
+    { "type": "checkbox", "id": "show_primary_cta", "label": "Show primary button", "default": true },
     { "type": "text", "id": "primary_cta_text", "label": "Button text", "default": "Check Coverage" },
     { "type": "url", "id": "primary_cta_link", "label": "Button link" },
     { "type": "color", "id": "primary_btn_bg", "label": "Background", "default": "#e14e6b" },
@@ -64,6 +89,7 @@
     { "type": "color", "id": "primary_btn_border", "label": "Border", "default": "#000000" },
 
     { "type": "header", "content": "Secondary CTA" },
+    { "type": "checkbox", "id": "show_secondary_cta", "label": "Show secondary button", "default": true },
     { "type": "text", "id": "secondary_cta_text", "label": "Button text", "default": "Shop Products" },
     { "type": "url", "id": "secondary_cta_link", "label": "Button link" },
     { "type": "color", "id": "secondary_btn_bg", "label": "Background (leave empty for transparent)" },

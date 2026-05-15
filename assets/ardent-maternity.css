@@ -1292,10 +1292,29 @@ p {
    CTA STRIP  (Cta25 — black banner, centered copy + actions)
 ========================================================= */
 .cta-strip {
-    background: var(--cta-bg, #000);
+    position: relative;
+    background-color: var(--cta-bg, #000);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 112px 64px;
     display: flex;
     justify-content: center;
+    overflow: hidden;
+}
+
+.cta-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--cta-bg, #000);
+    opacity: var(--cta-overlay-alpha, 0.4);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cta-strip > .cta-container {
+    position: relative;
+    z-index: 1;
 }
 
 .cta-container {
