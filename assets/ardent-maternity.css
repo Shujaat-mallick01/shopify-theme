@@ -4,7 +4,7 @@
    ============================================================ */
 
 :root {
-    /* --color-bg: #ffffff; */
+    --color-bg: #ffffff;
     --color-text: #000000;
     --color-muted: #5a5a5a;
     --color-border: #000000;
