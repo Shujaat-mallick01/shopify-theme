@@ -86,6 +86,37 @@
         "description": "Select from four categories of maternity essentials."
       }
     },
+    "coverage_card_xwjN9m": {
+      "type": "coverage-card",
+      "name": "Coverage Card",
+      "settings": {
+        "eyebrow": "Coverage",
+        "heading": "<p>You may be covered for more products than you know</p>",
+        "description": "<p>Many maternity products are eligible for insurance reimbursement.</p><p>We verify your benefits so there are no surprises — except that you might be covered for more than you knew.</p>",
+        "image": "shopify://shop_images/img-3.png",
+        "image_position": "right",
+        "card_eyebrow": "Eligible",
+        "card_heading": "Check your coverage before you buy",
+        "card_description": "<p>Insurance plans vary. Some cover everything. Others cover specific items. Our Maternity Experts check your plan details and show you exactly what you can get at no cost.</p>",
+        "primary_cta_text": "Check coverage",
+        "primary_cta_link": "",
+        "secondary_cta_text": "Verify",
+        "secondary_cta_link": "",
+        "background_color": "#ffffff",
+        "eyebrow_color": "#000000",
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "card_bg": "#ffffff",
+        "card_border": "#000000",
+        "card_eyebrow_color": "#000000",
+        "card_heading_color": "#000000",
+        "card_text_color": "#000000",
+        "primary_btn_bg": "#ffffff",
+        "primary_btn_text": "#000000",
+        "primary_btn_border": "#000000",
+        "secondary_link_color": "#000000"
+      }
+    },
     "testimonials_RxtaAg": {
       "type": "testimonials",
       "blocks": {
@@ -163,6 +194,7 @@
     "main",
     "inner_banner_eD8PH4",
     "step_cards_VtK43K",
+    "coverage_card_xwjN9m",
     "testimonials_RxtaAg",
     "cta_strip_Jmqaj6"
   ]
