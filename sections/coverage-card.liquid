@@ -1,0 +1,153 @@
+{% comment %}
+  Section: Coverage Card
+  File: sections/coverage-card.liquid
+  Top centered title block + full-width bordered card with split image/text.
+  All colors are editor-controlled with sane fallbacks.
+{% endcomment %}
+
+<section class="coverage-section" style="
+  --cov-bg: {{ section.settings.background_color | default: '#ffffff' }};
+  --cov-eyebrow-color: {{ section.settings.eyebrow_color | default: '#000000' }};
+  --cov-heading-color: {{ section.settings.heading_color | default: '#000000' }};
+  --cov-text-color: {{ section.settings.text_color | default: '#000000' }};
+  --cov-card-bg: {{ section.settings.card_bg | default: '#ffffff' }};
+  --cov-card-border: {{ section.settings.card_border | default: '#000000' }};
+  --cov-card-eyebrow: {{ section.settings.card_eyebrow_color | default: '#000000' }};
+  --cov-card-heading: {{ section.settings.card_heading_color | default: '#000000' }};
+  --cov-card-text: {{ section.settings.card_text_color | default: '#000000' }};
+  --cov-primary-bg: {{ section.settings.primary_btn_bg | default: '#ffffff' }};
+  --cov-primary-text: {{ section.settings.primary_btn_text | default: '#000000' }};
+  --cov-primary-border: {{ section.settings.primary_btn_border | default: '#000000' }};
+  --cov-secondary-text: {{ section.settings.secondary_link_color | default: '#000000' }};
+">
+  <div class="coverage-container">
+
+    <div class="coverage-title">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="coverage-eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="coverage-heading" data-reveal data-reveal-delay="80">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <div class="coverage-desc" data-reveal data-reveal-delay="160">{{ section.settings.description }}</div>
+      {%- endif -%}
+    </div>
+
+    <div class="coverage-card" data-reveal data-reveal-delay="100">
+      <div class="coverage-card-inner">
+
+        {%- if section.settings.image_position == 'left' -%}
+          <div class="coverage-card-image">
+            {%- if section.settings.image != blank -%}
+              {{ section.settings.image | image_url: width: 1200 | image_tag: alt: section.settings.card_heading, loading: 'lazy', class: 'coverage-card-img' }}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        <div class="coverage-card-content">
+          <div class="coverage-card-top">
+            {%- if section.settings.card_eyebrow != blank -%}
+              <p class="coverage-card-eyebrow">{{ section.settings.card_eyebrow }}</p>
+            {%- endif -%}
+            {%- if section.settings.card_heading != blank -%}
+              <h3 class="coverage-card-heading">{{ section.settings.card_heading }}</h3>
+            {%- endif -%}
+            {%- if section.settings.card_description != blank -%}
+              <div class="coverage-card-desc">{{ section.settings.card_description }}</div>
+            {%- endif -%}
+          </div>
+
+          {%- if section.settings.primary_cta_text != blank or section.settings.secondary_cta_text != blank -%}
+            <div class="coverage-card-actions">
+              {%- if section.settings.primary_cta_text != blank -%}
+                <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="coverage-card-btn">
+                  {{ section.settings.primary_cta_text }}
+                </a>
+              {%- endif -%}
+              {%- if section.settings.secondary_cta_text != blank -%}
+                <a href="{{ section.settings.secondary_cta_link | default: '#' }}" class="coverage-card-link">
+                  <span>{{ section.settings.secondary_cta_text }}</span>
+                  <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M0.877 0.5C0.978 0.5 1.055 0.53 1.133 0.608L6.077 5.553C6.131 5.607 6.156 5.649 6.168 5.677V5.678C6.183 5.713 6.191 5.753 6.191 5.802C6.191 5.85 6.183 5.89 6.168 5.926V5.927C6.156 5.955 6.131 5.997 6.077 6.051L1.108 11.02C1.031 11.097 0.963 11.119 0.883 11.116C0.789 11.113 0.708 11.081 0.622 10.995C0.544 10.917 0.513 10.84 0.513 10.739C0.513 10.638 0.544 10.561 0.622 10.483L5.304 5.802L0.597 1.095C0.519 1.017 0.497 0.951 0.5 0.87C0.503 0.776 0.536 0.694 0.622 0.608C0.7 0.531 0.776 0.5 0.877 0.5Z" fill="currentColor" stroke="currentColor"/>
+                  </svg>
+                </a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.image_position != 'left' -%}
+          <div class="coverage-card-image">
+            {%- if section.settings.image != blank -%}
+              {{ section.settings.image | image_url: width: 1200 | image_tag: alt: section.settings.card_heading, loading: 'lazy', class: 'coverage-card-img' }}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Coverage Card",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Section title" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Coverage" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>You may be covered for more products than you know</p>" },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Many maternity products are eligible for insurance reimbursement.</p><p>We verify your benefits so there are no surprises — except that you might be covered for more than you knew.</p>" },
+
+    { "type": "header", "content": "Card content" },
+    { "type": "image_picker", "id": "image", "label": "Card image" },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    },
+    { "type": "text", "id": "card_eyebrow", "label": "Eyebrow", "default": "Eligible" },
+    { "type": "text", "id": "card_heading", "label": "Heading", "default": "Check your coverage before you buy" },
+    { "type": "richtext", "id": "card_description", "label": "Description", "default": "<p>Insurance plans vary. Some cover everything. Others cover specific items. Our Maternity Experts check your plan details and show you exactly what you can get at no cost.</p>" },
+
+    { "type": "header", "content": "Primary CTA (button)" },
+    { "type": "text", "id": "primary_cta_text", "label": "Button text", "default": "Check coverage" },
+    { "type": "url", "id": "primary_cta_link", "label": "Button link" },
+
+    { "type": "header", "content": "Secondary CTA (link arrow)" },
+    { "type": "text", "id": "secondary_cta_text", "label": "Link text", "default": "Verify" },
+    { "type": "url", "id": "secondary_cta_link", "label": "Link URL" },
+
+    { "type": "header", "content": "Section colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow", "default": "#000000" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#000000" },
+    { "type": "color", "id": "text_color", "label": "Description text", "default": "#000000" },
+
+    { "type": "header", "content": "Card colors" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#ffffff" },
+    { "type": "color", "id": "card_border", "label": "Card border", "default": "#000000" },
+    { "type": "color", "id": "card_eyebrow_color", "label": "Eyebrow", "default": "#000000" },
+    { "type": "color", "id": "card_heading_color", "label": "Heading", "default": "#000000" },
+    { "type": "color", "id": "card_text_color", "label": "Description", "default": "#000000" },
+
+    { "type": "header", "content": "Primary button colors" },
+    { "type": "color", "id": "primary_btn_bg", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "primary_btn_text", "label": "Text", "default": "#000000" },
+    { "type": "color", "id": "primary_btn_border", "label": "Border", "default": "#000000" },
+
+    { "type": "header", "content": "Secondary link color" },
+    { "type": "color", "id": "secondary_link_color", "label": "Text + arrow", "default": "#000000" }
+  ],
+  "presets": [
+    { "name": "Coverage Card" }
+  ]
+}
+{% endschema %}
