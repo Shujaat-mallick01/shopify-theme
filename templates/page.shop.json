@@ -136,12 +136,34 @@
         "heading": "<h2>Trusted by doctors and <br/>doulas, moms and <br/>midwives</h2>",
         "subheading": "What they're saying"
       }
+    },
+    "cta_strip_Jmqaj6": {
+      "type": "cta-strip",
+      "name": "CTA Strip",
+      "settings": {
+        "heading": "<p>Less insurance stress. More baby time.</p>",
+        "description": "<p>Our team simplifies the insurance process, so you know exactly what you're covered for and more.</p>",
+        "background_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "primary_cta_text": "Check Coverage",
+        "primary_cta_link": "",
+        "primary_btn_bg": "#e14e6b",
+        "primary_btn_text": "#ffffff",
+        "primary_btn_border": "#000000",
+        "secondary_cta_text": "Shop Products",
+        "secondary_cta_link": "",
+        "secondary_btn_bg": "",
+        "secondary_btn_text": "#ffffff",
+        "secondary_btn_border": "#ffffff"
+      }
     }
   },
   "order": [
     "main",
     "inner_banner_eD8PH4",
     "step_cards_VtK43K",
-    "testimonials_RxtaAg"
+    "testimonials_RxtaAg",
+    "cta_strip_Jmqaj6"
   ]
 }
