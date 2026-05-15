@@ -92,6 +92,7 @@
         "product_t4FKm3": {
           "type": "product",
           "settings": {
+            "image": "shopify://shop_images/img-10.jpg",
             "name": "Spectra S1",
             "variant": "Electric",
             "status_label": "Covered",
@@ -101,6 +102,7 @@
         "product_KNWH8U": {
           "type": "product",
           "settings": {
+            "image": "shopify://shop_images/img-6.jpg",
             "name": "Medela Pump",
             "variant": "Electric",
             "status_label": "Covered",
@@ -110,6 +112,7 @@
         "product_FerpFx": {
           "type": "product",
           "settings": {
+            "image": "shopify://shop_images/img-7.jpg",
             "name": "Lansinoh Manual",
             "variant": "Manual",
             "status_label": "Covered",
@@ -119,6 +122,7 @@
         "product_3gbjN4": {
           "type": "product",
           "settings": {
+            "image": "shopify://shop_images/img-8.jpg",
             "name": "Philips Avent",
             "variant": "Electric",
             "status_label": "Covered",
@@ -128,6 +132,7 @@
         "product_8WTfHM": {
           "type": "product",
           "settings": {
+            "image": "shopify://shop_images/img-9.jpg",
             "name": "Storage bags",
             "variant": "Pack of 50",
             "status_label": "Covered",
@@ -137,6 +142,7 @@
         "product_ABg3wK": {
           "type": "product",
           "settings": {
+            "image": "shopify://shop_images/img-5.jpg",
             "name": "Belly band",
             "variant": "One size",
             "status_label": "Covered",
@@ -146,6 +152,7 @@
         "product_bFYTT3": {
           "type": "product",
           "settings": {
+            "image": "shopify://shop_images/img-10.jpg",
             "name": "Nursing pads",
             "variant": "Reusable",
             "status_label": "Covered",
@@ -155,6 +162,7 @@
         "product_wkdUeC": {
           "type": "product",
           "settings": {
+            "image": "shopify://shop_images/img-6.jpg",
             "name": "Maternity pillow",
             "variant": "Full body",
             "status_label": "Covered",
