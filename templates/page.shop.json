@@ -1,0 +1,169 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_title": true
+      }
+    },
+    "inner_banner_eD8PH4": {
+      "type": "inner-banner",
+      "name": "Inner Banner",
+      "settings": {
+        "background_image": "shopify://shop_images/img-9.jpg",
+        "heading": "<p>The Maternity Products You Need, Without the Hassle</p>",
+        "description": "<p>Walk into our Brooklyn store or order online, we’re here to <br/>support you through every stage of motherhood.</p>",
+        "primary_cta_text": "Check Coverage",
+        "primary_cta_link": "",
+        "secondary_cta_text": "Shop",
+        "secondary_cta_link": ""
+      }
+    },
+    "step_cards_VtK43K": {
+      "type": "step-cards",
+      "blocks": {
+        "step_mXHQnL": {
+          "type": "step",
+          "settings": {
+            "background_image": "shopify://shop_images/img-1.jpg",
+            "heading": "Breast pumps",
+            "description": "Electric and manual options for every mother.",
+            "link_text": "Shop",
+            "link": ""
+          }
+        },
+        "step_Bfj4mF": {
+          "type": "step",
+          "settings": {
+            "background_image": "shopify://shop_images/img-3.png",
+            "heading": "Milk storage bags",
+            "description": "Safe, sterile bags for storing and freezing milk.",
+            "link_text": "Shop",
+            "link": ""
+          }
+        },
+        "step_PQ33Wc": {
+          "type": "step",
+          "settings": {
+            "background_image": "shopify://shop_images/img-6.jpg",
+            "heading": "Belly Bands & Compression Socks",
+            "description": "Comfort and stability during pregnancy and recovery.",
+            "link_text": "Shop",
+            "link": ""
+          }
+        },
+        "step_ja83em": {
+          "type": "step",
+          "settings": {
+            "background_image": "shopify://shop_images/img-1.jpg",
+            "heading": "Postpartum Recovery Garments",
+            "description": "Everything else you need for nine months and beyond.",
+            "link_text": "Shop",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "step_mXHQnL",
+        "step_Bfj4mF",
+        "step_PQ33Wc",
+        "step_ja83em"
+      ],
+      "name": "Step Cards",
+      "settings": {
+        "eyebrow": "Browse",
+        "heading": "Maternity Products You Need, Covered by Insurance, Delivered to Your Door",
+        "description": "Select from four categories of maternity essentials."
+      }
+    },
+    "testimonials_RxtaAg": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_G8jEAj": {
+          "type": "testimonial",
+          "settings": {
+            "logo": "shopify://shop_images/Placeholder_Logo.png",
+            "quote": "This pump made going back to work possible. It's quiet, reliable, and I didn't have to fight with insurance to get it.",
+            "author_name": "Sarah Mitchell",
+            "author_role": "Mother of two",
+            "link_text": "Read her story",
+            "link": ""
+          }
+        },
+        "testimonial_jKCdp9": {
+          "type": "testimonial",
+          "settings": {
+            "logo": "shopify://shop_images/Placeholder_Logo.png",
+            "quote": "I was overwhelmed by the insurance process until Ardent stepped in. They handled everything and I got my pump in a week.",
+            "avatar": "shopify://shop_images/img-7.jpg",
+            "author_name": "Jessica Chen",
+            "author_role": "New mother",
+            "link_text": "Read her story",
+            "link": ""
+          }
+        },
+        "testimonial_6Hk9bC": {
+          "type": "testimonial",
+          "settings": {
+            "logo": "shopify://shop_images/Placeholder_Logo.png",
+            "quote": "The quality is there and the price is right. No hassle, no confusion, just what I needed when I needed it.",
+            "avatar": "shopify://shop_images/img-8.jpg",
+            "author_name": "Maria Rodriguez",
+            "author_role": "Breastfeeding mother",
+            "link_text": "Read her story",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_G8jEAj",
+        "testimonial_jKCdp9",
+        "testimonial_6Hk9bC"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "background_color": "#ffffff",
+        "heading": "<h2>Trusted by doctors and <br/>doulas, moms and <br/>midwives</h2>",
+        "subheading": "What they're saying"
+      }
+    },
+    "cta_strip_Jmqaj6": {
+      "type": "cta-strip",
+      "name": "CTA Strip",
+      "settings": {
+        "heading": "<p>Ready to get started?</p>",
+        "description": "<p>Check your coverage and have what you need delivered fast.</p>",
+        "background_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "primary_cta_text": "Check",
+        "primary_cta_link": "",
+        "primary_btn_bg": "#000000",
+        "primary_btn_text": "#ffffff",
+        "primary_btn_border": "#000000",
+        "secondary_cta_text": "Shop",
+        "secondary_cta_link": "",
+        "secondary_btn_bg": "",
+        "secondary_btn_text": "#000000",
+        "secondary_btn_border": "#000000"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "inner_banner_eD8PH4",
+    "step_cards_VtK43K",
+    "testimonials_RxtaAg",
+    "cta_strip_Jmqaj6"
+  ]
+}
