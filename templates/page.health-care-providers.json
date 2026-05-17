@@ -13,7 +13,7 @@
       "type": "main-page",
       "disabled": true,
       "settings": {
-        "show_title": true
+        "show_title": false
       }
     },
     "cta_strip_kkqXnc": {
@@ -22,6 +22,13 @@
       "settings": {
         "heading": "<p>Streamline patient care</p>",
         "description": "<p>Ardent manages insurance verification and delivery while you focus on your patients</p>",
+        "show_heading": true,
+        "show_description": true,
+        "padding_top": 112,
+        "padding_bottom": 112,
+        "padding_x": 64,
+        "margin_top": 0,
+        "margin_bottom": 0,
         "background_color": "#ffffff",
         "overlay_opacity": 40,
         "heading_color": "#000000",
@@ -56,6 +63,20 @@
         "primary_cta_link": "",
         "secondary_cta_text": "Arrow",
         "secondary_cta_link": "",
+        "show_eyebrow": false,
+        "show_heading": false,
+        "show_description": false,
+        "show_image": true,
+        "show_card_eyebrow": true,
+        "show_card_heading": true,
+        "show_card_description": true,
+        "show_primary_cta": true,
+        "show_secondary_cta": true,
+        "padding_top": 0,
+        "padding_bottom": 112,
+        "padding_x": 64,
+        "margin_top": 0,
+        "margin_bottom": 0,
         "background_color": "#ffffff",
         "eyebrow_color": "#000000",
         "heading_color": "#000000",
