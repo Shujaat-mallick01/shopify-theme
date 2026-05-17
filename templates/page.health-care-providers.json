@@ -195,6 +195,37 @@
         "stat_value_color": "#000000",
         "stat_label_color": "#000000"
       }
+    },
+    "cta_strip_eJNrUM": {
+      "type": "cta-strip",
+      "name": "CTA Strip",
+      "settings": {
+        "heading": "<p>Less insurance stress. <br/>More patient care.</p>",
+        "description": "<p>Let us handle the paperwork so you can focus on what matters most.</p>",
+        "show_heading": true,
+        "show_description": true,
+        "padding_top": 112,
+        "padding_bottom": 112,
+        "padding_x": 64,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "background_color": "#ffffff",
+        "overlay_opacity": 40,
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "show_primary_cta": true,
+        "primary_cta_text": "Button",
+        "primary_cta_link": "",
+        "primary_btn_bg": "#000000",
+        "primary_btn_text": "#ffffff",
+        "primary_btn_border": "#000000",
+        "show_secondary_cta": true,
+        "secondary_cta_text": "Learn",
+        "secondary_cta_link": "",
+        "secondary_btn_bg": "",
+        "secondary_btn_text": "#000000",
+        "secondary_btn_border": "#000000"
+      }
     }
   },
   "order": [
@@ -202,6 +233,7 @@
     "cta_strip_kkqXnc",
     "coverage_card_WWAH6J",
     "triple_tiered_cards_NULVqT",
-    "stats_grid_7YxADD"
+    "stats_grid_7YxADD",
+    "cta_strip_eJNrUM"
   ]
 }
