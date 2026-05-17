@@ -162,12 +162,46 @@
         "card_text_color": "#000000",
         "card_link_color": "#000000"
       }
+    },
+    "stats_grid_7YxADD": {
+      "type": "stats-grid",
+      "name": "Stats Grid",
+      "settings": {
+        "heading": "<p>Proven expertise in healthcare delivery</p>",
+        "description": "<p>We've worked with New York providers for over two decades. Our Brooklyn team knows what works. We speak your language—literally and figuratively.</p>",
+        "stat1_value": "20+",
+        "stat1_label": "Years serving providers",
+        "stat2_value": "3",
+        "stat2_label": "Languages spoken",
+        "stat3_value": "1",
+        "stat3_label": "Brooklyn location",
+        "image_1": "shopify://shop_images/img_c03cd86e05.webp",
+        "image_2": "shopify://shop_images/IMG-20251113-WA0004.jpg",
+        "image_height": 280,
+        "show_heading": true,
+        "show_description": true,
+        "show_image_1": true,
+        "show_image_2": true,
+        "padding_top": 112,
+        "padding_bottom": 112,
+        "padding_x": 64,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "background_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "stat_bg": "#ffffff",
+        "stat_border": "#000000",
+        "stat_value_color": "#000000",
+        "stat_label_color": "#000000"
+      }
     }
   },
   "order": [
     "main",
     "cta_strip_kkqXnc",
     "coverage_card_WWAH6J",
-    "triple_tiered_cards_NULVqT"
+    "triple_tiered_cards_NULVqT",
+    "stats_grid_7YxADD"
   ]
 }
