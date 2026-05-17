@@ -98,6 +98,7 @@
         "step_qzRpw8": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/img-8.jpg",
             "eyebrow": "Step",
             "heading": "Enter the prescription",
             "description": "Send us the patient's information and what they need",
@@ -108,6 +109,7 @@
         "step_kgYrLT": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/img-5.jpg",
             "eyebrow": "Step",
             "heading": "We place the order",
             "description": "Insurance verification and fulfillment happen on our end",
@@ -118,6 +120,7 @@
         "step_bANXiB": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/img-3.png",
             "eyebrow": "Step",
             "heading": "Focus on your patient",
             "description": "Products arrive at their door while you deliver care",
