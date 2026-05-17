@@ -11,10 +11,45 @@
   "sections": {
     "main": {
       "type": "main-page",
-      "settings": {}
+      "disabled": true,
+      "settings": {
+        "show_title": true
+      }
+    },
+    "cta_strip_MFdJHP": {
+      "type": "cta-strip",
+      "name": "CTA Strip",
+      "settings": {
+        "heading": "<p>Built on experience</p>",
+        "description": "<p>Two decades of serving mothers, providers, and families across Brooklyn and beyond.</p>",
+        "show_heading": true,
+        "show_description": true,
+        "padding_top": 112,
+        "padding_bottom": 112,
+        "padding_x": 64,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "background_color": "#ffffff",
+        "overlay_opacity": 40,
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "show_primary_cta": false,
+        "primary_cta_text": "Check Coverage",
+        "primary_cta_link": "",
+        "primary_btn_bg": "#e14e6b",
+        "primary_btn_text": "#ffffff",
+        "primary_btn_border": "#000000",
+        "show_secondary_cta": false,
+        "secondary_cta_text": "Shop Products",
+        "secondary_cta_link": "",
+        "secondary_btn_bg": "",
+        "secondary_btn_text": "#ffffff",
+        "secondary_btn_border": "#ffffff"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "cta_strip_MFdJHP"
   ]
 }
