@@ -1,0 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_title": true
+      }
+    },
+    "cta_strip_kkqXnc": {
+      "type": "cta-strip",
+      "name": "CTA Strip",
+      "settings": {
+        "heading": "<p>Streamline patient care</p>",
+        "description": "<p>Ardent manages insurance verification and delivery while you focus on your patients</p>",
+        "background_color": "#ffffff",
+        "overlay_opacity": 40,
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "show_primary_cta": false,
+        "primary_cta_text": "Check Coverage",
+        "primary_cta_link": "",
+        "primary_btn_bg": "#e14e6b",
+        "primary_btn_text": "#ffffff",
+        "primary_btn_border": "#000000",
+        "show_secondary_cta": false,
+        "secondary_cta_text": "Shop Products",
+        "secondary_cta_link": "",
+        "secondary_btn_bg": "",
+        "secondary_btn_text": "#ffffff",
+        "secondary_btn_border": "#ffffff"
+      }
+    },
+    "coverage_card_WWAH6J": {
+      "type": "coverage-card",
+      "name": "Coverage Card",
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "description": "",
+        "image": "shopify://shop_images/IMG-20251113-WA0008.jpg",
+        "image_position": "right",
+        "card_eyebrow": "Simple",
+        "card_heading": "Enter the prescription once",
+        "card_description": "<p>You write the prescription. We verify insurance, process the order, and ship it to your patient's door. No follow-up calls. No insurance headaches.<br/><br/></p>",
+        "primary_cta_text": "Upload Prescription",
+        "primary_cta_link": "",
+        "secondary_cta_text": "Arrow",
+        "secondary_cta_link": "",
+        "background_color": "#ffffff",
+        "eyebrow_color": "#000000",
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "card_bg": "#ffffff",
+        "card_border": "#ffffff",
+        "card_eyebrow_color": "#000000",
+        "card_heading_color": "#000000",
+        "card_text_color": "#000000",
+        "primary_btn_bg": "#ffffff",
+        "primary_btn_text": "#000000",
+        "primary_btn_border": "#000000",
+        "secondary_link_color": "#000000"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "cta_strip_kkqXnc",
+    "coverage_card_WWAH6J"
+  ]
+}
