@@ -15,7 +15,7 @@
   assign title_gap = section.settings.title_gap | default: 80
   assign card_gap = section.settings.card_gap | default: 32
   assign featured_width = section.settings.featured_width | default: 640
-  assign compact_image_height = section.settings.compact_image_height | default: 171
+  assign compact_image_height = section.settings.compact_image_height | default: 172
 -%}
 
 <section class="ttc-section" style="
@@ -132,7 +132,7 @@
     { "type": "range", "id": "featured_width", "label": "Featured card width", "min": 320, "max": 800, "step": 8, "unit": "px", "default": 640 },
 
     { "type": "header", "content": "Compact cards (cards 2 + 3)" },
-    { "type": "range", "id": "compact_image_height", "label": "Image height", "min": 80, "max": 360, "step": 4, "unit": "px", "default": 171 },
+    { "type": "range", "id": "compact_image_height", "label": "Image height", "min": 80, "max": 360, "step": 4, "unit": "px", "default": 172 },
 
     { "type": "header", "content": "Section colors" },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },
