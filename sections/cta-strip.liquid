@@ -11,6 +11,11 @@
   endif
   assign overlay_pct = section.settings.overlay_opacity | default: 40
   assign overlay_alpha = overlay_pct | times: 0.01
+  assign pad_top = section.settings.padding_top | default: 112
+  assign pad_bottom = section.settings.padding_bottom | default: 112
+  assign pad_x = section.settings.padding_x | default: 64
+  assign margin_top = section.settings.margin_top | default: 0
+  assign margin_bottom = section.settings.margin_bottom | default: 0
 -%}
 
 <section class="cta-strip{% if bg_url != blank %} cta-strip--has-image{% endif %}" style="
@@ -24,6 +29,8 @@
   --cta-secondary-bg: {{ section.settings.secondary_btn_bg | default: 'transparent' }};
   --cta-secondary-text: {{ section.settings.secondary_btn_text | default: '#ffffff' }};
   --cta-secondary-border: {{ section.settings.secondary_btn_border | default: '#ffffff' }};
+  padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px;
+  margin: {{ margin_top }}px 0 {{ margin_bottom }}px;
   {% if bg_url != blank %}background-image: url('{{ bg_url }}');{% endif %}
 ">
   {%- if bg_url != blank -%}
@@ -34,11 +41,15 @@
     <div class="cta-content">
 
       <div class="cta-text">
-        {%- if section.settings.heading != blank -%}
-          <h2 class="cta-heading" data-reveal>{{ section.settings.heading }}</h2>
+        {%- if section.settings.show_heading -%}
+          {%- if section.settings.heading != blank -%}
+            <h2 class="cta-heading" data-reveal>{{ section.settings.heading }}</h2>
+          {%- endif -%}
         {%- endif -%}
-        {%- if section.settings.description != blank -%}
-          <div class="cta-description" data-reveal data-reveal-delay="100">{{ section.settings.description }}</div>
+        {%- if section.settings.show_description -%}
+          {%- if section.settings.description != blank -%}
+            <div class="cta-description" data-reveal data-reveal-delay="100">{{ section.settings.description }}</div>
+          {%- endif -%}
         {%- endif -%}
       </div>
 
@@ -70,6 +81,17 @@
   "settings": [
     { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Less insurance stress. More baby time.</p>" },
     { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Our team simplifies the insurance process, so you know exactly what you're covered for and more.</p>" },
+
+    { "type": "header", "content": "Show / hide elements" },
+    { "type": "checkbox", "id": "show_heading", "label": "Show heading", "default": true },
+    { "type": "checkbox", "id": "show_description", "label": "Show description", "default": true },
+
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
 
     { "type": "header", "content": "Background" },
     { "type": "image_picker", "id": "background_image", "label": "Background image (optional)" },

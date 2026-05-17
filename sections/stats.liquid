@@ -3,19 +3,33 @@
   File: sections/stats.liquid
 {% endcomment %}
 
-<section class="stats-section">
+{%- liquid
+  assign pad_top = section.settings.padding_top | default: 112
+  assign pad_bottom = section.settings.padding_bottom | default: 112
+  assign pad_x = section.settings.padding_x | default: 64
+  assign margin_top = section.settings.margin_top | default: 0
+  assign margin_bottom = section.settings.margin_bottom | default: 0
+-%}
+
+<section class="stats-section" style="padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px; margin: {{ margin_top }}px 0 {{ margin_bottom }}px;">
   <div class="stats-inner">
     <div class="stats-grid">
 
       <div class="stats-copy">
-        {%- if section.settings.eyebrow != blank -%}
-          <p class="stats-eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+        {%- if section.settings.show_eyebrow -%}
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="stats-eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+          {%- endif -%}
         {%- endif -%}
-        {%- if section.settings.heading != blank -%}
-          <h2 class="stats-heading" data-reveal data-reveal-delay="80">{{ section.settings.heading }}</h2>
+        {%- if section.settings.show_heading -%}
+          {%- if section.settings.heading != blank -%}
+            <h2 class="stats-heading" data-reveal data-reveal-delay="80">{{ section.settings.heading }}</h2>
+          {%- endif -%}
         {%- endif -%}
-        {%- if section.settings.description != blank -%}
-          <p class="stats-description" data-reveal data-reveal-delay="160">{{ section.settings.description }}</p>
+        {%- if section.settings.show_description -%}
+          {%- if section.settings.description != blank -%}
+            <p class="stats-description" data-reveal data-reveal-delay="160">{{ section.settings.description }}</p>
+          {%- endif -%}
         {%- endif -%}
       </div>
 
@@ -52,7 +66,19 @@
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Trust" },
     { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Trusted by families and providers for over 20 years</p>" },
-    { "type": "textarea", "id": "description", "label": "Description", "default": "Ardent has been serving hospitals, healthcare providers, and families across New York for more than two decades. We know what works because we've been doing this since the beginning." }
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Ardent has been serving hospitals, healthcare providers, and families across New York for more than two decades. We know what works because we've been doing this since the beginning." },
+
+    { "type": "header", "content": "Show / hide elements" },
+    { "type": "checkbox", "id": "show_eyebrow", "label": "Show eyebrow", "default": true },
+    { "type": "checkbox", "id": "show_heading", "label": "Show heading", "default": true },
+    { "type": "checkbox", "id": "show_description", "label": "Show description", "default": true },
+
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 }
   ],
   "blocks": [
     {

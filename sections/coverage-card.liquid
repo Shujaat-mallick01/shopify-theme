@@ -5,6 +5,14 @@
   All colors are editor-controlled with sane fallbacks.
 {% endcomment %}
 
+{%- liquid
+  assign pad_top = section.settings.padding_top | default: 112
+  assign pad_bottom = section.settings.padding_bottom | default: 112
+  assign pad_x = section.settings.padding_x | default: 64
+  assign margin_top = section.settings.margin_top | default: 0
+  assign margin_bottom = section.settings.margin_bottom | default: 0
+-%}
+
 <section class="coverage-section" style="
   --cov-bg: {{ section.settings.background_color | default: '#ffffff' }};
   --cov-eyebrow-color: {{ section.settings.eyebrow_color | default: '#000000' }};
@@ -19,25 +27,33 @@
   --cov-primary-text: {{ section.settings.primary_btn_text | default: '#000000' }};
   --cov-primary-border: {{ section.settings.primary_btn_border | default: '#000000' }};
   --cov-secondary-text: {{ section.settings.secondary_link_color | default: '#000000' }};
+  padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px;
+  margin: {{ margin_top }}px 0 {{ margin_bottom }}px;
 ">
   <div class="coverage-container">
 
     <div class="coverage-title">
-      {%- if section.settings.eyebrow != blank -%}
-        <p class="coverage-eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+      {%- if section.settings.show_eyebrow -%}
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="coverage-eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
       {%- endif -%}
-      {%- if section.settings.heading != blank -%}
-        <h2 class="coverage-heading" data-reveal data-reveal-delay="80">{{ section.settings.heading }}</h2>
+      {%- if section.settings.show_heading -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="coverage-heading" data-reveal data-reveal-delay="80">{{ section.settings.heading }}</h2>
+        {%- endif -%}
       {%- endif -%}
-      {%- if section.settings.description != blank -%}
-        <div class="coverage-desc" data-reveal data-reveal-delay="160">{{ section.settings.description }}</div>
+      {%- if section.settings.show_description -%}
+        {%- if section.settings.description != blank -%}
+          <div class="coverage-desc" data-reveal data-reveal-delay="160">{{ section.settings.description }}</div>
+        {%- endif -%}
       {%- endif -%}
     </div>
 
     <div class="coverage-card" data-reveal data-reveal-delay="100">
       <div class="coverage-card-inner">
 
-        {%- if section.settings.image_position == 'left' -%}
+        {%- if section.settings.show_image and section.settings.image_position == 'left' -%}
           <div class="coverage-card-image">
             {%- if section.settings.image != blank -%}
               {{ section.settings.image | image_url: width: 1200 | image_tag: alt: section.settings.card_heading, loading: 'lazy', class: 'coverage-card-img' }}
@@ -47,37 +63,47 @@
 
         <div class="coverage-card-content">
           <div class="coverage-card-top">
-            {%- if section.settings.card_eyebrow != blank -%}
-              <p class="coverage-card-eyebrow">{{ section.settings.card_eyebrow }}</p>
+            {%- if section.settings.show_card_eyebrow -%}
+              {%- if section.settings.card_eyebrow != blank -%}
+                <p class="coverage-card-eyebrow">{{ section.settings.card_eyebrow }}</p>
+              {%- endif -%}
             {%- endif -%}
-            {%- if section.settings.card_heading != blank -%}
-              <h3 class="coverage-card-heading">{{ section.settings.card_heading }}</h3>
+            {%- if section.settings.show_card_heading -%}
+              {%- if section.settings.card_heading != blank -%}
+                <h3 class="coverage-card-heading">{{ section.settings.card_heading }}</h3>
+              {%- endif -%}
             {%- endif -%}
-            {%- if section.settings.card_description != blank -%}
-              <div class="coverage-card-desc">{{ section.settings.card_description }}</div>
+            {%- if section.settings.show_card_description -%}
+              {%- if section.settings.card_description != blank -%}
+                <div class="coverage-card-desc">{{ section.settings.card_description }}</div>
+              {%- endif -%}
             {%- endif -%}
           </div>
 
-          {%- if section.settings.primary_cta_text != blank or section.settings.secondary_cta_text != blank -%}
+          {%- if section.settings.show_primary_cta or section.settings.show_secondary_cta -%}
             <div class="coverage-card-actions">
-              {%- if section.settings.primary_cta_text != blank -%}
-                <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="coverage-card-btn">
-                  {{ section.settings.primary_cta_text }}
-                </a>
+              {%- if section.settings.show_primary_cta -%}
+                {%- if section.settings.primary_cta_text != blank -%}
+                  <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="coverage-card-btn">
+                    {{ section.settings.primary_cta_text }}
+                  </a>
+                {%- endif -%}
               {%- endif -%}
-              {%- if section.settings.secondary_cta_text != blank -%}
-                <a href="{{ section.settings.secondary_cta_link | default: '#' }}" class="coverage-card-link">
-                  <span>{{ section.settings.secondary_cta_text }}</span>
-                  <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M0.877 0.5C0.978 0.5 1.055 0.53 1.133 0.608L6.077 5.553C6.131 5.607 6.156 5.649 6.168 5.677V5.678C6.183 5.713 6.191 5.753 6.191 5.802C6.191 5.85 6.183 5.89 6.168 5.926V5.927C6.156 5.955 6.131 5.997 6.077 6.051L1.108 11.02C1.031 11.097 0.963 11.119 0.883 11.116C0.789 11.113 0.708 11.081 0.622 10.995C0.544 10.917 0.513 10.84 0.513 10.739C0.513 10.638 0.544 10.561 0.622 10.483L5.304 5.802L0.597 1.095C0.519 1.017 0.497 0.951 0.5 0.87C0.503 0.776 0.536 0.694 0.622 0.608C0.7 0.531 0.776 0.5 0.877 0.5Z" fill="currentColor" stroke="currentColor"/>
-                  </svg>
-                </a>
+              {%- if section.settings.show_secondary_cta -%}
+                {%- if section.settings.secondary_cta_text != blank -%}
+                  <a href="{{ section.settings.secondary_cta_link | default: '#' }}" class="coverage-card-link">
+                    <span>{{ section.settings.secondary_cta_text }}</span>
+                    <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M0.877 0.5C0.978 0.5 1.055 0.53 1.133 0.608L6.077 5.553C6.131 5.607 6.156 5.649 6.168 5.677V5.678C6.183 5.713 6.191 5.753 6.191 5.802C6.191 5.85 6.183 5.89 6.168 5.926V5.927C6.156 5.955 6.131 5.997 6.077 6.051L1.108 11.02C1.031 11.097 0.963 11.119 0.883 11.116C0.789 11.113 0.708 11.081 0.622 10.995C0.544 10.917 0.513 10.84 0.513 10.739C0.513 10.638 0.544 10.561 0.622 10.483L5.304 5.802L0.597 1.095C0.519 1.017 0.497 0.951 0.5 0.87C0.503 0.776 0.536 0.694 0.622 0.608C0.7 0.531 0.776 0.5 0.877 0.5Z" fill="currentColor" stroke="currentColor"/>
+                    </svg>
+                  </a>
+                {%- endif -%}
               {%- endif -%}
             </div>
           {%- endif -%}
         </div>
 
-        {%- if section.settings.image_position != 'left' -%}
+        {%- if section.settings.show_image and section.settings.image_position != 'left' -%}
           <div class="coverage-card-image">
             {%- if section.settings.image != blank -%}
               {{ section.settings.image | image_url: width: 1200 | image_tag: alt: section.settings.card_heading, loading: 'lazy', class: 'coverage-card-img' }}
@@ -124,6 +150,24 @@
     { "type": "header", "content": "Secondary CTA (link arrow)" },
     { "type": "text", "id": "secondary_cta_text", "label": "Link text", "default": "Verify" },
     { "type": "url", "id": "secondary_cta_link", "label": "Link URL" },
+
+    { "type": "header", "content": "Show / hide elements" },
+    { "type": "checkbox", "id": "show_eyebrow", "label": "Show section eyebrow", "default": true },
+    { "type": "checkbox", "id": "show_heading", "label": "Show section heading", "default": true },
+    { "type": "checkbox", "id": "show_description", "label": "Show section description", "default": true },
+    { "type": "checkbox", "id": "show_image", "label": "Show card image", "default": true },
+    { "type": "checkbox", "id": "show_card_eyebrow", "label": "Show card eyebrow", "default": true },
+    { "type": "checkbox", "id": "show_card_heading", "label": "Show card heading", "default": true },
+    { "type": "checkbox", "id": "show_card_description", "label": "Show card description", "default": true },
+    { "type": "checkbox", "id": "show_primary_cta", "label": "Show primary button", "default": true },
+    { "type": "checkbox", "id": "show_secondary_cta", "label": "Show secondary link", "default": true },
+
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
 
     { "type": "header", "content": "Section colors" },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },

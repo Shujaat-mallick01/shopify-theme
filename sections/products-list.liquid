@@ -5,6 +5,14 @@
   All colors are editor-controlled with sane fallbacks.
 {% endcomment %}
 
+{%- liquid
+  assign pad_top = section.settings.padding_top | default: 112
+  assign pad_bottom = section.settings.padding_bottom | default: 112
+  assign pad_x = section.settings.padding_x | default: 64
+  assign margin_top = section.settings.margin_top | default: 0
+  assign margin_bottom = section.settings.margin_bottom | default: 0
+-%}
+
 <section class="shop-section" style="
   --shop-bg: {{ section.settings.background_color | default: '#ffffff' }};
   --shop-eyebrow-color: {{ section.settings.eyebrow_color | default: '#000000' }};
@@ -16,18 +24,26 @@
   --shop-btn-bg: {{ section.settings.btn_bg | default: '#ffffff' }};
   --shop-btn-text: {{ section.settings.btn_text | default: '#000000' }};
   --shop-btn-border: {{ section.settings.btn_border | default: '#000000' }};
+  padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px;
+  margin: {{ margin_top }}px 0 {{ margin_bottom }}px;
 ">
   <div class="shop-container">
 
     <div class="shop-title">
-      {%- if section.settings.eyebrow != blank -%}
-        <p class="shop-eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+      {%- if section.settings.show_eyebrow -%}
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="shop-eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
       {%- endif -%}
-      {%- if section.settings.heading != blank -%}
-        <h2 class="shop-heading" data-reveal data-reveal-delay="80">{{ section.settings.heading }}</h2>
+      {%- if section.settings.show_heading -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="shop-heading" data-reveal data-reveal-delay="80">{{ section.settings.heading }}</h2>
+        {%- endif -%}
       {%- endif -%}
-      {%- if section.settings.description != blank -%}
-        <div class="shop-desc" data-reveal data-reveal-delay="160">{{ section.settings.description }}</div>
+      {%- if section.settings.show_description -%}
+        {%- if section.settings.description != blank -%}
+          <div class="shop-desc" data-reveal data-reveal-delay="160">{{ section.settings.description }}</div>
+        {%- endif -%}
       {%- endif -%}
     </div>
 
@@ -73,12 +89,14 @@
 
   </div>
 
-  {%- if section.settings.button_text != blank -%}
-    <div class="shop-actions" data-reveal data-reveal-delay="120">
-      <a href="{{ section.settings.button_link | default: '#' }}" class="shop-btn">
-        {{ section.settings.button_text }}
-      </a>
-    </div>
+  {%- if section.settings.show_button -%}
+    {%- if section.settings.button_text != blank -%}
+      <div class="shop-actions" data-reveal data-reveal-delay="120">
+        <a href="{{ section.settings.button_link | default: '#' }}" class="shop-btn">
+          {{ section.settings.button_text }}
+        </a>
+      </div>
+    {%- endif -%}
   {%- endif -%}
 </section>
 
@@ -95,6 +113,19 @@
     { "type": "header", "content": "View all button" },
     { "type": "text", "id": "button_text", "label": "Button text", "default": "View all" },
     { "type": "url", "id": "button_link", "label": "Button link" },
+
+    { "type": "header", "content": "Show / hide elements" },
+    { "type": "checkbox", "id": "show_eyebrow", "label": "Show eyebrow", "default": true },
+    { "type": "checkbox", "id": "show_heading", "label": "Show heading", "default": true },
+    { "type": "checkbox", "id": "show_description", "label": "Show description", "default": true },
+    { "type": "checkbox", "id": "show_button", "label": "Show \"View all\" button", "default": true },
+
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
 
     { "type": "header", "content": "Section colors" },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },

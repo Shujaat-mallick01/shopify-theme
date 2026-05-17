@@ -1,0 +1,177 @@
+{% comment %}
+  Section: Triple Tiered Cards
+  File: sections/triple-tiered-cards.liquid
+  Figma: "Layout / 369"
+  First card is wide with side image; subsequent cards stack content + bottom image.
+  All colors and spacing editor-controlled with sane fallbacks.
+{% endcomment %}
+
+{%- liquid
+  assign section_pad_top = section.settings.section_padding_top | default: 112
+  assign section_pad_bottom = section.settings.section_padding_bottom | default: 112
+  assign section_pad_x = section.settings.section_padding_x | default: 64
+  assign margin_top = section.settings.margin_top | default: 0
+  assign margin_bottom = section.settings.margin_bottom | default: 0
+  assign title_gap = section.settings.title_gap | default: 80
+  assign card_gap = section.settings.card_gap | default: 32
+  assign featured_width = section.settings.featured_width | default: 640
+  assign compact_image_height = section.settings.compact_image_height | default: 171
+-%}
+
+<section class="ttc-section" style="
+  --ttc-bg: {{ section.settings.background_color | default: '#ffffff' }};
+  --ttc-eyebrow-color: {{ section.settings.eyebrow_color | default: '#000000' }};
+  --ttc-heading-color: {{ section.settings.heading_color | default: '#000000' }};
+  --ttc-text-color: {{ section.settings.text_color | default: '#000000' }};
+  --ttc-card-bg: {{ section.settings.card_bg | default: '#ffffff' }};
+  --ttc-card-border: {{ section.settings.card_border | default: '#000000' }};
+  --ttc-card-eyebrow: {{ section.settings.card_eyebrow_color | default: '#000000' }};
+  --ttc-card-heading: {{ section.settings.card_heading_color | default: '#000000' }};
+  --ttc-card-text: {{ section.settings.card_text_color | default: '#000000' }};
+  --ttc-card-link: {{ section.settings.card_link_color | default: '#000000' }};
+  --ttc-pad-top: {{ section_pad_top }}px;
+  --ttc-pad-bottom: {{ section_pad_bottom }}px;
+  --ttc-pad-x: {{ section_pad_x }}px;
+  --ttc-title-gap: {{ title_gap }}px;
+  --ttc-card-gap: {{ card_gap }}px;
+  --ttc-featured-width: {{ featured_width }}px;
+  --ttc-compact-image-height: {{ compact_image_height }}px;
+  margin: {{ margin_top }}px 0 {{ margin_bottom }}px;
+">
+  <div class="ttc-container">
+
+    <div class="ttc-title">
+      {%- if section.settings.show_eyebrow -%}
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="ttc-eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+      {%- endif -%}
+      {%- if section.settings.show_heading -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="ttc-heading" data-reveal data-reveal-delay="80">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+      {%- endif -%}
+      {%- if section.settings.show_description -%}
+        {%- if section.settings.description != blank -%}
+          <div class="ttc-desc" data-reveal data-reveal-delay="160">{{ section.settings.description }}</div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+
+    <div class="ttc-row">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'step' -%}
+          {%- assign c_delay = forloop.index0 | times: 120 -%}
+          {%- assign card_class = 'ttc-card ttc-card--compact' -%}
+          {%- if forloop.first -%}
+            {%- assign card_class = 'ttc-card ttc-card--featured' -%}
+          {%- endif -%}
+
+          <article class="{{ card_class }}" data-reveal data-reveal-delay="{{ c_delay }}" {{ block.shopify_attributes }}>
+            <div class="ttc-card-content">
+              <div class="ttc-card-top">
+                {%- if block.settings.eyebrow != blank -%}
+                  <p class="ttc-card-eyebrow">{{ block.settings.eyebrow }}</p>
+                {%- endif -%}
+                {%- if block.settings.heading != blank -%}
+                  <h3 class="ttc-card-heading">{{ block.settings.heading }}</h3>
+                {%- endif -%}
+                {%- if block.settings.description != blank -%}
+                  <p class="ttc-card-desc">{{ block.settings.description }}</p>
+                {%- endif -%}
+              </div>
+
+              {%- if block.settings.link_text != blank -%}
+                <a href="{{ block.settings.link | default: '#' }}" class="ttc-card-link">
+                  <span>{{ block.settings.link_text }}</span>
+                  <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M0.877 0.5C0.978 0.5 1.055 0.53 1.133 0.608L6.077 5.553C6.131 5.607 6.156 5.649 6.168 5.677V5.678C6.183 5.713 6.191 5.753 6.191 5.802C6.191 5.85 6.183 5.89 6.168 5.926V5.927C6.156 5.955 6.131 5.997 6.077 6.051L1.108 11.02C1.031 11.097 0.963 11.119 0.883 11.116C0.789 11.113 0.708 11.081 0.622 10.995C0.544 10.917 0.513 10.84 0.513 10.739C0.513 10.638 0.544 10.561 0.622 10.483L5.304 5.802L0.597 1.095C0.519 1.017 0.497 0.951 0.5 0.87C0.503 0.776 0.536 0.694 0.622 0.608C0.7 0.531 0.776 0.5 0.877 0.5Z" fill="currentColor" stroke="currentColor"/>
+                  </svg>
+                </a>
+              {%- endif -%}
+            </div>
+
+            <div class="ttc-card-image">
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 1200 | image_tag: alt: block.settings.heading, loading: 'lazy' }}
+              {%- endif -%}
+            </div>
+          </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Triple Tiered Cards",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Section title" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Process" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Three steps to better care</p>" },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Submit your prescription through our provider portal</p>" },
+
+    { "type": "header", "content": "Show / hide elements" },
+    { "type": "checkbox", "id": "show_eyebrow", "label": "Show eyebrow", "default": true },
+    { "type": "checkbox", "id": "show_heading", "label": "Show heading", "default": true },
+    { "type": "checkbox", "id": "show_description", "label": "Show description", "default": true },
+
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "section_padding_top", "label": "Padding top", "min": 0, "max": 200, "step": 8, "unit": "px", "default": 112 },
+    { "type": "range", "id": "section_padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 8, "unit": "px", "default": 112 },
+    { "type": "range", "id": "section_padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "title_gap", "label": "Gap between title and cards", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 80 },
+    { "type": "range", "id": "card_gap", "label": "Gap between cards", "min": 0, "max": 64, "step": 4, "unit": "px", "default": 32 },
+
+    { "type": "header", "content": "Featured card (first card)" },
+    { "type": "range", "id": "featured_width", "label": "Featured card width", "min": 320, "max": 800, "step": 8, "unit": "px", "default": 640 },
+
+    { "type": "header", "content": "Compact cards (cards 2 + 3)" },
+    { "type": "range", "id": "compact_image_height", "label": "Image height", "min": 80, "max": 360, "step": 4, "unit": "px", "default": 171 },
+
+    { "type": "header", "content": "Section colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow", "default": "#000000" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#000000" },
+    { "type": "color", "id": "text_color", "label": "Description", "default": "#000000" },
+
+    { "type": "header", "content": "Card colors" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#ffffff" },
+    { "type": "color", "id": "card_border", "label": "Card border", "default": "#000000" },
+    { "type": "color", "id": "card_eyebrow_color", "label": "Eyebrow", "default": "#000000" },
+    { "type": "color", "id": "card_heading_color", "label": "Heading", "default": "#000000" },
+    { "type": "color", "id": "card_text_color", "label": "Description", "default": "#000000" },
+    { "type": "color", "id": "card_link_color", "label": "Link / arrow", "default": "#000000" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Step" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Step heading" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        { "type": "text", "id": "link_text", "label": "Link text", "default": "Learn more" },
+        { "type": "url", "id": "link", "label": "Link URL" }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Triple Tiered Cards",
+      "blocks": [
+        { "type": "step", "settings": { "eyebrow": "Step", "heading": "Enter the prescription", "description": "Send us the patient's information and what they need", "link_text": "Learn more" } },
+        { "type": "step", "settings": { "eyebrow": "Step", "heading": "We place the order", "description": "Insurance verification and fulfillment happen on our end", "link_text": "Learn more" } },
+        { "type": "step", "settings": { "eyebrow": "Step", "heading": "Focus on your patient", "description": "Products arrive at their door while you deliver care", "link_text": "Learn more" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

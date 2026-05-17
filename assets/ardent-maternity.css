@@ -1423,6 +1423,210 @@ p {
 }
 
 /* =========================================================
+   TRIPLE TIERED CARDS  (featured horizontal + 2 compact vertical)
+========================================================= */
+.ttc-section {
+    background: var(--ttc-bg, #fff);
+    padding: var(--ttc-pad-top, 112px) var(--ttc-pad-x, 64px) var(--ttc-pad-bottom, 112px);
+    display: flex;
+    justify-content: center;
+}
+
+.ttc-container {
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--ttc-title-gap, 80px);
+}
+
+.ttc-title {
+    width: 100%;
+    max-width: 768px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+}
+
+.ttc-eyebrow {
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ttc-eyebrow-color, #000);
+    margin: 0;
+}
+
+.ttc-heading {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ttc-heading-color, #000);
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.ttc-heading p {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    line-height: inherit;
+}
+
+.ttc-desc {
+    font-family: var(--font);
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ttc-text-color, #000);
+    text-align: center;
+    width: 100%;
+}
+
+.ttc-desc p {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    line-height: inherit;
+}
+
+.ttc-row {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    gap: var(--ttc-card-gap, 32px);
+}
+
+.ttc-card {
+    position: relative;
+    background: var(--ttc-card-bg, #fff);
+    border: 1px solid var(--ttc-card-border, #000);
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ttc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Featured card — horizontal layout (content left, image right) */
+.ttc-card--featured {
+    flex: 0 0 var(--ttc-featured-width, 640px);
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.ttc-card--featured .ttc-card-content {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.ttc-card--featured .ttc-card-image {
+    flex: 1 1 0;
+    min-width: 0;
+    align-self: stretch;
+}
+
+/* Compact cards — vertical layout (content top, image bottom) */
+.ttc-card--compact {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.ttc-card--compact .ttc-card-image {
+    height: var(--ttc-compact-image-height, 171px);
+    flex: 0 0 auto;
+}
+
+.ttc-card-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+}
+
+.ttc-card-top {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ttc-card-eyebrow {
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ttc-card-eyebrow, #000);
+    margin: 0;
+}
+
+.ttc-card-heading {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--ttc-card-heading, #000);
+    margin: 0;
+}
+
+.ttc-card-desc {
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ttc-card-text, #000);
+    margin: 0;
+}
+
+.ttc-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ttc-card-link, #000);
+    transition: gap 0.2s ease, opacity 0.2s ease;
+    align-self: flex-start;
+}
+
+.ttc-card-link:hover {
+    gap: 12px;
+    opacity: 0.75;
+}
+
+.ttc-card-link svg {
+    flex-shrink: 0;
+}
+
+.ttc-card-image {
+    position: relative;
+    overflow: hidden;
+    background: #f3f3f3;
+}
+
+.ttc-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.ttc-card:hover .ttc-card-image img {
+    transform: scale(1.06);
+}
+
+/* =========================================================
    SHOP PRODUCTS  (4-up product grid + title + "View all" button)
 ========================================================= */
 .shop-section {
@@ -2840,6 +3044,23 @@ p {
     .shop-container { gap: 56px; }
     .shop-heading { font-size: 40px; }
     .shop-grid { grid-template-columns: repeat(3, 1fr); column-gap: 24px; row-gap: 48px; }
+
+    /* Triple tiered cards → all stack to single column, all become vertical */
+    .ttc-section { padding: 80px 32px; }
+    .ttc-container { gap: 56px; }
+    .ttc-heading { font-size: 40px; }
+    .ttc-row { flex-direction: column; gap: 24px; }
+    .ttc-card--featured,
+    .ttc-card--compact {
+        flex: 0 0 auto;
+        width: 100%;
+        flex-direction: column;
+    }
+    .ttc-card--featured .ttc-card-image,
+    .ttc-card--compact .ttc-card-image {
+        height: 280px;
+        flex: 0 0 auto;
+    }
 }
 
 @media (max-width: 768px) {
@@ -2944,6 +3165,15 @@ p {
     .shop-desc { font-size: 16px; }
     .shop-grid { grid-template-columns: repeat(2, 1fr); column-gap: 16px; row-gap: 32px; }
     .shop-product-status { font-size: 18px; }
+
+    /* Triple tiered cards */
+    .ttc-section { padding: 60px 20px; }
+    .ttc-container { gap: 40px; }
+    .ttc-heading { font-size: 28px; }
+    .ttc-desc { font-size: 16px; }
+    .ttc-card-image { height: 220px !important; }
+    .ttc-card-content { padding: 20px; gap: 20px; }
+    .ttc-card-heading { font-size: 22px; }
 }
 
 @media (max-width: 480px) {
@@ -3032,6 +3262,13 @@ p {
     .shop-product-name { font-size: 16px; }
     .shop-product-status { font-size: 16px; }
     .shop-btn { width: 100%; max-width: 320px; }
+
+    /* Triple tiered cards */
+    .ttc-section { padding: 48px 16px; }
+    .ttc-heading { font-size: 24px; }
+    .ttc-card-image { height: 180px !important; }
+    .ttc-card-content { padding: 18px; }
+    .ttc-card-heading { font-size: 20px; }
 }
 
 /* =========================================================

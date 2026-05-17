@@ -3,18 +3,32 @@
   File: sections/steps.liquid
 {% endcomment %}
 
-<section class="steps-section">
+{%- liquid
+  assign pad_top = section.settings.padding_top | default: 100
+  assign pad_bottom = section.settings.padding_bottom | default: 100
+  assign pad_x = section.settings.padding_x | default: 0
+  assign margin_top = section.settings.margin_top | default: 0
+  assign margin_bottom = section.settings.margin_bottom | default: 0
+-%}
+
+<section class="steps-section" style="padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px; margin: {{ margin_top }}px 0 {{ margin_bottom }}px;">
   <div class="container">
-    {%- if section.settings.eyebrow != blank -%}
-      <p class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+    {%- if section.settings.show_eyebrow -%}
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
     {%- endif -%}
 
-    {%- if section.settings.heading != blank -%}
-      <h2 class="section-title" data-reveal data-reveal-delay="80">{{ section.settings.heading }}</h2>
+    {%- if section.settings.show_heading -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="section-title" data-reveal data-reveal-delay="80">{{ section.settings.heading }}</h2>
+      {%- endif -%}
     {%- endif -%}
 
-    {%- if section.settings.subheading != blank -%}
-      <p class="section-sub" data-reveal data-reveal-delay="160">{{ section.settings.subheading }}</p>
+    {%- if section.settings.show_subheading -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="section-sub" data-reveal data-reveal-delay="160">{{ section.settings.subheading }}</p>
+      {%- endif -%}
     {%- endif -%}
 
     <div class="steps-grid">
@@ -56,7 +70,19 @@
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "3 SIMPLE STEPS TO" },
     { "type": "textarea", "id": "heading", "label": "Heading", "default": "Get the Maternity Products You Need Through Every Stage of Motherhood Covered Through Insurance" },
-    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "From breast pumps, to milk bags and belly bands, we've got you covered." }
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "From breast pumps, to milk bags and belly bands, we've got you covered." },
+
+    { "type": "header", "content": "Show / hide elements" },
+    { "type": "checkbox", "id": "show_eyebrow", "label": "Show eyebrow", "default": true },
+    { "type": "checkbox", "id": "show_heading", "label": "Show heading", "default": true },
+    { "type": "checkbox", "id": "show_subheading", "label": "Show subheading", "default": true },
+
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 100 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 100 },
+    { "type": "range", "id": "padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 }
   ],
   "blocks": [
     {

@@ -10,33 +10,46 @@
   if section.settings.background_image != blank
     assign bg_url = section.settings.background_image | image_url: width: 2000
   endif
+  assign pad_top = section.settings.padding_top | default: 80
+  assign pad_bottom = section.settings.padding_bottom | default: 80
+  assign pad_x = section.settings.padding_x | default: 64
+  assign margin_top = section.settings.margin_top | default: 0
+  assign margin_bottom = section.settings.margin_bottom | default: 0
 -%}
 
-<section class="inner-banner">
+<section class="inner-banner" style="padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px; margin: {{ margin_top }}px 0 {{ margin_bottom }}px;">
   <div class="inner-banner-container">
     <div class="inner-banner-card" {% if bg_url != blank %}style="background-image: url('{{ bg_url }}');"{% endif %}>
       <div class="inner-banner-overlay" aria-hidden="true"></div>
       <div class="inner-banner-inner">
         <div class="inner-banner-content">
-          {%- if section.settings.heading != blank -%}
-            <h1 class="inner-banner-heading" data-reveal data-reveal-delay="100">{{ section.settings.heading }}</h1>
+          {%- if section.settings.show_heading -%}
+            {%- if section.settings.heading != blank -%}
+              <h1 class="inner-banner-heading" data-reveal data-reveal-delay="100">{{ section.settings.heading }}</h1>
+            {%- endif -%}
           {%- endif -%}
 
-          {%- if section.settings.description != blank -%}
-            <div class="inner-banner-text" data-reveal data-reveal-delay="200">{{ section.settings.description }}</div>
+          {%- if section.settings.show_description -%}
+            {%- if section.settings.description != blank -%}
+              <div class="inner-banner-text" data-reveal data-reveal-delay="200">{{ section.settings.description }}</div>
+            {%- endif -%}
           {%- endif -%}
 
-          {%- if section.settings.primary_cta_text != blank or section.settings.secondary_cta_text != blank -%}
+          {%- if section.settings.show_primary_cta or section.settings.show_secondary_cta -%}
             <div class="inner-banner-actions" data-reveal data-reveal-delay="300">
-              {%- if section.settings.primary_cta_text != blank -%}
-                <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="inner-banner-btn inner-banner-btn--primary">
-                  {{ section.settings.primary_cta_text }}
-                </a>
+              {%- if section.settings.show_primary_cta -%}
+                {%- if section.settings.primary_cta_text != blank -%}
+                  <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="inner-banner-btn inner-banner-btn--primary">
+                    {{ section.settings.primary_cta_text }}
+                  </a>
+                {%- endif -%}
               {%- endif -%}
-              {%- if section.settings.secondary_cta_text != blank -%}
-                <a href="{{ section.settings.secondary_cta_link | default: '#' }}" class="inner-banner-btn inner-banner-btn--secondary">
-                  {{ section.settings.secondary_cta_text }}
-                </a>
+              {%- if section.settings.show_secondary_cta -%}
+                {%- if section.settings.secondary_cta_text != blank -%}
+                  <a href="{{ section.settings.secondary_cta_link | default: '#' }}" class="inner-banner-btn inner-banner-btn--secondary">
+                    {{ section.settings.secondary_cta_text }}
+                  </a>
+                {%- endif -%}
               {%- endif -%}
             </div>
           {%- endif -%}
@@ -54,6 +67,19 @@
     { "type": "image_picker", "id": "background_image", "label": "Background image" },
     { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Your baby deserves the best. Your insurance should cover it.</p>" },
     { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Not sure what your plan covers? We'll figure it out for you, then ship the maternity products you need, direct to your door.</p>" },
+
+    { "type": "header", "content": "Show / hide elements" },
+    { "type": "checkbox", "id": "show_heading", "label": "Show heading", "default": true },
+    { "type": "checkbox", "id": "show_description", "label": "Show description", "default": true },
+    { "type": "checkbox", "id": "show_primary_cta", "label": "Show primary button", "default": true },
+    { "type": "checkbox", "id": "show_secondary_cta", "label": "Show secondary button", "default": true },
+
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
 
     { "type": "header", "content": "Primary CTA" },
     { "type": "text", "id": "primary_cta_text", "label": "Primary button text", "default": "Check" },
