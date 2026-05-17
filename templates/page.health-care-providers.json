@@ -91,11 +91,83 @@
         "primary_btn_border": "#000000",
         "secondary_link_color": "#000000"
       }
+    },
+    "triple_tiered_cards_NULVqT": {
+      "type": "triple-tiered-cards",
+      "blocks": {
+        "step_qzRpw8": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/img-8.jpg",
+            "eyebrow": "Step",
+            "heading": "Enter the prescription",
+            "description": "Send us the patient's information and what they need",
+            "link_text": "Learn more",
+            "link": ""
+          }
+        },
+        "step_kgYrLT": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/img-5.jpg",
+            "eyebrow": "Step",
+            "heading": "We place the order",
+            "description": "Insurance verification and fulfillment happen on our end",
+            "link_text": "Learn more",
+            "link": ""
+          }
+        },
+        "step_bANXiB": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/img-3.png",
+            "eyebrow": "Step",
+            "heading": "Focus on your patient",
+            "description": "Products arrive at their door while you deliver care",
+            "link_text": "Learn more",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "step_qzRpw8",
+        "step_kgYrLT",
+        "step_bANXiB"
+      ],
+      "name": "Triple Tiered Cards",
+      "settings": {
+        "eyebrow": "Process",
+        "heading": "<p>Three steps to better care</p>",
+        "description": "<p>Submit your prescription through our provider portal</p>",
+        "show_eyebrow": true,
+        "show_heading": true,
+        "show_description": true,
+        "section_padding_top": 112,
+        "section_padding_bottom": 112,
+        "section_padding_x": 64,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "title_gap": 80,
+        "card_gap": 32,
+        "featured_width": 640,
+        "compact_image_height": 172,
+        "background_color": "#ffffff",
+        "eyebrow_color": "#000000",
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "card_bg": "#ffffff",
+        "card_border": "#000000",
+        "card_eyebrow_color": "#000000",
+        "card_heading_color": "#000000",
+        "card_text_color": "#000000",
+        "card_link_color": "#000000"
+      }
     }
   },
   "order": [
     "main",
     "cta_strip_kkqXnc",
-    "coverage_card_WWAH6J"
+    "coverage_card_WWAH6J",
+    "triple_tiered_cards_NULVqT"
   ]
 }
