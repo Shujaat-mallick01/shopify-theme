@@ -1423,6 +1423,134 @@ p {
 }
 
 /* =========================================================
+   STATS GRID  (asymmetric — tall stat + (image+stat) + (stat+image))
+========================================================= */
+.sg-section {
+    background: var(--sg-bg, #fff);
+    display: flex;
+    justify-content: center;
+}
+
+.sg-container {
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.sg-content {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+.sg-content-col {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.sg-content-heading h2 {
+    font-family: var(--font-heading);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--sg-heading-color, #000);
+}
+
+.sg-content-heading h2 p {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    line-height: inherit;
+}
+
+.sg-content-desc {
+    font-family: var(--font);
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--sg-text-color, #000);
+}
+
+.sg-content-desc p {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    line-height: inherit;
+}
+
+.sg-stats {
+    display: flex;
+    gap: 32px;
+    align-items: stretch;
+    width: 100%;
+}
+
+.sg-stats > * {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.sg-stats-col {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.sg-stat {
+    background: var(--sg-stat-bg, #fff);
+    border: 1px solid var(--sg-stat-border, #000);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+}
+
+.sg-stat-tall {
+    align-self: stretch;
+}
+
+.sg-stats-image {
+    height: var(--sg-image-height, 280px);
+    overflow: hidden;
+    background: #f3f3f3;
+}
+
+.sg-stats-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.sg-stats-image:hover img {
+    transform: scale(1.04);
+}
+
+.sg-stat-value {
+    font-family: var(--font);
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 1.2;
+    color: var(--sg-stat-value-color, #000);
+    margin: 0;
+}
+
+.sg-stat-label {
+    font-family: var(--font);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--sg-stat-label-color, #000);
+    margin: 0;
+}
+
+/* =========================================================
    TRIPLE TIERED CARDS  (featured horizontal + 2 compact vertical)
 ========================================================= */
 .ttc-section {
@@ -3050,6 +3178,13 @@ p {
     .shop-heading { font-size: 40px; }
     .shop-grid { grid-template-columns: repeat(3, 1fr); column-gap: 24px; row-gap: 48px; }
 
+    /* Stats grid */
+    .sg-container { gap: 56px; }
+    .sg-content { gap: 40px; }
+    .sg-content-heading h2 { font-size: 32px; }
+    .sg-content-desc { font-size: 16px; }
+    .sg-stat-value { font-size: 64px; }
+
     /* Triple tiered cards → all stack to single column, all become vertical */
     .ttc-section { padding: 80px 32px; }
     .ttc-container { gap: 56px; }
@@ -3179,6 +3314,18 @@ p {
     .ttc-card-image { height: 220px !important; }
     .ttc-card-content { padding: 20px; gap: 20px; }
     .ttc-card-heading { font-size: 22px; }
+
+    /* Stats grid → stack content + stack stats to single column */
+    .sg-container { gap: 40px; }
+    .sg-content { flex-direction: column; gap: 16px; }
+    .sg-content-heading h2 { font-size: 28px; }
+    .sg-stats { flex-direction: column; gap: 16px; }
+    .sg-stats > * { width: 100%; }
+    .sg-stats-col { gap: 16px; }
+    .sg-stats-image { height: 240px; }
+    .sg-stat-value { font-size: 56px; }
+    .sg-stat-label { font-size: 18px; }
+    .sg-stat { padding: 24px; }
 }
 
 @media (max-width: 480px) {
@@ -3274,6 +3421,13 @@ p {
     .ttc-card-image { height: 180px !important; }
     .ttc-card-content { padding: 18px; }
     .ttc-card-heading { font-size: 20px; }
+
+    /* Stats grid */
+    .sg-content-heading h2 { font-size: 24px; }
+    .sg-stats-image { height: 200px; }
+    .sg-stat-value { font-size: 44px; }
+    .sg-stat-label { font-size: 16px; }
+    .sg-stat { padding: 20px; }
 }
 
 /* =========================================================

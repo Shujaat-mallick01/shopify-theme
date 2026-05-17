@@ -1,0 +1,159 @@
+{% comment %}
+  Section: Stats Grid (asymmetric 3-column — tall stat + (image+stat) + (stat+image))
+  File: sections/stats-grid.liquid
+  Figma: "Stats / 54"
+  All colors, spacing, and visibility editor-controlled.
+{% endcomment %}
+
+{%- liquid
+  assign pad_top = section.settings.padding_top | default: 112
+  assign pad_bottom = section.settings.padding_bottom | default: 112
+  assign pad_x = section.settings.padding_x | default: 64
+  assign margin_top = section.settings.margin_top | default: 0
+  assign margin_bottom = section.settings.margin_bottom | default: 0
+  assign image_height = section.settings.image_height | default: 280
+-%}
+
+<section class="sg-section" style="
+  --sg-bg: {{ section.settings.background_color | default: '#ffffff' }};
+  --sg-heading-color: {{ section.settings.heading_color | default: '#000000' }};
+  --sg-text-color: {{ section.settings.text_color | default: '#000000' }};
+  --sg-stat-bg: {{ section.settings.stat_bg | default: '#ffffff' }};
+  --sg-stat-border: {{ section.settings.stat_border | default: '#000000' }};
+  --sg-stat-value-color: {{ section.settings.stat_value_color | default: '#000000' }};
+  --sg-stat-label-color: {{ section.settings.stat_label_color | default: '#000000' }};
+  --sg-image-height: {{ image_height }}px;
+  padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px;
+  margin: {{ margin_top }}px 0 {{ margin_bottom }}px;
+">
+  <div class="sg-container">
+
+    {%- if section.settings.show_heading or section.settings.show_description -%}
+      <div class="sg-content">
+        {%- if section.settings.show_heading -%}
+          {%- if section.settings.heading != blank -%}
+            <div class="sg-content-col sg-content-heading" data-reveal>
+              <h2>{{ section.settings.heading }}</h2>
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+        {%- if section.settings.show_description -%}
+          {%- if section.settings.description != blank -%}
+            <div class="sg-content-col sg-content-desc" data-reveal data-reveal-delay="120">
+              {{ section.settings.description }}
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="sg-stats">
+
+      {%- comment -%} Column 1: tall stat {%- endcomment -%}
+      <div class="sg-stat sg-stat-tall" data-reveal>
+        {%- if section.settings.stat1_value != blank -%}
+          <p class="sg-stat-value">{{ section.settings.stat1_value }}</p>
+        {%- endif -%}
+        {%- if section.settings.stat1_label != blank -%}
+          <p class="sg-stat-label">{{ section.settings.stat1_label }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Column 2: image on top, stat below {%- endcomment -%}
+      <div class="sg-stats-col" data-reveal data-reveal-delay="120">
+        {%- if section.settings.show_image_1 -%}
+          <div class="sg-stats-image">
+            {%- if section.settings.image_1 != blank -%}
+              {{ section.settings.image_1 | image_url: width: 1000 | image_tag: alt: section.settings.stat2_label, loading: 'lazy' }}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+        <div class="sg-stat">
+          {%- if section.settings.stat2_value != blank -%}
+            <p class="sg-stat-value">{{ section.settings.stat2_value }}</p>
+          {%- endif -%}
+          {%- if section.settings.stat2_label != blank -%}
+            <p class="sg-stat-label">{{ section.settings.stat2_label }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- comment -%} Column 3: stat on top, image below {%- endcomment -%}
+      <div class="sg-stats-col" data-reveal data-reveal-delay="240">
+        <div class="sg-stat">
+          {%- if section.settings.stat3_value != blank -%}
+            <p class="sg-stat-value">{{ section.settings.stat3_value }}</p>
+          {%- endif -%}
+          {%- if section.settings.stat3_label != blank -%}
+            <p class="sg-stat-label">{{ section.settings.stat3_label }}</p>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.show_image_2 -%}
+          <div class="sg-stats-image">
+            {%- if section.settings.image_2 != blank -%}
+              {{ section.settings.image_2 | image_url: width: 1000 | image_tag: alt: section.settings.stat3_label, loading: 'lazy' }}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Stats Grid",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Top content" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Proven expertise in healthcare delivery</p>" },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>We've worked with New York providers for over two decades. Our Brooklyn team knows what works. We speak your language—literally and figuratively.</p>" },
+
+    { "type": "header", "content": "Stat 1 (tall card, left)" },
+    { "type": "text", "id": "stat1_value", "label": "Value", "default": "20+" },
+    { "type": "text", "id": "stat1_label", "label": "Label", "default": "Years serving providers" },
+
+    { "type": "header", "content": "Stat 2 (middle, under image)" },
+    { "type": "text", "id": "stat2_value", "label": "Value", "default": "3" },
+    { "type": "text", "id": "stat2_label", "label": "Label", "default": "Languages spoken" },
+
+    { "type": "header", "content": "Stat 3 (right, above image)" },
+    { "type": "text", "id": "stat3_value", "label": "Value", "default": "1" },
+    { "type": "text", "id": "stat3_label", "label": "Label", "default": "Brooklyn location" },
+
+    { "type": "header", "content": "Images" },
+    { "type": "image_picker", "id": "image_1", "label": "Image 1 (middle column, top)" },
+    { "type": "image_picker", "id": "image_2", "label": "Image 2 (right column, bottom)" },
+    { "type": "range", "id": "image_height", "label": "Image height", "min": 160, "max": 400, "step": 4, "unit": "px", "default": 280 },
+
+    { "type": "header", "content": "Show / hide elements" },
+    { "type": "checkbox", "id": "show_heading", "label": "Show heading", "default": true },
+    { "type": "checkbox", "id": "show_description", "label": "Show description", "default": true },
+    { "type": "checkbox", "id": "show_image_1", "label": "Show image 1", "default": true },
+    { "type": "checkbox", "id": "show_image_2", "label": "Show image 2", "default": true },
+
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+
+    { "type": "header", "content": "Section colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#000000" },
+    { "type": "color", "id": "text_color", "label": "Description", "default": "#000000" },
+
+    { "type": "header", "content": "Stat card colors" },
+    { "type": "color", "id": "stat_bg", "label": "Card background", "default": "#ffffff" },
+    { "type": "color", "id": "stat_border", "label": "Card border", "default": "#000000" },
+    { "type": "color", "id": "stat_value_color", "label": "Value (big number)", "default": "#000000" },
+    { "type": "color", "id": "stat_label_color", "label": "Label", "default": "#000000" }
+  ],
+  "presets": [
+    { "name": "Stats Grid" }
+  ]
+}
+{% endschema %}
