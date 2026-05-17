@@ -23,6 +23,15 @@
         "background_image": "shopify://shop_images/img-9.jpg",
         "heading": "<p>Your baby deserves the best. Your insurance should cover it.</p>",
         "description": "<p>Not sure what your plan covers? We'll figure it out for you, <br/>then ship the maternity products you need, direct to your door.</p>",
+        "show_heading": true,
+        "show_description": true,
+        "show_primary_cta": true,
+        "show_secondary_cta": true,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_x": 16,
+        "margin_top": 0,
+        "margin_bottom": 0,
         "primary_cta_text": "Check",
         "primary_cta_link": "#",
         "secondary_cta_text": "Shop",
@@ -65,7 +74,6 @@
         "step_fpaTmF": {
           "type": "step",
           "settings": {
-            "background_image": "shopify://shop_images/original_c530abfc-a507-4c45-8595-528e59ab6eff.jpg",
             "heading": "We deliver direct to your door",
             "description": "Your maternity products arrive when you need them.",
             "link_text": "Done",
@@ -83,7 +91,15 @@
       "settings": {
         "eyebrow": "Simple",
         "heading": "Four steps to coverage",
-        "description": "We handle the paperwork so you don't have to."
+        "description": "We handle the paperwork so you don't have to.",
+        "show_eyebrow": true,
+        "show_heading": true,
+        "show_description": true,
+        "padding_top": 112,
+        "padding_bottom": 112,
+        "padding_x": 64,
+        "margin_top": 0,
+        "margin_bottom": 0
       }
     },
     "insurance_form_qz8iCp": {
@@ -94,7 +110,15 @@
         "description": "<p>Enter your details and one of our team will check what your plan covers. You'll receive a personalized email within 24 hours detailing <strong>all the products you're covered for</strong>.</p>",
         "button_text": "Verify coverage",
         "success_message": "Thanks — we'll be in touch within 24 hours.",
-        "footnote": "<p>Your information is secure and used only for insurance verification purposes.</p>"
+        "footnote": "<p>Your information is secure and used only for insurance verification purposes.</p>",
+        "show_heading": true,
+        "show_description": true,
+        "show_footnote": true,
+        "padding_top": 112,
+        "padding_bottom": 112,
+        "padding_x": 64,
+        "margin_top": 0,
+        "margin_bottom": 0
       }
     },
     "testimonials_MbTtrM": {
@@ -143,7 +167,14 @@
       "settings": {
         "background_color": "#ffffff",
         "heading": "<h2><strong>Trusted by doctors and <br/>lactation consultants, and <br/>moms </strong></h2>",
-        "subheading": "What they're saying"
+        "subheading": "What they're saying",
+        "show_heading": true,
+        "show_subheading": true,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_x": 0,
+        "margin_top": 0,
+        "margin_bottom": 0
       }
     },
     "faq_LjwKJq": {
@@ -200,7 +231,14 @@
       "name": "FAQ",
       "settings": {
         "heading": "Questions",
-        "subheading": "Find answers about your coverage and what happens next."
+        "subheading": "Find answers about your coverage and what happens next.",
+        "show_heading": true,
+        "show_subheading": true,
+        "padding_top": 112,
+        "padding_bottom": 112,
+        "padding_x": 64,
+        "margin_top": 0,
+        "margin_bottom": 0
       }
     },
     "cta_strip_NNrEfd": {
@@ -209,14 +247,24 @@
       "settings": {
         "heading": "<p>Our Maternity Experts are here to <br/>simplify the insurance process</p>",
         "description": "<p>You’re a couple clicks away from knowing everything your insurances covers</p>",
+        "show_heading": true,
+        "show_description": true,
+        "padding_top": 112,
+        "padding_bottom": 112,
+        "padding_x": 64,
+        "margin_top": 0,
+        "margin_bottom": 0,
         "background_color": "#ffffff",
+        "overlay_opacity": 40,
         "heading_color": "#000000",
         "text_color": "#000000",
+        "show_primary_cta": true,
         "primary_cta_text": "Check Coverage",
         "primary_cta_link": "",
         "primary_btn_bg": "#000000",
         "primary_btn_text": "#ffffff",
         "primary_btn_border": "#000000",
+        "show_secondary_cta": true,
         "secondary_cta_text": "Shop",
         "secondary_cta_link": "",
         "secondary_btn_bg": "",
