@@ -2718,7 +2718,7 @@ p {
 
 .inner-banner-container {
     width: 100%;
-    max-width: 1280px;
+    /* max-width: 1280px; */
 }
 
 .inner-banner-card {
