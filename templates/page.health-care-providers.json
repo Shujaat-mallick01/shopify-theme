@@ -16,33 +16,40 @@
         "show_title": true
       }
     },
-    "cta_strip_q8EeD8": {
-      "type": "cta-strip",
-      "name": "CTA Strip",
+    "coverage_card_WWAH6J": {
+      "type": "coverage-card",
+      "name": "Coverage Card",
       "settings": {
+        "eyebrow": "",
         "heading": "<p>Streamline patient care</p>",
         "description": "<p>Ardent manages insurance verification and delivery while you focus on your patients</p>",
+        "image": "shopify://shop_images/IMG-20251113-WA0008.jpg",
+        "image_position": "right",
+        "card_eyebrow": "Simple",
+        "card_heading": "Enter the prescription onece",
+        "card_description": "<p>You write the prescription. We verify insurance, process the order, and ship it to your patient's door. No follow-up calls. No insurance headaches.<br/><br/></p>",
+        "primary_cta_text": "Upload Prescription",
+        "primary_cta_link": "",
+        "secondary_cta_text": "Arrow",
+        "secondary_cta_link": "",
         "background_color": "#ffffff",
-        "overlay_opacity": 40,
+        "eyebrow_color": "#000000",
         "heading_color": "#000000",
         "text_color": "#000000",
-        "show_primary_cta": false,
-        "primary_cta_text": "Check Coverage",
-        "primary_cta_link": "",
-        "primary_btn_bg": "#e14e6b",
-        "primary_btn_text": "#ffffff",
+        "card_bg": "#ffffff",
+        "card_border": "#ffffff",
+        "card_eyebrow_color": "#000000",
+        "card_heading_color": "#000000",
+        "card_text_color": "#000000",
+        "primary_btn_bg": "#ffffff",
+        "primary_btn_text": "#000000",
         "primary_btn_border": "#000000",
-        "show_secondary_cta": false,
-        "secondary_cta_text": "Shop Products",
-        "secondary_cta_link": "",
-        "secondary_btn_bg": "",
-        "secondary_btn_text": "#ffffff",
-        "secondary_btn_border": "#ffffff"
+        "secondary_link_color": "#000000"
       }
     }
   },
   "order": [
     "main",
-    "cta_strip_q8EeD8"
+    "coverage_card_WWAH6J"
   ]
 }
