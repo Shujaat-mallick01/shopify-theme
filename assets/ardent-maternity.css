@@ -1543,8 +1543,13 @@ p {
 }
 
 .ttc-card--compact .ttc-card-image {
-    height: var(--ttc-compact-image-height, 171px);
+    height: var(--ttc-compact-image-height, 172px);
     flex: 0 0 auto;
+}
+
+.ttc-card--compact .ttc-card-content {
+    flex: 1 1 auto;
+    justify-content: space-between;
 }
 
 .ttc-card-content {
