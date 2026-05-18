@@ -188,12 +188,126 @@
         "card_desc_color": "#000000",
         "card_divider_color": "#000000"
       }
+    },
+    "team_gxwhB7": {
+      "type": "team",
+      "blocks": {
+        "member_F6jFpW": {
+          "type": "member",
+          "settings": {
+            "name": "Rachel Feldman",
+            "role": "Founder and CEO",
+            "bio": "Rachel founded Ardent after her own struggle with insurance coverage. She's driven by making maternity care accessible.",
+            "linkedin_url": "",
+            "twitter_url": "",
+            "third_url": ""
+          }
+        },
+        "member_BUbqNM": {
+          "type": "member",
+          "settings": {
+            "name": "Michael Torres",
+            "role": "Chief Operations Officer",
+            "bio": "With 15 years in medical supply logistics, Michael ensures every order arrives on time and in perfect condition.",
+            "linkedin_url": "",
+            "twitter_url": "",
+            "third_url": ""
+          }
+        },
+        "member_ermWMA": {
+          "type": "member",
+          "settings": {
+            "name": "Dr. Lisa Wong",
+            "role": "Medical Director",
+            "bio": "A registered nurse and lactation consultant, Lisa guides our product selection and provider relationships.",
+            "linkedin_url": "",
+            "twitter_url": "",
+            "third_url": ""
+          }
+        },
+        "member_WiGMCz": {
+          "type": "member",
+          "settings": {
+            "name": "James Patel",
+            "role": "Director of Insurance",
+            "bio": "James spent a decade in insurance verification. He knows every plan, every requirement, every loophole.",
+            "linkedin_url": "",
+            "twitter_url": "",
+            "third_url": ""
+          }
+        },
+        "member_ciwBMd": {
+          "type": "member",
+          "settings": {
+            "name": "Sofia Morales",
+            "role": "Customer Care Lead",
+            "bio": "Sofia speaks three languages and leads our team in supporting mothers through every step of the process.",
+            "linkedin_url": "",
+            "twitter_url": "",
+            "third_url": ""
+          }
+        },
+        "member_M9wzMj": {
+          "type": "member",
+          "settings": {
+            "name": "David Kim",
+            "role": "Operations Manager",
+            "bio": "David manages our Brooklyn warehouse and ensures fulfillment happens fast and accurately every single day.",
+            "linkedin_url": "",
+            "twitter_url": "",
+            "third_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "member_F6jFpW",
+        "member_BUbqNM",
+        "member_ermWMA",
+        "member_WiGMCz",
+        "member_ciwBMd",
+        "member_M9wzMj"
+      ],
+      "name": "Team",
+      "settings": {
+        "eyebrow": "Leadership",
+        "heading": "<p>Our team</p>",
+        "subheading": "Built by people who understand maternity care and insurance",
+        "avatar_size": 80,
+        "cta_heading": "Join us",
+        "cta_description": "We're growing and looking for people who care about mothers and healthcare",
+        "cta_button_text": "See positions",
+        "cta_button_link": "",
+        "show_eyebrow": true,
+        "show_heading": true,
+        "show_subheading": true,
+        "show_cta": true,
+        "padding_top": 112,
+        "padding_bottom": 112,
+        "padding_x": 64,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "background_color": "#ffffff",
+        "eyebrow_color": "#000000",
+        "heading_color": "#000000",
+        "sub_color": "#000000",
+        "avatar_bg": "#e5e5e5",
+        "name_color": "#000000",
+        "role_color": "#000000",
+        "bio_color": "#000000",
+        "social_color": "#000000",
+        "cta_heading_color": "#000000",
+        "cta_text_color": "#000000",
+        "cta_btn_bg": "#ffffff",
+        "cta_btn_text": "#000000",
+        "cta_btn_border": "#000000"
+      }
     }
   },
   "order": [
     "main",
     "cta_strip_MFdJHP",
     "about_story_zgkMBg",
-    "stats_daGerM"
+    "stats_daGerM",
+    "team_gxwhB7"
   ]
 }
