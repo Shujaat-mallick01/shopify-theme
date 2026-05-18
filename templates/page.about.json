@@ -25,7 +25,7 @@
         "show_heading": true,
         "show_description": true,
         "padding_top": 112,
-        "padding_bottom": 112,
+        "padding_bottom": 0,
         "padding_x": 64,
         "margin_top": 0,
         "margin_bottom": 0,
