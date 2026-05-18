@@ -121,11 +121,69 @@
         "primary_btn_border": "#000000",
         "secondary_link_color": "#000000"
       }
+    },
+    "stats_daGerM": {
+      "type": "stats",
+      "blocks": {
+        "stat_78GY6n": {
+          "type": "stat",
+          "settings": {
+            "label": "Years of experience",
+            "value": "20+",
+            "description": "Serving hospitals and healthcare providers throughout New York"
+          }
+        },
+        "stat_b49eAr": {
+          "type": "stat",
+          "settings": {
+            "label": "Brooklyn-based operation",
+            "value": "1",
+            "description": "Storefront and ecommerce serving families nationwide"
+          }
+        },
+        "stat_EUVfLN": {
+          "type": "stat",
+          "settings": {
+            "label": "Support in three languages",
+            "value": "3",
+            "description": "Tri-lingual team ready to help you navigate coverage"
+          }
+        },
+        "stat_mwcHGi": {
+          "type": "stat",
+          "settings": {
+            "label": "New moms/Providers/Returning Moms",
+            "value": "10,000+",
+            "description": "We're the preferred vendor"
+          }
+        }
+      },
+      "block_order": [
+        "stat_78GY6n",
+        "stat_b49eAr",
+        "stat_EUVfLN",
+        "stat_mwcHGi"
+      ],
+      "name": "Stats",
+      "settings": {
+        "eyebrow": "Trust",
+        "heading": "<p>Trusted by families and providers for over 20 years</p>",
+        "description": "Ardent has been serving hospitals, healthcare providers, and families across New York for more than two decades. We know what works because we've been doing this since the beginning.",
+        "show_eyebrow": true,
+        "show_heading": true,
+        "show_description": true,
+        "padding_top": 112,
+        "padding_bottom": 112,
+        "padding_x": 64,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
     }
   },
   "order": [
     "main",
     "cta_strip_MFdJHP",
-    "about_story_zgkMBg"
+    "about_story_zgkMBg",
+    "stats_daGerM"
   ]
 }
