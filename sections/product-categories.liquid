@@ -11,7 +11,19 @@
   assign margin_bottom = section.settings.margin_bottom | default: 0
 -%}
 
-<section class="products-section" style="padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px; margin: {{ margin_top }}px 0 {{ margin_bottom }}px;">
+<section class="products-section" style="
+  --pc-bg: {{ section.settings.background_color | default: '#ffffff' }};
+  --pc-eyebrow-color: {{ section.settings.eyebrow_color | default: '#000000' }};
+  --pc-heading-color: {{ section.settings.heading_color | default: '#000000' }};
+  --pc-sub-color: {{ section.settings.sub_color | default: '#000000' }};
+  --pc-card-overlay: {{ section.settings.card_overlay_color | default: '#000000' }};
+  --pc-card-overlay-alpha: {{ section.settings.card_overlay_opacity | default: 40 | times: 0.01 }};
+  --pc-card-title: {{ section.settings.card_title_color | default: '#ffffff' }};
+  --pc-secondary-color: {{ section.settings.secondary_link_color | default: '#000000' }};
+  background: var(--pc-bg, #fff);
+  padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px;
+  margin: {{ margin_top }}px 0 {{ margin_bottom }}px;
+">
   <div class="container-sm">
     {%- if section.settings.show_eyebrow -%}
       {%- if section.settings.eyebrow != blank -%}
@@ -88,6 +100,18 @@
     { "type": "range", "id": "padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 0 },
     { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
     { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+
+    { "type": "header", "content": "Section colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow", "default": "#000000" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#000000" },
+    { "type": "color", "id": "sub_color", "label": "Subheading", "default": "#000000" },
+    { "type": "color", "id": "secondary_link_color", "label": "Secondary link", "default": "#000000" },
+
+    { "type": "header", "content": "Product card colors" },
+    { "type": "color", "id": "card_overlay_color", "label": "Image overlay color", "default": "#000000" },
+    { "type": "range", "id": "card_overlay_opacity", "label": "Image overlay opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 40 },
+    { "type": "color", "id": "card_title_color", "label": "Card title", "default": "#ffffff" },
 
     { "type": "header", "content": "Primary CTA" },
     { "type": "text", "id": "primary_cta_text", "label": "Button text", "default": "Check Coverage" },

@@ -13,7 +13,20 @@
   assign margin_bottom = section.settings.margin_bottom | default: 0
 -%}
 
-<section class="faq-section" style="padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px; margin: {{ margin_top }}px 0 {{ margin_bottom }}px;">
+<section class="faq-section" style="
+  --faq-bg: {{ section.settings.background_color | default: '#ffffff' }};
+  --faq-heading-color: {{ section.settings.heading_color | default: '#000000' }};
+  --faq-sub-color: {{ section.settings.sub_color | default: '#000000' }};
+  --faq-item-bg: {{ section.settings.item_bg | default: '#ffffff' }};
+  --faq-item-bg-hover: {{ section.settings.item_bg_hover | default: '#fafafa' }};
+  --faq-item-border: {{ section.settings.item_border | default: '#000000' }};
+  --faq-question-color: {{ section.settings.question_color | default: '#000000' }};
+  --faq-answer-color: {{ section.settings.answer_color | default: '#000000' }};
+  --faq-icon-color: {{ section.settings.icon_color | default: '#000000' }};
+  background: var(--faq-bg, #fff);
+  padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px;
+  margin: {{ margin_top }}px 0 {{ margin_bottom }}px;
+">
   <div class="faq-container">
 
     <div class="faq-title">
@@ -69,7 +82,20 @@
     { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
     { "type": "range", "id": "padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 64 },
     { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
-    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 }
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+
+    { "type": "header", "content": "Section colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#000000" },
+    { "type": "color", "id": "sub_color", "label": "Subheading", "default": "#000000" },
+
+    { "type": "header", "content": "Accordion item colors" },
+    { "type": "color", "id": "item_bg", "label": "Item background", "default": "#ffffff" },
+    { "type": "color", "id": "item_bg_hover", "label": "Item background (hover)", "default": "#fafafa" },
+    { "type": "color", "id": "item_border", "label": "Item border", "default": "#000000" },
+    { "type": "color", "id": "question_color", "label": "Question text", "default": "#000000" },
+    { "type": "color", "id": "answer_color", "label": "Answer text", "default": "#000000" },
+    { "type": "color", "id": "icon_color", "label": "Plus/close icon", "default": "#000000" }
   ],
   "blocks": [
     {

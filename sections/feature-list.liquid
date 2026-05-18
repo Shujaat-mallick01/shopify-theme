@@ -11,7 +11,17 @@
   assign margin_bottom = section.settings.margin_bottom | default: 0
 -%}
 
-<section class="deserves-section" style="padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px; margin: {{ margin_top }}px 0 {{ margin_bottom }}px;">
+<section class="deserves-section" style="
+  --fl-bg: {{ section.settings.background_color | default: '#ffffff' }};
+  --fl-eyebrow-color: {{ section.settings.eyebrow_color | default: '#000000' }};
+  --fl-heading-color: {{ section.settings.heading_color | default: '#000000' }};
+  --fl-text-color: {{ section.settings.text_color | default: '#000000' }};
+  --fl-feature-color: {{ section.settings.feature_color | default: '#000000' }};
+  --fl-secondary-color: {{ section.settings.secondary_link_color | default: '#000000' }};
+  background: var(--fl-bg, #fff);
+  padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px;
+  margin: {{ margin_top }}px 0 {{ margin_bottom }}px;
+">
   <div class="container deserves-grid">
     {%- if section.settings.show_image and section.settings.image_position == 'left' -%}
       <div class="deserves-image" data-reveal>
@@ -125,6 +135,14 @@
     { "type": "range", "id": "padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 0 },
     { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
     { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+
+    { "type": "header", "content": "Section colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow", "default": "#000000" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#000000" },
+    { "type": "color", "id": "text_color", "label": "Description", "default": "#000000" },
+    { "type": "color", "id": "feature_color", "label": "Feature list item", "default": "#000000" },
+    { "type": "color", "id": "secondary_link_color", "label": "Secondary link", "default": "#000000" },
 
     { "type": "header", "content": "Primary CTA" },
     { "type": "text", "id": "primary_cta_text", "label": "Primary button text", "default": "Check Coverage" },

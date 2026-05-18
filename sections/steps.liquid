@@ -11,7 +11,21 @@
   assign margin_bottom = section.settings.margin_bottom | default: 0
 -%}
 
-<section class="steps-section" style="padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px; margin: {{ margin_top }}px 0 {{ margin_bottom }}px;">
+<section class="steps-section" style="
+  --steps-bg: {{ section.settings.background_color | default: '#ffffff' }};
+  --steps-eyebrow-color: {{ section.settings.eyebrow_color | default: '#000000' }};
+  --steps-heading-color: {{ section.settings.heading_color | default: '#000000' }};
+  --steps-sub-color: {{ section.settings.sub_color | default: '#000000' }};
+  --steps-card-overlay: {{ section.settings.card_overlay_color | default: '#000000' }};
+  --steps-card-overlay-alpha: {{ section.settings.card_overlay_opacity | default: 40 | times: 0.01 }};
+  --steps-card-number: {{ section.settings.card_number_color | default: '#ffffff' }};
+  --steps-card-heading: {{ section.settings.card_heading_color | default: '#ffffff' }};
+  --steps-card-text: {{ section.settings.card_text_color | default: '#ffffff' }};
+  --steps-card-link: {{ section.settings.card_link_color | default: '#ffffff' }};
+  background: var(--steps-bg, #fff);
+  padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px;
+  margin: {{ margin_top }}px 0 {{ margin_bottom }}px;
+">
   <div class="container">
     {%- if section.settings.show_eyebrow -%}
       {%- if section.settings.eyebrow != blank -%}
@@ -82,7 +96,21 @@
     { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 100 },
     { "type": "range", "id": "padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 0 },
     { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
-    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 }
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+
+    { "type": "header", "content": "Section colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow", "default": "#000000" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#000000" },
+    { "type": "color", "id": "sub_color", "label": "Subheading", "default": "#000000" },
+
+    { "type": "header", "content": "Step card colors" },
+    { "type": "color", "id": "card_overlay_color", "label": "Image overlay color", "default": "#000000" },
+    { "type": "range", "id": "card_overlay_opacity", "label": "Image overlay opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 40 },
+    { "type": "color", "id": "card_number_color", "label": "Step number", "default": "#ffffff" },
+    { "type": "color", "id": "card_heading_color", "label": "Heading", "default": "#ffffff" },
+    { "type": "color", "id": "card_text_color", "label": "Description", "default": "#ffffff" },
+    { "type": "color", "id": "card_link_color", "label": "Link", "default": "#ffffff" }
   ],
   "blocks": [
     {

@@ -12,7 +12,22 @@
   assign margin_bottom = section.settings.margin_bottom | default: 0
 -%}
 
-<section class="step-cards" style="padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px; margin: {{ margin_top }}px 0 {{ margin_bottom }}px;">
+<section class="step-cards" style="
+  --sc-bg: {{ section.settings.background_color | default: '#ffffff' }};
+  --sc-eyebrow-color: {{ section.settings.eyebrow_color | default: '#000000' }};
+  --sc-heading-color: {{ section.settings.heading_color | default: '#000000' }};
+  --sc-sub-color: {{ section.settings.sub_color | default: '#000000' }};
+  --sc-card-fallback: {{ section.settings.card_fallback_color | default: '#8a8a8a' }};
+  --sc-card-overlay: {{ section.settings.card_overlay_color | default: '#000000' }};
+  --sc-card-overlay-alpha: {{ section.settings.card_overlay_opacity | default: 40 | times: 0.01 }};
+  --sc-card-icon: {{ section.settings.card_icon_color | default: '#ffffff' }};
+  --sc-card-heading: {{ section.settings.card_heading_color | default: '#ffffff' }};
+  --sc-card-desc: {{ section.settings.card_desc_color | default: '#ffffff' }};
+  --sc-card-link: {{ section.settings.card_link_color | default: '#ffffff' }};
+  background: var(--sc-bg, #fff);
+  padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px;
+  margin: {{ margin_top }}px 0 {{ margin_bottom }}px;
+">
   <div class="step-cards-container">
 
     <div class="step-cards-title">
@@ -50,9 +65,9 @@
                     {{ block.settings.icon | image_url: width: 96 | image_tag: alt: '', loading: 'lazy' }}
                   {%- else -%}
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M24 6 L42 14.5 V33.5 L24 42 L6 33.5 V14.5 Z" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" fill="none"/>
-                      <path d="M6 14.5 L24 23 L42 14.5" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" fill="none"/>
-                      <path d="M24 23 V42" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/>
+                      <path d="M24 6 L42 14.5 V33.5 L24 42 L6 33.5 V14.5 Z" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" fill="none"/>
+                      <path d="M6 14.5 L24 23 L42 14.5" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" fill="none"/>
+                      <path d="M24 23 V42" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
                     </svg>
                   {%- endif -%}
                 </div>
@@ -104,7 +119,22 @@
     { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
     { "type": "range", "id": "padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 64 },
     { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
-    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 }
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+
+    { "type": "header", "content": "Section colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow", "default": "#000000" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#000000" },
+    { "type": "color", "id": "sub_color", "label": "Subheading", "default": "#000000" },
+
+    { "type": "header", "content": "Step card colors" },
+    { "type": "color", "id": "card_fallback_color", "label": "Card fallback (no image)", "default": "#8a8a8a" },
+    { "type": "color", "id": "card_overlay_color", "label": "Image overlay color", "default": "#000000" },
+    { "type": "range", "id": "card_overlay_opacity", "label": "Image overlay opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 40 },
+    { "type": "color", "id": "card_icon_color", "label": "Icon", "default": "#ffffff" },
+    { "type": "color", "id": "card_heading_color", "label": "Heading", "default": "#ffffff" },
+    { "type": "color", "id": "card_desc_color", "label": "Description", "default": "#ffffff" },
+    { "type": "color", "id": "card_link_color", "label": "Link", "default": "#ffffff" }
   ],
   "blocks": [
     {

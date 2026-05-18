@@ -11,7 +11,21 @@
   assign margin_bottom = section.settings.margin_bottom | default: 0
 -%}
 
-<section class="stats-section" style="padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px; margin: {{ margin_top }}px 0 {{ margin_bottom }}px;">
+<section class="stats-section" style="
+  --st-bg: {{ section.settings.background_color | default: '#DBF8F2' }};
+  --st-eyebrow-color: {{ section.settings.eyebrow_color | default: '#000000' }};
+  --st-heading-color: {{ section.settings.heading_color | default: '#000000' }};
+  --st-text-color: {{ section.settings.text_color | default: '#000000' }};
+  --st-card-bg: {{ section.settings.card_bg | default: '#ffffff' }};
+  --st-card-border: {{ section.settings.card_border | default: '#000000' }};
+  --st-card-label: {{ section.settings.card_label_color | default: '#000000' }};
+  --st-card-value: {{ section.settings.card_value_color | default: '#000000' }};
+  --st-card-desc: {{ section.settings.card_desc_color | default: '#000000' }};
+  --st-card-divider: {{ section.settings.card_divider_color | default: '#000000' }};
+  background: var(--st-bg, #DBF8F2);
+  padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px;
+  margin: {{ margin_top }}px 0 {{ margin_bottom }}px;
+">
   <div class="stats-inner">
     <div class="stats-grid">
 
@@ -78,7 +92,21 @@
     { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
     { "type": "range", "id": "padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 64 },
     { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
-    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 }
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+
+    { "type": "header", "content": "Section colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#DBF8F2" },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow", "default": "#000000" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#000000" },
+    { "type": "color", "id": "text_color", "label": "Description", "default": "#000000" },
+
+    { "type": "header", "content": "Stat card colors" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#ffffff" },
+    { "type": "color", "id": "card_border", "label": "Card border", "default": "#000000" },
+    { "type": "color", "id": "card_label_color", "label": "Label", "default": "#000000" },
+    { "type": "color", "id": "card_value_color", "label": "Value (big number)", "default": "#000000" },
+    { "type": "color", "id": "card_desc_color", "label": "Description", "default": "#000000" },
+    { "type": "color", "id": "card_divider_color", "label": "Divider line", "default": "#000000" }
   ],
   "blocks": [
     {

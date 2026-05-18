@@ -28,7 +28,16 @@
   assign margin_bottom = section.settings.margin_bottom | default: 0
 -%}
 
-<section class="{{ section_class }}" style="padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px; margin: {{ margin_top }}px 0 {{ margin_bottom }}px;">
+<section class="{{ section_class }}" style="
+  --iwt-bg: {{ section.settings.background_color | default: '#DBF8F2' }};
+  --iwt-eyebrow-color: {{ section.settings.eyebrow_color | default: '#000000' }};
+  --iwt-heading-color: {{ section.settings.heading_color | default: '#000000' }};
+  --iwt-text-color: {{ section.settings.text_color | default: '#000000' }};
+  --iwt-secondary-color: {{ section.settings.secondary_link_color | default: '#000000' }};
+  background: var(--iwt-bg, #DBF8F2);
+  padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px;
+  margin: {{ margin_top }}px 0 {{ margin_bottom }}px;
+">
   <div class="container {{ grid_class }}">
     {%- if section.settings.show_image and section.settings.image_position == 'left' -%}
       <div class="{{ image_class }}" data-reveal>
@@ -131,6 +140,13 @@
     { "type": "range", "id": "padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 0 },
     { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
     { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+
+    { "type": "header", "content": "Section colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#DBF8F2" },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow", "default": "#000000" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#000000" },
+    { "type": "color", "id": "text_color", "label": "Description", "default": "#000000" },
+    { "type": "color", "id": "secondary_link_color", "label": "Secondary link", "default": "#000000" },
 
     { "type": "header", "content": "Primary CTA" },
     { "type": "text", "id": "primary_cta_text", "label": "Primary button text" },

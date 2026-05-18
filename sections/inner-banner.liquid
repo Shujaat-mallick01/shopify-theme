@@ -17,7 +17,23 @@
   assign margin_bottom = section.settings.margin_bottom | default: 0
 -%}
 
-<section class="inner-banner" style="padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px; margin: {{ margin_top }}px 0 {{ margin_bottom }}px;">
+<section class="inner-banner" style="
+  --ib-bg: {{ section.settings.background_color | default: '#ffffff' }};
+  --ib-card-fallback: {{ section.settings.card_fallback_color | default: '#8a8a8a' }};
+  --ib-overlay-color: {{ section.settings.overlay_color | default: '#000000' }};
+  --ib-overlay-alpha: {{ section.settings.overlay_opacity | default: 40 | times: 0.01 }};
+  --ib-heading-color: {{ section.settings.heading_color | default: '#ffffff' }};
+  --ib-text-color: {{ section.settings.text_color | default: '#ffffff' }};
+  --ib-primary-bg: {{ section.settings.primary_btn_bg | default: '#ffffff' }};
+  --ib-primary-text: {{ section.settings.primary_btn_text | default: '#000000' }};
+  --ib-primary-border: {{ section.settings.primary_btn_border | default: '#ffffff' }};
+  --ib-secondary-bg: {{ section.settings.secondary_btn_bg | default: 'transparent' }};
+  --ib-secondary-text: {{ section.settings.secondary_btn_text | default: '#ffffff' }};
+  --ib-secondary-border: {{ section.settings.secondary_btn_border | default: '#ffffff' }};
+  background: var(--ib-bg, #fff);
+  padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px;
+  margin: {{ margin_top }}px 0 {{ margin_bottom }}px;
+">
   <div class="inner-banner-container">
     <div class="inner-banner-card" {% if bg_url != blank %}style="background-image: url('{{ bg_url }}');"{% endif %}>
       <div class="inner-banner-overlay" aria-hidden="true"></div>
@@ -81,13 +97,29 @@
     { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
     { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
 
+    { "type": "header", "content": "Background + overlay" },
+    { "type": "color", "id": "background_color", "label": "Outer background", "default": "#ffffff" },
+    { "type": "color", "id": "card_fallback_color", "label": "Card fallback (when no image)", "default": "#8a8a8a" },
+    { "type": "color", "id": "overlay_color", "label": "Image overlay color", "default": "#000000" },
+    { "type": "range", "id": "overlay_opacity", "label": "Image overlay opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 40 },
+
+    { "type": "header", "content": "Text colors" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Description", "default": "#ffffff" },
+
     { "type": "header", "content": "Primary CTA" },
     { "type": "text", "id": "primary_cta_text", "label": "Primary button text", "default": "Check" },
     { "type": "url", "id": "primary_cta_link", "label": "Primary button link" },
+    { "type": "color", "id": "primary_btn_bg", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "primary_btn_text", "label": "Text", "default": "#000000" },
+    { "type": "color", "id": "primary_btn_border", "label": "Border", "default": "#ffffff" },
 
     { "type": "header", "content": "Secondary CTA" },
     { "type": "text", "id": "secondary_cta_text", "label": "Secondary button text", "default": "Shop" },
-    { "type": "url", "id": "secondary_cta_link", "label": "Secondary button link" }
+    { "type": "url", "id": "secondary_cta_link", "label": "Secondary button link" },
+    { "type": "color", "id": "secondary_btn_bg", "label": "Background (empty for transparent)" },
+    { "type": "color", "id": "secondary_btn_text", "label": "Text", "default": "#ffffff" },
+    { "type": "color", "id": "secondary_btn_border", "label": "Border", "default": "#ffffff" }
   ],
   "presets": [
     { "name": "Inner Banner" }

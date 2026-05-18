@@ -11,7 +11,20 @@
   assign margin_bottom = section.settings.margin_bottom | default: 0
 -%}
 
-<section class="testimonials-section" style="--testimonials-bg: {{ section.settings.background_color | default: '#fce4e6' }}; padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px; margin: {{ margin_top }}px 0 {{ margin_bottom }}px;">
+<section class="testimonials-section" style="
+  --testimonials-bg: {{ section.settings.background_color | default: '#fce4e6' }};
+  --t-heading-color: {{ section.settings.heading_color | default: '#000000' }};
+  --t-sub-color: {{ section.settings.sub_color | default: '#000000' }};
+  --t-card-bg: {{ section.settings.card_bg | default: '#ffffff' }};
+  --t-card-border: {{ section.settings.card_border | default: '#000000' }};
+  --t-quote-color: {{ section.settings.quote_color | default: '#000000' }};
+  --t-author-name-color: {{ section.settings.author_name_color | default: '#000000' }};
+  --t-author-role-color: {{ section.settings.author_role_color | default: '#000000' }};
+  --t-logo-color: {{ section.settings.logo_color | default: '#5a5a5a' }};
+  --t-link-color: {{ section.settings.link_color | default: '#000000' }};
+  padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px;
+  margin: {{ margin_top }}px 0 {{ margin_bottom }}px;
+">
   <div class="container-sm">
     {%- if section.settings.show_heading -%}
       {%- if section.settings.heading != blank -%}
@@ -82,7 +95,20 @@
     { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 100 },
     { "type": "range", "id": "padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 0 },
     { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
-    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 }
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+
+    { "type": "header", "content": "Text colors" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#000000" },
+    { "type": "color", "id": "sub_color", "label": "Subheading", "default": "#000000" },
+
+    { "type": "header", "content": "Card colors" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#ffffff" },
+    { "type": "color", "id": "card_border", "label": "Card border", "default": "#000000" },
+    { "type": "color", "id": "logo_color", "label": "Logo text", "default": "#5a5a5a" },
+    { "type": "color", "id": "quote_color", "label": "Quote text", "default": "#000000" },
+    { "type": "color", "id": "author_name_color", "label": "Author name", "default": "#000000" },
+    { "type": "color", "id": "author_role_color", "label": "Author role", "default": "#000000" },
+    { "type": "color", "id": "link_color", "label": "Link", "default": "#000000" }
   ],
   "blocks": [
     {

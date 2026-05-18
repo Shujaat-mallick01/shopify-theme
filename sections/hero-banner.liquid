@@ -13,9 +13,23 @@
   assign pad_x = section.settings.padding_x | default: 0
   assign margin_top = section.settings.margin_top | default: 0
   assign margin_bottom = section.settings.margin_bottom | default: 0
+  assign overlay_pct = section.settings.overlay_opacity | default: 40
+  assign overlay_alpha = overlay_pct | times: 0.01
 -%}
 
-<section class="hero" style="margin: {{ margin_top }}px 0 {{ margin_bottom }}px;">
+<section class="hero" style="
+  --hero-overlay-color: {{ section.settings.overlay_color | default: '#000000' }};
+  --hero-overlay-alpha: {{ overlay_alpha }};
+  --hero-heading-color: {{ section.settings.heading_color | default: '#ffffff' }};
+  --hero-sub-color: {{ section.settings.sub_color | default: '#ffffff' }};
+  --hero-primary-bg: {{ section.settings.primary_btn_bg | default: '#e14e6b' }};
+  --hero-primary-text: {{ section.settings.primary_btn_text | default: '#ffffff' }};
+  --hero-primary-border: {{ section.settings.primary_btn_border | default: '#e14e6b' }};
+  --hero-secondary-bg: {{ section.settings.secondary_btn_bg | default: 'rgba(255,255,255,0.1)' }};
+  --hero-secondary-text: {{ section.settings.secondary_btn_text | default: '#ffffff' }};
+  --hero-secondary-border: {{ section.settings.secondary_btn_border | default: 'rgba(255,255,255,0.5)' }};
+  margin: {{ margin_top }}px 0 {{ margin_bottom }}px;
+">
   <div class="hero-image" style="padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px;{% if bg_url != blank %} background-image: url('{{ bg_url }}');{% endif %}">
     <div class="hero-overlay"></div>
     <div class="container hero-content">
@@ -77,13 +91,26 @@
     { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
     { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
 
+    { "type": "header", "content": "Overlay (over background image)" },
+    { "type": "color", "id": "overlay_color", "label": "Overlay color", "default": "#000000" },
+    { "type": "range", "id": "overlay_opacity", "label": "Overlay opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 40 },
+
+    { "type": "header", "content": "Text colors" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#ffffff" },
+    { "type": "color", "id": "sub_color", "label": "Subheading", "default": "#ffffff" },
+
     { "type": "header", "content": "Primary CTA" },
     { "type": "text", "id": "primary_cta_text", "label": "Primary button text", "default": "Check Your Insurance Coverage" },
     { "type": "url", "id": "primary_cta_link", "label": "Primary button link" },
+    { "type": "color", "id": "primary_btn_bg", "label": "Background", "default": "#e14e6b" },
+    { "type": "color", "id": "primary_btn_text", "label": "Text", "default": "#ffffff" },
+    { "type": "color", "id": "primary_btn_border", "label": "Border", "default": "#e14e6b" },
 
     { "type": "header", "content": "Secondary CTA" },
     { "type": "text", "id": "secondary_cta_text", "label": "Secondary button text", "default": "Shop Products" },
-    { "type": "url", "id": "secondary_cta_link", "label": "Secondary button link" }
+    { "type": "url", "id": "secondary_cta_link", "label": "Secondary button link" },
+    { "type": "color", "id": "secondary_btn_text", "label": "Text", "default": "#ffffff" },
+    { "type": "color", "id": "secondary_btn_border", "label": "Border", "default": "#ffffff" }
   ],
   "presets": [
     { "name": "Hero Banner" }
