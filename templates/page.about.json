@@ -25,7 +25,7 @@
         "show_heading": true,
         "show_description": true,
         "padding_top": 112,
-        "padding_bottom": 112,
+        "padding_bottom": 0,
         "padding_x": 64,
         "margin_top": 0,
         "margin_bottom": 0,
@@ -166,9 +166,9 @@
       ],
       "name": "Stats",
       "settings": {
-        "eyebrow": "Trust",
-        "heading": "<p>Trusted by families and providers for over 20 years</p>",
-        "description": "Ardent has been serving hospitals, healthcare providers, and families across New York for more than two decades. We know what works because we've been doing this since the beginning.",
+        "eyebrow": "Numbers",
+        "heading": "<h2>Two decades of trust and service</h2>",
+        "description": "Since 1999, we've been there when it matters most. Thousands of mothers and healthcare providers rely on us every year.",
         "show_eyebrow": true,
         "show_heading": true,
         "show_description": true,
@@ -176,7 +176,17 @@
         "padding_bottom": 112,
         "padding_x": 64,
         "margin_top": 0,
-        "margin_bottom": 0
+        "margin_bottom": 0,
+        "background_color": "#ffffff",
+        "eyebrow_color": "#000000",
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "card_bg": "#ffffff",
+        "card_border": "#000000",
+        "card_label_color": "#000000",
+        "card_value_color": "#000000",
+        "card_desc_color": "#000000",
+        "card_divider_color": "#000000"
       }
     }
   },
