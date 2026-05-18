@@ -301,6 +301,90 @@
         "cta_btn_text": "#000000",
         "cta_btn_border": "#000000"
       }
+    },
+    "logo_gallery_P6MT8j": {
+      "type": "logo-gallery",
+      "blocks": {
+        "logo_7VBzA9": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Placeholder_Logo.png",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_mwra8p": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Placeholder_Logo.png",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_JQyt6V": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Placeholder_Logo.png",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_WwPHdk": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Placeholder_Logo.png",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_m9kY34": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Placeholder_Logo.png",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_wBV8Ue": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Placeholder_Logo.png",
+            "alt": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_7VBzA9",
+        "logo_mwra8p",
+        "logo_JQyt6V",
+        "logo_WwPHdk",
+        "logo_m9kY34",
+        "logo_wBV8Ue"
+      ],
+      "name": "Logo Gallery",
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "subheading": "",
+        "columns": 3,
+        "column_gap": 80,
+        "row_gap": 80,
+        "logo_height": 56,
+        "show_title": false,
+        "show_eyebrow": false,
+        "show_heading": false,
+        "show_subheading": false,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_x": 64,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "background_color": "#ffffff",
+        "eyebrow_color": "#000000",
+        "heading_color": "#000000",
+        "sub_color": "#000000"
+      }
     }
   },
   "order": [
@@ -308,6 +392,7 @@
     "cta_strip_MFdJHP",
     "about_story_zgkMBg",
     "stats_daGerM",
-    "team_gxwhB7"
+    "team_gxwhB7",
+    "logo_gallery_P6MT8j"
   ]
 }
