@@ -1,0 +1,191 @@
+{% comment %}
+  Section: About Story (eyebrow + heading + description + logo row + CTAs + wide image)
+  File: sections/about-story.liquid
+  Figma: "Layout / 149"
+{% endcomment %}
+
+{%- liquid
+  assign pad_top = section.settings.padding_top | default: 112
+  assign pad_bottom = section.settings.padding_bottom | default: 112
+  assign pad_x = section.settings.padding_x | default: 64
+  assign margin_top = section.settings.margin_top | default: 0
+  assign margin_bottom = section.settings.margin_bottom | default: 0
+  assign logo_height = section.settings.logo_height | default: 56
+-%}
+
+<section class="ast-section" style="
+  --ast-bg: {{ section.settings.background_color | default: '#ffffff' }};
+  --ast-eyebrow-color: {{ section.settings.eyebrow_color | default: '#000000' }};
+  --ast-heading-color: {{ section.settings.heading_color | default: '#000000' }};
+  --ast-text-color: {{ section.settings.text_color | default: '#000000' }};
+  --ast-primary-bg: {{ section.settings.primary_btn_bg | default: '#ffffff' }};
+  --ast-primary-text: {{ section.settings.primary_btn_text | default: '#000000' }};
+  --ast-primary-border: {{ section.settings.primary_btn_border | default: '#000000' }};
+  --ast-secondary-color: {{ section.settings.secondary_link_color | default: '#000000' }};
+  --ast-logo-height: {{ logo_height }}px;
+  padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px;
+  margin: {{ margin_top }}px 0 {{ margin_bottom }}px;
+">
+  <div class="ast-container">
+
+    <div class="ast-content">
+
+      <div class="ast-content-inner">
+        <div class="ast-title">
+          {%- if section.settings.show_eyebrow -%}
+            {%- if section.settings.eyebrow != blank -%}
+              <p class="ast-eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+            {%- endif -%}
+          {%- endif -%}
+          {%- if section.settings.show_heading -%}
+            {%- if section.settings.heading != blank -%}
+              <h2 class="ast-heading" data-reveal data-reveal-delay="80">{{ section.settings.heading }}</h2>
+            {%- endif -%}
+          {%- endif -%}
+          {%- if section.settings.show_description -%}
+            {%- if section.settings.description != blank -%}
+              <div class="ast-desc" data-reveal data-reveal-delay="160">{{ section.settings.description }}</div>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.show_logos -%}
+          {%- assign logo_blocks = section.blocks | where: 'type', 'logo' -%}
+          {%- if logo_blocks.size > 0 -%}
+            <div class="ast-logos" data-reveal data-reveal-delay="240">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'logo' -%}
+                  {%- if block.settings.link != blank -%}
+                    <a href="{{ block.settings.link }}" class="ast-logo" {{ block.shopify_attributes }}>
+                      {%- if block.settings.image != blank -%}
+                        {{ block.settings.image | image_url: width: 300 | image_tag: alt: block.settings.alt, loading: 'lazy' }}
+                      {%- endif -%}
+                    </a>
+                  {%- else -%}
+                    <div class="ast-logo" {{ block.shopify_attributes }}>
+                      {%- if block.settings.image != blank -%}
+                        {{ block.settings.image | image_url: width: 300 | image_tag: alt: block.settings.alt, loading: 'lazy' }}
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.show_primary_cta or section.settings.show_secondary_cta -%}
+        <div class="ast-actions" data-reveal data-reveal-delay="320">
+          {%- if section.settings.show_primary_cta -%}
+            {%- if section.settings.primary_cta_text != blank -%}
+              <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="ast-btn">
+                {{ section.settings.primary_cta_text }}
+              </a>
+            {%- endif -%}
+          {%- endif -%}
+          {%- if section.settings.show_secondary_cta -%}
+            {%- if section.settings.secondary_cta_text != blank -%}
+              <a href="{{ section.settings.secondary_cta_link | default: '#' }}" class="ast-link">
+                <span>{{ section.settings.secondary_cta_text }}</span>
+                <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M0.877 0.5C0.978 0.5 1.055 0.53 1.133 0.608L6.077 5.553C6.131 5.607 6.156 5.649 6.168 5.677V5.678C6.183 5.713 6.191 5.753 6.191 5.802C6.191 5.85 6.183 5.89 6.168 5.926V5.927C6.156 5.955 6.131 5.997 6.077 6.051L1.108 11.02C1.031 11.097 0.963 11.119 0.883 11.116C0.789 11.113 0.708 11.081 0.622 10.995C0.544 10.917 0.513 10.84 0.513 10.739C0.513 10.638 0.544 10.561 0.622 10.483L5.304 5.802L0.597 1.095C0.519 1.017 0.497 0.951 0.5 0.87C0.503 0.776 0.536 0.694 0.622 0.608C0.7 0.531 0.776 0.5 0.877 0.5Z" fill="currentColor" stroke="currentColor"/>
+                </svg>
+              </a>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+
+    {%- if section.settings.show_image -%}
+      {%- if section.settings.image != blank -%}
+        <div class="ast-image" data-reveal data-reveal-delay="200">
+          {{ section.settings.image | image_url: width: 2000 | image_tag: alt: section.settings.heading, loading: 'lazy' }}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Story",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Title" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our story" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Twenty years of serving mothers and providers</p>" },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Ardent Medical Supply started in Brooklyn with a simple idea: mothers shouldn't have to navigate insurance bureaucracy to get the products they need. For over two decades, we've worked with hospitals, healthcare providers, and families to make maternity care more accessible. We verify coverage, process orders, and handle delivery—so you can focus on your baby and your health.</p>" },
+
+    { "type": "header", "content": "Logos row" },
+    { "type": "range", "id": "logo_height", "label": "Logo height", "min": 32, "max": 120, "step": 4, "unit": "px", "default": 56 },
+
+    { "type": "header", "content": "Primary CTA (button)" },
+    { "type": "text", "id": "primary_cta_text", "label": "Button text", "default": "Learn more" },
+    { "type": "url", "id": "primary_cta_link", "label": "Button link" },
+
+    { "type": "header", "content": "Secondary CTA (link arrow)" },
+    { "type": "text", "id": "secondary_cta_text", "label": "Link text", "default": "Contact us" },
+    { "type": "url", "id": "secondary_cta_link", "label": "Link URL" },
+
+    { "type": "header", "content": "Wide image (below content)" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+
+    { "type": "header", "content": "Show / hide elements" },
+    { "type": "checkbox", "id": "show_eyebrow", "label": "Show eyebrow", "default": true },
+    { "type": "checkbox", "id": "show_heading", "label": "Show heading", "default": true },
+    { "type": "checkbox", "id": "show_description", "label": "Show description", "default": true },
+    { "type": "checkbox", "id": "show_logos", "label": "Show logos row", "default": true },
+    { "type": "checkbox", "id": "show_primary_cta", "label": "Show primary button", "default": true },
+    { "type": "checkbox", "id": "show_secondary_cta", "label": "Show secondary link", "default": true },
+    { "type": "checkbox", "id": "show_image", "label": "Show wide image", "default": true },
+
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+
+    { "type": "header", "content": "Section colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow", "default": "#000000" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#000000" },
+    { "type": "color", "id": "text_color", "label": "Description", "default": "#000000" },
+
+    { "type": "header", "content": "Primary button colors" },
+    { "type": "color", "id": "primary_btn_bg", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "primary_btn_text", "label": "Text", "default": "#000000" },
+    { "type": "color", "id": "primary_btn_border", "label": "Border", "default": "#000000" },
+
+    { "type": "header", "content": "Secondary link" },
+    { "type": "color", "id": "secondary_link_color", "label": "Text + arrow", "default": "#000000" }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Logo image" },
+        { "type": "text", "id": "alt", "label": "Alt text" },
+        { "type": "url", "id": "link", "label": "Link (optional)" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "About Story",
+      "blocks": [
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" }
+      ]
+    }
+  ]
+}
+{% endschema %}
