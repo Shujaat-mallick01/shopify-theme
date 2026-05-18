@@ -1475,6 +1475,106 @@ p {
 }
 
 /* =========================================================
+   LOGO GALLERY  (configurable grid of logos)
+========================================================= */
+.lg-section {
+    background: var(--lg-bg, #fff);
+    display: flex;
+    justify-content: center;
+}
+
+.lg-container {
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+}
+
+.lg-title {
+    width: 100%;
+    max-width: 768px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+}
+
+.lg-eyebrow {
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--lg-eyebrow-color, #000);
+    margin: 0;
+}
+
+.lg-heading {
+    font-family: var(--font-heading);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--lg-heading-color, #000);
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.lg-heading p {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    line-height: inherit;
+}
+
+.lg-sub {
+    font-family: var(--font);
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--lg-sub-color, #000);
+    margin: 0;
+}
+
+.lg-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(var(--lg-cols, 3), 1fr);
+    column-gap: var(--lg-col-gap, 80px);
+    row-gap: var(--lg-row-gap, 80px);
+    align-items: center;
+    justify-items: center;
+}
+
+.lg-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: var(--lg-logo-height, 56px);
+    color: inherit;
+    transition: opacity 0.2s ease;
+}
+
+a.lg-item:hover { opacity: 0.65; }
+
+.lg-item img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.lg-item-placeholder {
+    width: 80%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.06);
+}
+
+/* =========================================================
    TEAM  (avatar grid + bottom Join us CTA)
 ========================================================= */
 .tm-section {
@@ -3664,6 +3764,10 @@ p {
     .tm-heading { font-size: 40px; }
     .tm-grid { column-gap: 32px; row-gap: 48px; }
 
+    /* Logo gallery */
+    .lg-grid { column-gap: 48px; row-gap: 48px; }
+    .lg-heading { font-size: 32px; }
+
     /* Triple tiered cards → all stack to single column, all become vertical */
     .ttc-section { padding: 80px 32px; }
     .ttc-container { gap: 56px; }
@@ -3820,6 +3924,15 @@ p {
     .tm-grid { grid-template-columns: repeat(2, 1fr); column-gap: 24px; row-gap: 40px; }
     .tm-cta-heading { font-size: 26px; }
     .tm-cta-desc { font-size: 16px; }
+
+    /* Logo gallery → cap at 3 cols, tighter */
+    .lg-grid {
+        grid-template-columns: repeat(min(var(--lg-cols, 3), 3), 1fr);
+        column-gap: 32px;
+        row-gap: 32px;
+    }
+    .lg-heading { font-size: 26px; }
+    .lg-sub { font-size: 16px; }
 }
 
 @media (max-width: 480px) {
@@ -3934,6 +4047,10 @@ p {
     .tm-grid { grid-template-columns: 1fr; row-gap: 32px; max-width: 380px; margin: 0 auto; }
     .tm-cta-heading { font-size: 22px; }
     .tm-cta-btn { width: 100%; max-width: 320px; }
+
+    /* Logo gallery → 2 cols on phone */
+    .lg-grid { grid-template-columns: repeat(2, 1fr); column-gap: 20px; row-gap: 24px; }
+    .lg-heading { font-size: 22px; }
 }
 
 /* =========================================================
