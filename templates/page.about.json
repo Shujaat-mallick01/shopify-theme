@@ -66,14 +66,6 @@
             "link": ""
           }
         },
-        "logo_Xx7arb": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/Placeholder_Logo.png",
-            "alt": "",
-            "link": ""
-          }
-        },
         "logo_dXgDf6": {
           "type": "logo",
           "settings": {
@@ -94,7 +86,6 @@
       "block_order": [
         "logo_gmhVdj",
         "logo_wH9brD",
-        "logo_Xx7arb",
         "logo_dXgDf6",
         "logo_efxqzz"
       ],
