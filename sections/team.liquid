@@ -1,0 +1,219 @@
+{% comment %}
+  Section: Team (grid of team members with avatar + bio + socials + bottom CTA)
+  File: sections/team.liquid
+  Figma: "Team / 5"
+{% endcomment %}
+
+{%- liquid
+  assign pad_top = section.settings.padding_top | default: 112
+  assign pad_bottom = section.settings.padding_bottom | default: 112
+  assign pad_x = section.settings.padding_x | default: 64
+  assign margin_top = section.settings.margin_top | default: 0
+  assign margin_bottom = section.settings.margin_bottom | default: 0
+  assign avatar_size = section.settings.avatar_size | default: 80
+-%}
+
+<section class="tm-section" style="
+  --tm-bg: {{ section.settings.background_color | default: '#ffffff' }};
+  --tm-eyebrow-color: {{ section.settings.eyebrow_color | default: '#000000' }};
+  --tm-heading-color: {{ section.settings.heading_color | default: '#000000' }};
+  --tm-sub-color: {{ section.settings.sub_color | default: '#000000' }};
+  --tm-name-color: {{ section.settings.name_color | default: '#000000' }};
+  --tm-role-color: {{ section.settings.role_color | default: '#000000' }};
+  --tm-bio-color: {{ section.settings.bio_color | default: '#000000' }};
+  --tm-social-color: {{ section.settings.social_color | default: '#000000' }};
+  --tm-avatar-bg: {{ section.settings.avatar_bg | default: '#e5e5e5' }};
+  --tm-cta-heading: {{ section.settings.cta_heading_color | default: '#000000' }};
+  --tm-cta-text: {{ section.settings.cta_text_color | default: '#000000' }};
+  --tm-cta-btn-bg: {{ section.settings.cta_btn_bg | default: '#ffffff' }};
+  --tm-cta-btn-text: {{ section.settings.cta_btn_text | default: '#000000' }};
+  --tm-cta-btn-border: {{ section.settings.cta_btn_border | default: '#000000' }};
+  --tm-avatar-size: {{ avatar_size }}px;
+  background: var(--tm-bg, #fff);
+  padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px;
+  margin: {{ margin_top }}px 0 {{ margin_bottom }}px;
+">
+  <div class="tm-container">
+
+    <div class="tm-title">
+      {%- if section.settings.show_eyebrow -%}
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="tm-eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+      {%- endif -%}
+      {%- if section.settings.show_heading -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="tm-heading" data-reveal data-reveal-delay="80">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+      {%- endif -%}
+      {%- if section.settings.show_subheading -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="tm-sub" data-reveal data-reveal-delay="160">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+
+    <div class="tm-grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'member' -%}
+          {%- assign m_delay = forloop.index0 | times: 100 -%}
+          <article class="tm-card" data-reveal data-reveal-delay="{{ m_delay }}" {{ block.shopify_attributes }}>
+            <div class="tm-avatar">
+              {%- if block.settings.avatar != blank -%}
+                {{ block.settings.avatar | image_url: width: 200 | image_tag: alt: block.settings.name, loading: 'lazy' }}
+              {%- else -%}
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z" fill="#bbb"/>
+                </svg>
+              {%- endif -%}
+            </div>
+
+            <div class="tm-content">
+              <div class="tm-name-block">
+                {%- if block.settings.name != blank -%}
+                  <p class="tm-name">{{ block.settings.name }}</p>
+                {%- endif -%}
+                {%- if block.settings.role != blank -%}
+                  <p class="tm-role">{{ block.settings.role }}</p>
+                {%- endif -%}
+              </div>
+              {%- if block.settings.bio != blank -%}
+                <p class="tm-bio">{{ block.settings.bio }}</p>
+              {%- endif -%}
+            </div>
+
+            {%- if block.settings.linkedin_url != blank or block.settings.twitter_url != blank or block.settings.third_url != blank -%}
+              <div class="tm-socials">
+                {%- if block.settings.linkedin_url != blank -%}
+                  <a href="{{ block.settings.linkedin_url }}" class="tm-social" aria-label="LinkedIn" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.04a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56zM22.22 0H1.77A1.75 1.75 0 0 0 0 1.73v20.54A1.75 1.75 0 0 0 1.77 24h20.45A1.75 1.75 0 0 0 24 22.27V1.73A1.75 1.75 0 0 0 22.22 0z"/>
+                    </svg>
+                  </a>
+                {%- endif -%}
+                {%- if block.settings.twitter_url != blank -%}
+                  <a href="{{ block.settings.twitter_url }}" class="tm-social" aria-label="X (Twitter)" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.829l4.713 6.231 5.448-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
+                    </svg>
+                  </a>
+                {%- endif -%}
+                {%- if block.settings.third_url != blank -%}
+                  <a href="{{ block.settings.third_url }}" class="tm-social" aria-label="Dribbble" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M12 0a12 12 0 1 0 12 12A12 12 0 0 0 12 0zm7.93 5.53a10.41 10.41 0 0 1 2.42 6.51c-.35-.07-3.82-.78-7.32-.34-.08-.18-.15-.36-.23-.55-.21-.5-.45-1-.69-1.49 3.88-1.58 5.66-3.85 5.82-4.13zM12 2.18a10.4 10.4 0 0 1 6.6 2.36c-.14.2-1.73 2.32-5.48 3.72-1.74-3.18-3.67-5.78-3.96-6.18A10.6 10.6 0 0 1 12 2.18zM7.66 2.99c.28.38 2.17 3 3.93 6.12-4.96 1.32-9.36 1.29-9.83 1.28A10.42 10.42 0 0 1 7.66 2.99zM2.16 12.02v-.31c.46.01 5.62.08 10.94-1.51.31.6.6 1.2.86 1.81-.14.04-.28.08-.41.13-5.5 1.78-8.42 6.62-8.65 7.04A10.41 10.41 0 0 1 2.16 12.02zm9.84 9.83a10.36 10.36 0 0 1-6.41-2.21c.18-.37 2.27-4.4 8.28-6.5l.07-.02a43.4 43.4 0 0 1 2.23 7.93 10.4 10.4 0 0 1-4.17.8zm6.21-1.95c-.13-.74-.78-4.34-2.13-7.83 3.3-.53 6.19.33 6.55.45a10.4 10.4 0 0 1-4.42 7.38z"/>
+                    </svg>
+                  </a>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.show_cta -%}
+      <div class="tm-cta" data-reveal>
+        <div class="tm-cta-content">
+          {%- if section.settings.cta_heading != blank -%}
+            <h3 class="tm-cta-heading">{{ section.settings.cta_heading }}</h3>
+          {%- endif -%}
+          {%- if section.settings.cta_description != blank -%}
+            <p class="tm-cta-desc">{{ section.settings.cta_description }}</p>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.cta_button_text != blank -%}
+          <a href="{{ section.settings.cta_button_link | default: '#' }}" class="tm-cta-btn">
+            {{ section.settings.cta_button_text }}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Team",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Section title" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Leadership" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Our team</p>" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Built by people who understand maternity care and insurance" },
+
+    { "type": "header", "content": "Avatar" },
+    { "type": "range", "id": "avatar_size", "label": "Avatar size", "min": 48, "max": 160, "step": 4, "unit": "px", "default": 80 },
+
+    { "type": "header", "content": "Bottom CTA" },
+    { "type": "text", "id": "cta_heading", "label": "Heading", "default": "Join us" },
+    { "type": "textarea", "id": "cta_description", "label": "Description", "default": "We're growing and looking for people who care about mothers and healthcare" },
+    { "type": "text", "id": "cta_button_text", "label": "Button text", "default": "See positions" },
+    { "type": "url", "id": "cta_button_link", "label": "Button link" },
+
+    { "type": "header", "content": "Show / hide elements" },
+    { "type": "checkbox", "id": "show_eyebrow", "label": "Show eyebrow", "default": true },
+    { "type": "checkbox", "id": "show_heading", "label": "Show heading", "default": true },
+    { "type": "checkbox", "id": "show_subheading", "label": "Show subheading", "default": true },
+    { "type": "checkbox", "id": "show_cta", "label": "Show bottom CTA block", "default": true },
+
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+
+    { "type": "header", "content": "Section colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow", "default": "#000000" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#000000" },
+    { "type": "color", "id": "sub_color", "label": "Subheading", "default": "#000000" },
+
+    { "type": "header", "content": "Team card colors" },
+    { "type": "color", "id": "avatar_bg", "label": "Avatar placeholder background", "default": "#e5e5e5" },
+    { "type": "color", "id": "name_color", "label": "Name", "default": "#000000" },
+    { "type": "color", "id": "role_color", "label": "Role", "default": "#000000" },
+    { "type": "color", "id": "bio_color", "label": "Bio", "default": "#000000" },
+    { "type": "color", "id": "social_color", "label": "Social icons", "default": "#000000" },
+
+    { "type": "header", "content": "Bottom CTA colors" },
+    { "type": "color", "id": "cta_heading_color", "label": "Heading", "default": "#000000" },
+    { "type": "color", "id": "cta_text_color", "label": "Description", "default": "#000000" },
+    { "type": "color", "id": "cta_btn_bg", "label": "Button background", "default": "#ffffff" },
+    { "type": "color", "id": "cta_btn_text", "label": "Button text", "default": "#000000" },
+    { "type": "color", "id": "cta_btn_border", "label": "Button border", "default": "#000000" }
+  ],
+  "blocks": [
+    {
+      "type": "member",
+      "name": "Team member",
+      "settings": [
+        { "type": "image_picker", "id": "avatar", "label": "Avatar (square)" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Full name" },
+        { "type": "text", "id": "role", "label": "Role / title", "default": "Title" },
+        { "type": "textarea", "id": "bio", "label": "Short bio" },
+        { "type": "header", "content": "Social links (icon shows only if URL set)" },
+        { "type": "url", "id": "linkedin_url", "label": "LinkedIn URL" },
+        { "type": "url", "id": "twitter_url", "label": "X (Twitter) URL" },
+        { "type": "url", "id": "third_url", "label": "Third link URL (Dribbble icon)" }
+      ]
+    }
+  ],
+  "max_blocks": 24,
+  "presets": [
+    {
+      "name": "Team",
+      "blocks": [
+        { "type": "member", "settings": { "name": "Rachel Feldman", "role": "Founder and CEO", "bio": "Rachel founded Ardent after her own struggle with insurance coverage. She's driven by making maternity care accessible." } },
+        { "type": "member", "settings": { "name": "Michael Torres", "role": "Chief Operations Officer", "bio": "With 15 years in medical supply logistics, Michael ensures every order arrives on time and in perfect condition." } },
+        { "type": "member", "settings": { "name": "Dr. Lisa Wong", "role": "Medical Director", "bio": "A registered nurse and lactation consultant, Lisa guides our product selection and provider relationships." } },
+        { "type": "member", "settings": { "name": "James Patel", "role": "Director of Insurance", "bio": "James spent a decade in insurance verification. He knows every plan, every requirement, every loophole." } },
+        { "type": "member", "settings": { "name": "Sofia Morales", "role": "Customer Care Lead", "bio": "Sofia speaks three languages and leads our team in supporting mothers through every step of the process." } },
+        { "type": "member", "settings": { "name": "David Kim", "role": "Operations Manager", "bio": "David manages our Brooklyn warehouse and ensures fulfillment happens fast and accurately every single day." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
