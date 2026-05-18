@@ -386,6 +386,71 @@
         "sub_color": "#000000"
       }
     },
+    "testimonials_athDGe": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_6D3Gxc": {
+          "type": "testimonial",
+          "settings": {
+            "logo": "shopify://shop_images/Placeholder_Logo.png",
+            "quote": "Ardent made everything simple. I didn't have to call my insurance or chase down paperwork—they handled it all and my pump arrived in days.",
+            "author_name": "Sarah Mitchell",
+            "author_role": "New Mother, Brooklyn",
+            "link_text": "Read case study",
+            "link": ""
+          }
+        },
+        "testimonial_VBGyaT": {
+          "type": "testimonial",
+          "settings": {
+            "logo": "shopify://shop_images/Placeholder_Logo.png",
+            "quote": "We've worked with Ardent for years. They know our patients, they know insurance, and they get things done without us having to follow up.",
+            "author_name": "Dr. James Chen",
+            "author_role": "OB/GYN, Manhattan clinic",
+            "link_text": "Read case study",
+            "link": ""
+          }
+        },
+        "testimonial_URf9rq": {
+          "type": "testimonial",
+          "settings": {
+            "logo": "shopify://shop_images/Placeholder_Logo.png",
+            "quote": "I was overwhelmed with everything after birth. Knowing my supplies were covered and on the way took one thing off my plate.",
+            "author_name": "Maria Rodriguez",
+            "author_role": "Mother of two, Queens",
+            "link_text": "Read case study",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_6D3Gxc",
+        "testimonial_VBGyaT",
+        "testimonial_URf9rq"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "background_color": "#ffffff",
+        "heading": "<h2>Real stories</h2>",
+        "subheading": "Mothers and providers share their experience",
+        "show_heading": true,
+        "show_subheading": true,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_x": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "heading_color": "#000000",
+        "sub_color": "#000000",
+        "card_bg": "#ffffff",
+        "card_border": "#000000",
+        "logo_color": "#5a5a5a",
+        "quote_color": "#000000",
+        "author_name_color": "#000000",
+        "author_role_color": "#000000",
+        "link_color": "#000000"
+      }
+    },
     "cta_strip_A4Bfae": {
       "type": "cta-strip",
       "name": "CTA Strip",
@@ -425,6 +490,7 @@
     "stats_daGerM",
     "team_gxwhB7",
     "logo_gallery_P6MT8j",
+    "testimonials_athDGe",
     "cta_strip_A4Bfae"
   ]
 }
