@@ -1,69 +1,594 @@
 {% comment %}
   Section: Main Product
   File: sections/main-product.liquid
+  Figma: "Product Header / 3 /"
+
+  Fully dynamic + theme-editor customizable PDP.
+  - Product data (title, price, variants, options, images, description) pulls from {{ product }}.
+  - Breadcrumb auto-builds from the first collection the product belongs to (with fallbacks).
+  - Rating reads from product metafields (reviews.rating, reviews.rating_count) when present.
+  - Accordion sections come from section.blocks; each block can pull from a product metafield
+    (so per-product content overrides the default richtext).
 {% endcomment %}
 
-<section class="product-main">
-  <div class="container product-grid">
+{%- liquid
+  assign pad_top = section.settings.padding_top | default: 80
+  assign pad_bottom = section.settings.padding_bottom | default: 48
+  assign pad_x = section.settings.padding_x | default: 64
+  assign margin_top = section.settings.margin_top | default: 0
+  assign margin_bottom = section.settings.margin_bottom | default: 0
 
-    <div class="product-media">
-      {%- if product.featured_image != blank -%}
-        {{ product.featured_image | image_url: width: 1200 | image_tag: alt: product.title, loading: 'eager', class: 'product-main-image' }}
-      {%- endif -%}
+  assign current_variant = product.selected_or_first_available_variant
+  assign featured_media = current_variant.featured_media | default: product.featured_media
 
-      {%- if product.images.size > 1 -%}
-        <div class="product-thumbs">
-          {%- for image in product.images -%}
-            {{ image | image_url: width: 200 | image_tag: alt: product.title, loading: 'lazy', class: 'product-thumb' }}
-          {%- endfor -%}
-        </div>
-      {%- endif -%}
-    </div>
+  assign price_value = current_variant.price | default: product.price
+  assign price_label = section.settings.free_label | default: 'Free'
+  assign show_price_as_free = false
+  if section.settings.show_as_free and price_value == 0
+    assign show_price_as_free = true
+  endif
 
-    <div class="product-info">
-      <h1 class="product-title">{{ product.title }}</h1>
-      <p class="product-price">{{ product.price | money }}</p>
+  comment
+    Pull rating from common review-app metafields. Falls back to section defaults
+    if metafields aren't installed yet.
+  endcomment
+  assign rating_value = section.settings.fallback_rating | default: 0
+  if product.metafields.reviews.rating.value != blank
+    assign rating_value = product.metafields.reviews.rating.value.rating | default: product.metafields.reviews.rating.value | times: 1
+  endif
 
-      <div class="product-description rte">
-        {{ product.description }}
-      </div>
+  assign rating_count = section.settings.fallback_rating_count | default: 0
+  if product.metafields.reviews.rating_count != blank
+    assign rating_count = product.metafields.reviews.rating_count | times: 1
+  endif
 
-      {%- form 'product', product, class: 'product-form' -%}
-        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+  comment
+    Auto breadcrumb: Shop all > {first collection} > {product title}
+  endcomment
+  assign root_label = section.settings.breadcrumb_root_label | default: 'Shop all'
+  assign root_link = section.settings.breadcrumb_root_link | default: routes.all_products_collection_url
+  assign parent_collection = product.collections.first
+-%}
 
-        {%- if product.variants.size > 1 -%}
-          <div class="product-variants">
-            {%- for option in product.options_with_values -%}
-              <label>
-                <span>{{ option.name }}</span>
-                <select name="options[{{ option.name }}]">
-                  {%- for value in option.values -%}
-                    <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
+<section class="pdp-section" style="
+  --pdp-bg: {{ section.settings.background_color | default: '#ffffff' }};
+  --pdp-text: {{ section.settings.text_color | default: '#000000' }};
+  --pdp-muted: {{ section.settings.muted_color | default: '#5a5a5a' }};
+  --pdp-border: {{ section.settings.border_color | default: '#000000' }};
+  --pdp-primary-bg: {{ section.settings.primary_btn_bg | default: '#000000' }};
+  --pdp-primary-text: {{ section.settings.primary_btn_text | default: '#ffffff' }};
+  --pdp-secondary-bg: {{ section.settings.secondary_btn_bg | default: '#ffffff' }};
+  --pdp-secondary-text: {{ section.settings.secondary_btn_text | default: '#000000' }};
+  --pdp-variant-active-bg: {{ section.settings.variant_active_bg | default: '#000000' }};
+  --pdp-variant-active-text: {{ section.settings.variant_active_text | default: '#ffffff' }};
+  background: var(--pdp-bg);
+  padding: {{ pad_top }}px {{ pad_x }}px {{ pad_bottom }}px;
+  margin: {{ margin_top }}px 0 {{ margin_bottom }}px;
+">
+  <div class="pdp-container">
+    <div class="pdp-content">
+
+      {%- comment -%} ============ LEFT COLUMN ============ {%- endcomment -%}
+      <div class="pdp-column">
+
+        <div class="pdp-description-block">
+
+          {%- if section.settings.show_breadcrumb -%}
+            <nav class="pdp-breadcrumbs" aria-label="Breadcrumb" data-reveal>
+              <a href="{{ root_link }}" class="pdp-crumb">{{ root_label }}</a>
+              <span class="pdp-crumb-sep" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              {%- if parent_collection -%}
+                <a href="{{ parent_collection.url }}" class="pdp-crumb">{{ parent_collection.title }}</a>
+                <span class="pdp-crumb-sep" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              {%- endif -%}
+              <span class="pdp-crumb pdp-crumb-current">{{ product.title }}</span>
+            </nav>
+          {%- endif -%}
+
+          <h1 class="pdp-title" data-reveal data-reveal-delay="80">{{ product.title }}</h1>
+
+          <div class="pdp-price-row" data-reveal data-reveal-delay="120">
+            <span class="pdp-price">
+              {%- if show_price_as_free -%}
+                {{ price_label }}
+              {%- else -%}
+                {{ price_value | money }}
+              {%- endif -%}
+            </span>
+
+            {%- if section.settings.show_rating and rating_count > 0 -%}
+              <span class="pdp-price-divider" aria-hidden="true"></span>
+              <div class="pdp-rating">
+                <span class="pdp-stars" role="img" aria-label="{{ rating_value }} out of 5 stars">
+                  {%- assign full = rating_value | floor -%}
+                  {%- assign half_check = rating_value | minus: full -%}
+                  {%- assign has_half = false -%}
+                  {%- if half_check >= 0.25 and half_check < 0.75 -%}{%- assign has_half = true -%}{%- endif -%}
+                  {%- if half_check >= 0.75 -%}{%- assign full = full | plus: 1 -%}{%- endif -%}
+                  {%- assign empties = 5 | minus: full -%}
+                  {%- if has_half -%}{%- assign empties = empties | minus: 1 -%}{%- endif -%}
+
+                  {%- for i in (1..full) -%}
+                    <svg class="pdp-star pdp-star-full" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.3 5.8 21l1.6-7.1L2 9.2l7.2-.6L12 2l2.8 6.6 7.2.6-5.4 4.7L18.2 21z"/></svg>
                   {%- endfor -%}
-                </select>
-              </label>
+                  {%- if has_half -%}
+                    <svg class="pdp-star pdp-star-half" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <defs><linearGradient id="pdpHalf-{{ section.id }}"><stop offset="50%" stop-color="currentColor"/><stop offset="50%" stop-color="currentColor" stop-opacity="0.25"/></linearGradient></defs>
+                      <path d="M12 17.3 5.8 21l1.6-7.1L2 9.2l7.2-.6L12 2l2.8 6.6 7.2.6-5.4 4.7L18.2 21z" fill="url(#pdpHalf-{{ section.id }})"/>
+                    </svg>
+                  {%- endif -%}
+                  {%- for i in (1..empties) -%}
+                    <svg class="pdp-star pdp-star-empty" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.3 5.8 21l1.6-7.1L2 9.2l7.2-.6L12 2l2.8 6.6 7.2.6-5.4 4.7L18.2 21z"/></svg>
+                  {%- endfor -%}
+                </span>
+                <span class="pdp-rating-text">
+                  ({{ rating_value | round: 1 }} {{ section.settings.rating_word | default: 'stars' }}) &bull; {{ rating_count }} {{ section.settings.rating_count_word | default: 'reviews' }}
+                </span>
+              </div>
+            {%- endif -%}
+          </div>
+
+          {%- if section.settings.show_subdescription -%}
+            <div class="pdp-subdescription" data-reveal data-reveal-delay="160">
+              {%- if product.metafields.custom.short_description != blank -%}
+                {{ product.metafields.custom.short_description }}
+              {%- elsif section.settings.subdescription != blank -%}
+                {{ section.settings.subdescription }}
+              {%- else -%}
+                {{ product.description | strip_html | truncatewords: 28 }}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- comment -%} ====== FORM ====== {%- endcomment -%}
+        {%- assign form_id = 'pdp-form-' | append: section.id -%}
+        {%- form 'product', product, class: 'pdp-form', id: form_id -%}
+          <input type="hidden" name="id" value="{{ current_variant.id }}" class="pdp-variant-id">
+
+          {%- comment -%} Option pills for the first option, selects for the rest. {%- endcomment -%}
+          {%- if product.has_only_default_variant == false -%}
+            {%- for option in product.options_with_values -%}
+              {%- assign opt_index = forloop.index0 -%}
+              {%- if forloop.first -%}
+                <div class="pdp-field" data-reveal data-reveal-delay="200">
+                  <span class="pdp-field-label">{{ option.name }}</span>
+                  <div class="pdp-variant-pills" role="radiogroup" aria-label="{{ option.name | escape }}">
+                    {%- for value in option.values -%}
+                      {%- assign variant_available = false -%}
+                      {%- for v in product.variants -%}
+                        {%- assign v_option = v.options[opt_index] -%}
+                        {%- if v_option == value and v.available -%}{%- assign variant_available = true -%}{%- break -%}{%- endif -%}
+                      {%- endfor -%}
+
+                      {%- assign is_selected = false -%}
+                      {%- if option.selected_value == value -%}{%- assign is_selected = true -%}{%- endif -%}
+
+                      <label class="pdp-pill {% if is_selected %}is-active{% endif %} {% unless variant_available %}is-unavailable{% endunless %}">
+                        <input
+                          type="radio"
+                          class="pdp-pill-input"
+                          name="options[{{ option.name | escape }}]"
+                          value="{{ value | escape }}"
+                          data-option-index="{{ opt_index }}"
+                          {% if is_selected %}checked{% endif %}
+                          {% unless variant_available %}disabled{% endunless %}>
+                        <span class="pdp-pill-text">{{ value }}</span>
+                      </label>
+                    {%- endfor -%}
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+
+            <div class="pdp-row" data-reveal data-reveal-delay="240">
+              {%- for option in product.options_with_values -%}
+                {%- assign opt_index = forloop.index0 -%}
+                {%- unless forloop.first -%}
+                  <div class="pdp-field pdp-field-grow">
+                    <label class="pdp-field-label" for="pdp-option-{{ section.id }}-{{ opt_index }}">{{ option.name }}</label>
+                    <div class="pdp-select-wrap">
+                      <select
+                        id="pdp-option-{{ section.id }}-{{ opt_index }}"
+                        class="pdp-select"
+                        name="options[{{ option.name | escape }}]"
+                        data-option-index="{{ opt_index }}">
+                        <option value="" disabled {% unless option.selected_value %}selected{% endunless %}>{{ 'Select ' | append: option.name | downcase }}</option>
+                        {%- for value in option.values -%}
+                          <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
+                        {%- endfor -%}
+                      </select>
+                      <span class="pdp-select-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                {%- endunless -%}
+              {%- endfor -%}
+
+              {%- if section.settings.show_quantity -%}
+                <div class="pdp-field pdp-field-qty">
+                  <label class="pdp-field-label" for="pdp-qty-{{ section.id }}">{{ section.settings.qty_label | default: 'Qty' }}</label>
+                  <input
+                    id="pdp-qty-{{ section.id }}"
+                    type="number"
+                    class="pdp-qty-input"
+                    name="quantity"
+                    value="1"
+                    min="1"
+                    inputmode="numeric"
+                    pattern="[0-9]*">
+                </div>
+              {%- endif -%}
+            </div>
+          {%- else -%}
+            {%- if section.settings.show_quantity -%}
+              <div class="pdp-row" data-reveal data-reveal-delay="240">
+                <div class="pdp-field pdp-field-qty">
+                  <label class="pdp-field-label" for="pdp-qty-{{ section.id }}">{{ section.settings.qty_label | default: 'Qty' }}</label>
+                  <input
+                    id="pdp-qty-{{ section.id }}"
+                    type="number"
+                    class="pdp-qty-input"
+                    name="quantity"
+                    value="1"
+                    min="1"
+                    inputmode="numeric"
+                    pattern="[0-9]*">
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+
+          <div class="pdp-submit-block" data-reveal data-reveal-delay="280">
+            <button
+              type="submit"
+              name="add"
+              class="pdp-btn pdp-btn-primary"
+              {% unless current_variant.available %}disabled{% endunless %}>
+              {%- if current_variant.available -%}
+                {{ section.settings.add_to_cart_text | default: 'Add to cart' }}
+              {%- else -%}
+                {{ section.settings.sold_out_text | default: 'Sold out' }}
+              {%- endif -%}
+            </button>
+
+            {%- if section.settings.show_buy_now -%}
+              <button
+                type="submit"
+                name="checkout"
+                class="pdp-btn pdp-btn-secondary"
+                data-pdp-buy-now
+                {% unless current_variant.available %}disabled{% endunless %}>
+                {{ section.settings.buy_now_text | default: 'Buy now' }}
+              </button>
+            {%- endif -%}
+
+            {%- if section.settings.shipping_note != blank -%}
+              <p class="pdp-shipping-note">{{ section.settings.shipping_note }}</p>
+            {%- endif -%}
+          </div>
+        {%- endform -%}
+
+        {%- comment -%} ====== ACCORDION ====== {%- endcomment -%}
+        {%- if section.blocks.size > 0 -%}
+          <div class="pdp-accordion">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'accordion' -%}
+                {%- assign body_html = block.settings.content -%}
+                {%- if block.settings.metafield_namespace != blank and block.settings.metafield_key != blank -%}
+                  {%- assign mf = product.metafields[block.settings.metafield_namespace][block.settings.metafield_key] -%}
+                  {%- if mf != blank -%}
+                    {%- assign body_html = mf -%}
+                  {%- endif -%}
+                {%- endif -%}
+
+                <details class="pdp-accordion-item" {% if block.settings.open_by_default %}open{% endif %} {{ block.shopify_attributes }}>
+                  <summary class="pdp-accordion-summary">
+                    <span class="pdp-accordion-title">{{ block.settings.title }}</span>
+                    <span class="pdp-accordion-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      </svg>
+                    </span>
+                  </summary>
+                  <div class="pdp-accordion-body">{{ body_html }}</div>
+                </details>
+              {%- endif -%}
             {%- endfor -%}
           </div>
         {%- endif -%}
+      </div>
 
-        <button type="submit" name="add" class="btn btn-primary product-add"
-          {%- unless product.selected_or_first_available_variant.available %} disabled{% endunless -%}>
-          {%- if product.selected_or_first_available_variant.available -%}
-            Add to cart
+      {%- comment -%} ============ RIGHT COLUMN — GALLERY ============ {%- endcomment -%}
+      <div class="pdp-gallery" data-pdp-gallery>
+        <div class="pdp-gallery-main" data-pdp-gallery-main>
+          {%- if featured_media != blank -%}
+            {{ featured_media | image_url: width: 1200 | image_tag:
+              alt: product.title,
+              loading: 'eager',
+              class: 'pdp-gallery-main-image',
+              widths: '400, 600, 900, 1200, 1600',
+              sizes: '(min-width: 1024px) 50vw, 100vw'
+            }}
           {%- else -%}
-            Sold out
+            <div class="pdp-gallery-placeholder">
+              {{ 'product-1' | placeholder_svg_tag: 'pdp-gallery-main-image' }}
+            </div>
           {%- endif -%}
-        </button>
-      {%- endform -%}
-    </div>
+        </div>
 
+        {%- if product.images.size > 1 -%}
+          <div class="pdp-gallery-thumbs" role="list">
+            {%- for image in product.images -%}
+              <button
+                type="button"
+                class="pdp-gallery-thumb {% if forloop.first %}is-active{% endif %}"
+                data-pdp-gallery-thumb
+                data-image-src="{{ image | image_url: width: 1200 }}"
+                data-image-alt="{{ image.alt | default: product.title | escape }}"
+                aria-label="View image {{ forloop.index }}">
+                {{ image | image_url: width: 240 | image_tag:
+                  alt: image.alt | default: product.title,
+                  loading: 'lazy',
+                  widths: '120, 240'
+                }}
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+    </div>
   </div>
 </section>
+
+{%- comment -%}
+  Per-section JS: variant switching + gallery thumbnail clicks.
+  Tiny and self-contained so the section drops in anywhere.
+{%- endcomment -%}
+<script>
+  (function () {
+    var currentScript = document.currentScript;
+    var root = currentScript && currentScript.previousElementSibling;
+    while (root && (!root.classList || !root.classList.contains('pdp-section'))) {
+      root = root.previousElementSibling;
+    }
+    if (!root) root = document;
+
+    // ---------- Gallery ----------
+    var gallery = root.querySelector('[data-pdp-gallery]');
+    if (gallery) {
+      var mainWrap = gallery.querySelector('[data-pdp-gallery-main]');
+      var thumbs = gallery.querySelectorAll('[data-pdp-gallery-thumb]');
+      thumbs.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var src = btn.getAttribute('data-image-src');
+          var alt = btn.getAttribute('data-image-alt') || '';
+          if (!src || !mainWrap) return;
+          var img = mainWrap.querySelector('img');
+          if (img) {
+            img.removeAttribute('srcset');
+            img.removeAttribute('sizes');
+            img.src = src;
+            img.alt = alt;
+          }
+          thumbs.forEach(function (t) { t.classList.remove('is-active'); });
+          btn.classList.add('is-active');
+        });
+      });
+    }
+
+    // ---------- Variant pills ↔ form ----------
+    var form = root.querySelector('.pdp-form');
+    if (!form) return;
+
+    // Buy now: add to cart then jump straight to checkout.
+    var buyNow = form.querySelector('[data-pdp-buy-now]');
+    if (buyNow) {
+      buyNow.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (buyNow.disabled) return;
+        var fd = new FormData(form);
+        fetch({{ routes.cart_add_url | json }}, {
+          method: 'POST',
+          body: fd,
+          headers: { 'Accept': 'application/javascript' }
+        })
+          .then(function () { window.location.href = '/checkout'; })
+          .catch(function () { form.submit(); });
+      });
+    }
+
+    var productData = {{ product | json }};
+    var idInput = form.querySelector('.pdp-variant-id');
+    var pills = form.querySelectorAll('.pdp-pill-input');
+    var selects = form.querySelectorAll('.pdp-select');
+    var submitBtn = form.querySelector('.pdp-btn-primary');
+    var soldOutText = {{ section.settings.sold_out_text | default: 'Sold out' | json }};
+    var unavailableText = {{ section.settings.unavailable_text | default: 'Unavailable' | json }};
+    var addText = {{ section.settings.add_to_cart_text | default: 'Add to cart' | json }};
+
+    function readOptions() {
+      var values = [];
+      productData.options.forEach(function (_, i) {
+        var pill = form.querySelector('.pdp-pill-input[data-option-index="' + i + '"]:checked');
+        if (pill) { values[i] = pill.value; return; }
+        var sel = form.querySelector('.pdp-select[data-option-index="' + i + '"]');
+        if (sel) { values[i] = sel.value; return; }
+        values[i] = null;
+      });
+      return values;
+    }
+
+    function findVariant(values) {
+      return productData.variants.find(function (v) {
+        return v.options.every(function (val, i) { return val === values[i]; });
+      });
+    }
+
+    function updatePillUI() {
+      form.querySelectorAll('.pdp-pill').forEach(function (label) {
+        var input = label.querySelector('.pdp-pill-input');
+        if (input && input.checked) label.classList.add('is-active');
+        else label.classList.remove('is-active');
+      });
+    }
+
+    function update() {
+      updatePillUI();
+      var values = readOptions();
+      var variant = findVariant(values);
+
+      if (variant) {
+        idInput.value = variant.id;
+        if (submitBtn) {
+          if (variant.available) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = addText;
+          } else {
+            submitBtn.disabled = true;
+            submitBtn.textContent = soldOutText;
+          }
+        }
+        // Swap main gallery image if variant has its own featured image
+        if (variant.featured_image && gallery) {
+          var mainImg = gallery.querySelector('[data-pdp-gallery-main] img');
+          if (mainImg) {
+            mainImg.removeAttribute('srcset');
+            mainImg.removeAttribute('sizes');
+            mainImg.src = variant.featured_image.src;
+          }
+        }
+      } else if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = unavailableText;
+      }
+    }
+
+    pills.forEach(function (p) { p.addEventListener('change', update); });
+    selects.forEach(function (s) { s.addEventListener('change', update); });
+  })();
+</script>
 
 {% schema %}
 {
   "name": "Product",
   "tag": "section",
-  "settings": []
+  "class": "shopify-section-pdp",
+  "settings": [
+    { "type": "header", "content": "Breadcrumb" },
+    { "type": "checkbox", "id": "show_breadcrumb", "label": "Show breadcrumb", "default": true },
+    { "type": "text", "id": "breadcrumb_root_label", "label": "Root label", "default": "Shop all" },
+    { "type": "url", "id": "breadcrumb_root_link", "label": "Root link" },
+
+    { "type": "header", "content": "Price" },
+    { "type": "checkbox", "id": "show_as_free", "label": "Show 'Free' when price is $0", "default": true },
+    { "type": "text", "id": "free_label", "label": "Free label text", "default": "Free" },
+
+    { "type": "header", "content": "Rating" },
+    { "type": "checkbox", "id": "show_rating", "label": "Show rating", "default": true, "info": "Reads from product metafields reviews.rating and reviews.rating_count. Fallback values below are used when metafields are empty." },
+    { "type": "number", "id": "fallback_rating", "label": "Fallback rating", "default": 0 },
+    { "type": "number", "id": "fallback_rating_count", "label": "Fallback review count", "default": 0 },
+    { "type": "text", "id": "rating_word", "label": "Rating unit label", "default": "stars" },
+    { "type": "text", "id": "rating_count_word", "label": "Review count label", "default": "reviews" },
+
+    { "type": "header", "content": "Short description" },
+    { "type": "checkbox", "id": "show_subdescription", "label": "Show short description", "default": true, "info": "Reads from product metafield custom.short_description if present, otherwise the fallback below, otherwise a truncated product description." },
+    { "type": "textarea", "id": "subdescription", "label": "Fallback short description", "default": "Covered by most insurance plans. Quiet, efficient, and built to last through every stage of your journey." },
+
+    { "type": "header", "content": "Form" },
+    { "type": "checkbox", "id": "show_quantity", "label": "Show quantity selector", "default": true },
+    { "type": "text", "id": "qty_label", "label": "Quantity label", "default": "Qty" },
+    { "type": "text", "id": "add_to_cart_text", "label": "Add to cart button", "default": "Add to cart" },
+    { "type": "text", "id": "sold_out_text", "label": "Sold out text", "default": "Sold out" },
+    { "type": "text", "id": "unavailable_text", "label": "Unavailable text", "default": "Unavailable" },
+    { "type": "checkbox", "id": "show_buy_now", "label": "Show Buy now button", "default": true },
+    { "type": "text", "id": "buy_now_text", "label": "Buy now button", "default": "Buy now" },
+    { "type": "text", "id": "shipping_note", "label": "Shipping note", "default": "Free shipping over $50" },
+
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_x", "label": "Padding left / right", "min": 0, "max": 96, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+
+    { "type": "header", "content": "Section colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#000000" },
+    { "type": "color", "id": "muted_color", "label": "Muted text", "default": "#5a5a5a" },
+    { "type": "color", "id": "border_color", "label": "Borders", "default": "#000000" },
+
+    { "type": "header", "content": "Variant pills" },
+    { "type": "color", "id": "variant_active_bg", "label": "Active background", "default": "#000000" },
+    { "type": "color", "id": "variant_active_text", "label": "Active text", "default": "#ffffff" },
+
+    { "type": "header", "content": "Buttons" },
+    { "type": "color", "id": "primary_btn_bg", "label": "Primary background", "default": "#000000" },
+    { "type": "color", "id": "primary_btn_text", "label": "Primary text", "default": "#ffffff" },
+    { "type": "color", "id": "secondary_btn_bg", "label": "Secondary background", "default": "#ffffff" },
+    { "type": "color", "id": "secondary_btn_text", "label": "Secondary text", "default": "#000000" }
+  ],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Accordion item",
+      "limit": 8,
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Details" },
+        { "type": "richtext", "id": "content", "label": "Content", "default": "<p>Add a description here. This default copy is used when the product metafield below is empty.</p>" },
+        { "type": "header", "content": "Per-product override" },
+        { "type": "text", "id": "metafield_namespace", "label": "Metafield namespace", "info": "Optional. Example: custom" },
+        { "type": "text", "id": "metafield_key", "label": "Metafield key", "info": "Optional. Example: details. When present on a product it overrides the content above." },
+        { "type": "checkbox", "id": "open_by_default", "label": "Open by default", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product",
+      "blocks": [
+        {
+          "type": "accordion",
+          "settings": {
+            "title": "Details",
+            "content": "<p>This pump delivers consistent suction with minimal noise, making it ideal for work or home use. It's lightweight enough to carry but powerful enough to get the job done efficiently. Compatible with standard bottles and storage bags.</p>",
+            "metafield_namespace": "custom",
+            "metafield_key": "details"
+          }
+        },
+        {
+          "type": "accordion",
+          "settings": {
+            "title": "Shipping",
+            "content": "<p>We ship within five to seven business days to most addresses in the continental United States. Tracking information is sent automatically once your order leaves our warehouse. Free shipping applies to orders over fifty dollars.</p>",
+            "metafield_namespace": "custom",
+            "metafield_key": "shipping"
+          }
+        },
+        {
+          "type": "accordion",
+          "settings": {
+            "title": "Returns",
+            "content": "<p>Unopened items can be returned within thirty days for a full refund. We'll email you a prepaid shipping label so there's no cost to you. Contact our team with your order number to start the process.</p>",
+            "metafield_namespace": "custom",
+            "metafield_key": "returns"
+          }
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}
