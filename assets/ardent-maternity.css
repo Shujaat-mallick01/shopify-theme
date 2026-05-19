@@ -3289,12 +3289,13 @@ a.lg-item:hover { opacity: 0.65; }
 .inner-banner-card {
     position: relative;
     width: 100%;
-    height: 640px;
+    min-height: 640px;
     background-color: var(--ib-card-fallback, #8a8a8a);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     overflow: hidden;
+    display: flex;
 }
 
 .inner-banner-overlay {
@@ -3307,11 +3308,12 @@ a.lg-item:hover { opacity: 0.65; }
 .inner-banner-inner {
     position: relative;
     z-index: 1;
-    height: 100%;
+    width: 100%;
+    min-height: inherit;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 64px;
+    padding: 48px 64px;
 }
 
 .inner-banner-content {
@@ -3713,8 +3715,8 @@ a.lg-item:hover { opacity: 0.65; }
 
     /* Inner banner */
     .inner-banner { padding: 60px 32px; }
-    .inner-banner-card { height: 520px; }
-    .inner-banner-inner { padding: 0 40px; }
+    .inner-banner-card { min-height: 520px; }
+    .inner-banner-inner { padding: 48px 40px; }
     .inner-banner-heading { font-size: 44px; }
 
     /* Step cards → 2x2 */
@@ -3840,8 +3842,8 @@ a.lg-item:hover { opacity: 0.65; }
 
     /* Inner banner */
     .inner-banner { padding: 48px 20px; }
-    .inner-banner-card { height: 440px; }
-    .inner-banner-inner { padding: 0 24px; }
+    .inner-banner-card { min-height: 440px; }
+    .inner-banner-inner { padding: 40px 24px; }
     .inner-banner-heading { font-size: 32px; }
     .inner-banner-text { font-size: 16px; }
     .inner-banner-content { gap: 24px; }
@@ -3982,11 +3984,13 @@ a.lg-item:hover { opacity: 0.65; }
 
     /* Inner banner */
     .inner-banner { padding: 32px 16px; }
-    .inner-banner-card { height: 380px; }
-    .inner-banner-inner { padding: 0 20px; }
+    .inner-banner-card { min-height: 380px; }
+    .inner-banner-inner { padding: 32px 20px; }
     .inner-banner-heading { font-size: 26px; }
-    .inner-banner-actions { flex-direction: column; width: 100%; }
-    .inner-banner-btn { width: 100%; }
+    .inner-banner-text { font-size: 15px; }
+    .inner-banner-content { gap: 20px; }
+    .inner-banner-actions { flex-direction: column; width: 100%; gap: 12px; }
+    .inner-banner-btn { width: 100%; padding: 12px 16px; }
 
     /* Step cards */
     .step-cards { padding: 48px 16px; }
@@ -4823,4 +4827,62 @@ a.lg-item:hover { opacity: 0.65; }
     .pdp-gallery-thumbs { grid-template-columns: repeat(4, 1fr); gap: 8px; }
     .pdp-field-qty { width: 72px; }
     .pdp-row { gap: 12px; }
+    .pdp-price-row { gap: 12px; }
+    .pdp-price-divider { display: none; }
+    .pdp-rating { width: 100%; }
+    .pdp-rating-text { white-space: normal; font-size: 13px; }
+    .pdp-variant-pills { gap: 8px; }
+    .pdp-pill { padding: 8px 12px; font-size: 15px; }
+}
+
+@media (max-width: 420px) {
+    .pdp-section { padding: 32px 14px !important; }
+    .pdp-title { font-size: 24px; }
+    .pdp-gallery-thumbs { grid-template-columns: repeat(3, 1fr); }
+    .pdp-pill { flex: 1 1 calc(50% - 4px); justify-content: center; }
+    .pdp-row { flex-direction: column; gap: 16px; }
+    .pdp-field-qty { width: 100%; }
+    .pdp-qty-input { width: 100%; }
+    .pdp-btn { padding: 12px 16px; font-size: 15px; }
+
+    /* Inner banner — extra small phones */
+    .inner-banner { padding: 24px 12px; }
+    .inner-banner-card { min-height: 340px; }
+    .inner-banner-inner { padding: 28px 16px; }
+    .inner-banner-heading { font-size: 22px; }
+    .inner-banner-text { font-size: 14px; }
+    .inner-banner-btn { font-size: 15px; }
+}
+
+/* =========================================================
+   GLOBAL RESPONSIVE SAFETY NET
+   Prevents accidental horizontal scroll, scales media, and
+   keeps long unbreakable strings (URLs, file names) inside
+   their container on narrow screens.
+========================================================= */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+img, svg, video, canvas, iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+svg { height: auto; }
+
+/* Inline form controls should never exceed their parent on phones */
+input, select, textarea, button {
+    max-width: 100%;
+}
+
+/* Long words / URLs wrap instead of overflowing */
+.faq-answer, .faq-question-text,
+.pdp-accordion-body, .pdp-subdescription,
+.inner-banner-text, .inner-banner-heading,
+.hero-sub, .hero h1,
+.footer-info, .footer-link {
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
