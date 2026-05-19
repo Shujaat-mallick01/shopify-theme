@@ -32,10 +32,22 @@
         "padding_x": 60,
         "margin_top": 0,
         "margin_bottom": 0,
+        "background_color": "#ffffff",
+        "card_fallback_color": "#8a8a8a",
+        "overlay_color": "#000000",
+        "overlay_opacity": 40,
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
         "primary_cta_text": "Check Coverage",
         "primary_cta_link": "",
+        "primary_btn_bg": "#ffffff",
+        "primary_btn_text": "#000000",
+        "primary_btn_border": "#ffffff",
         "secondary_cta_text": "Shop",
-        "secondary_cta_link": ""
+        "secondary_cta_link": "",
+        "secondary_btn_bg": "",
+        "secondary_btn_text": "#ffffff",
+        "secondary_btn_border": "#ffffff"
       }
     },
     "step_cards_VtK43K": {
@@ -100,7 +112,18 @@
         "padding_bottom": 112,
         "padding_x": 64,
         "margin_top": 0,
-        "margin_bottom": 0
+        "margin_bottom": 0,
+        "background_color": "#ffffff",
+        "eyebrow_color": "#000000",
+        "heading_color": "#000000",
+        "sub_color": "#000000",
+        "card_fallback_color": "#8a8a8a",
+        "card_overlay_color": "#000000",
+        "card_overlay_opacity": 40,
+        "card_icon_color": "#ffffff",
+        "card_heading_color": "#ffffff",
+        "card_desc_color": "#ffffff",
+        "card_link_color": "#ffffff"
       }
     },
     "products_list_yabe9L": {
@@ -316,7 +339,7 @@
       ],
       "name": "Testimonials",
       "settings": {
-        "background_color": "#ffffff",
+        "background_color": "#dbf8f2",
         "heading": "<h2>Trusted by doctors and <br/>doulas, moms and <br/>midwives</h2>",
         "subheading": "What they're saying",
         "show_heading": true,
@@ -325,7 +348,16 @@
         "padding_bottom": 100,
         "padding_x": 0,
         "margin_top": 0,
-        "margin_bottom": 0
+        "margin_bottom": 0,
+        "heading_color": "#000000",
+        "sub_color": "#000000",
+        "card_bg": "#ffffff",
+        "card_border": "#000000",
+        "logo_color": "#5a5a5a",
+        "quote_color": "#000000",
+        "author_name_color": "#000000",
+        "author_role_color": "#000000",
+        "link_color": "#000000"
       }
     },
     "cta_strip_Jmqaj6": {
@@ -341,22 +373,22 @@
         "padding_x": 64,
         "margin_top": 0,
         "margin_bottom": 0,
-        "background_color": "#ffffff",
+        "background_color": "#000000",
         "overlay_opacity": 40,
-        "heading_color": "#000000",
-        "text_color": "#000000",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
         "show_primary_cta": true,
         "primary_cta_text": "Check",
         "primary_cta_link": "",
-        "primary_btn_bg": "#000000",
+        "primary_btn_bg": "#e14e6b",
         "primary_btn_text": "#ffffff",
         "primary_btn_border": "#000000",
         "show_secondary_cta": true,
         "secondary_cta_text": "Shop",
         "secondary_cta_link": "",
         "secondary_btn_bg": "",
-        "secondary_btn_text": "#000000",
-        "secondary_btn_border": "#000000"
+        "secondary_btn_text": "#ffffff",
+        "secondary_btn_border": "#ffffff"
       }
     }
   },
