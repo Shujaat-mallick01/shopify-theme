@@ -4886,3 +4886,122 @@ input, select, textarea, button {
     overflow-wrap: anywhere;
     word-break: break-word;
 }
+
+/* =========================================================
+   CONSISTENT MOBILE SECTION PADDING (matches home page)
+   Every section sets desktop padding inline from theme
+   settings; without !important the mobile rules lose to
+   inline. Values mirror the existing home page section
+   patterns at each breakpoint (lines 3689–3964 above).
+
+   Group A — content directly inside the section
+     (matches .stats-section / .cta-strip pattern):
+     1024 → 80/32, 768 → 60/20, 480 → 48/16
+   Group B — sections that wrap an inner .container
+     (matches .steps-section / .experts-section etc.):
+     1024 → 80/0, 768 → 60/0, 480 → 48/0
+========================================================= */
+
+/* ---------- 1024px ---------- */
+@media (max-width: 1024px) {
+    .inner-banner,
+    .faq-section,
+    .ins-form-section,
+    .coverage-section,
+    .step-cards,
+    .shop-section,
+    .ttc-section,
+    .sg-section,
+    .stats-section,
+    .ast-section,
+    .tm-section,
+    .lg-section,
+    .cta-strip,
+    .pdp-section {
+        padding-top: 80px !important;
+        padding-bottom: 80px !important;
+        padding-left: 32px !important;
+        padding-right: 32px !important;
+    }
+
+    .hero-image,
+    .steps-section,
+    .experts-section,
+    .providers-section,
+    .products-section,
+    .testimonials-section,
+    .deserves-section {
+        padding-top: 80px !important;
+        padding-bottom: 80px !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+/* ---------- 768px ---------- */
+@media (max-width: 768px) {
+    .inner-banner,
+    .faq-section,
+    .ins-form-section,
+    .coverage-section,
+    .step-cards,
+    .shop-section,
+    .ttc-section,
+    .sg-section,
+    .stats-section,
+    .ast-section,
+    .tm-section,
+    .lg-section,
+    .cta-strip,
+    .pdp-section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    .hero-image,
+    .steps-section,
+    .experts-section,
+    .providers-section,
+    .products-section,
+    .testimonials-section,
+    .deserves-section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+}
+
+/* ---------- 480px ---------- */
+@media (max-width: 480px) {
+    .inner-banner,
+    .faq-section,
+    .ins-form-section,
+    .coverage-section,
+    .step-cards,
+    .shop-section,
+    .ttc-section,
+    .sg-section,
+    .stats-section,
+    .ast-section,
+    .tm-section,
+    .lg-section,
+    .cta-strip,
+    .pdp-section {
+        padding-top: 48px !important;
+        padding-bottom: 48px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .hero-image,
+    .steps-section,
+    .experts-section,
+    .providers-section,
+    .products-section,
+    .testimonials-section,
+    .deserves-section {
+        padding-top: 48px !important;
+        padding-bottom: 48px !important;
+    }
+}
