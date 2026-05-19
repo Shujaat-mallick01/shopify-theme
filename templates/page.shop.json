@@ -20,7 +20,7 @@
       "type": "inner-banner",
       "name": "Inner Banner",
       "settings": {
-        "background_image": "shopify://shop_images/img-9.jpg",
+        "background_image": "shopify://shop_images/ZomeeZ2.png",
         "heading": "<p>The Maternity Products You Need, Without the Hassle</p>",
         "description": "<p>Walk into our Brooklyn store or order online, we’re here to <br/>support you through every stage of motherhood.</p>",
         "show_heading": true,
@@ -56,7 +56,7 @@
         "step_mXHQnL": {
           "type": "step",
           "settings": {
-            "background_image": "shopify://shop_images/img-1.jpg",
+            "background_image": "shopify://shop_images/WillowGO_lifestyle.jpg",
             "heading": "Breast pumps",
             "description": "Electric and manual options for every mother.",
             "link_text": "Shop",
@@ -66,7 +66,7 @@
         "step_Bfj4mF": {
           "type": "step",
           "settings": {
-            "background_image": "shopify://shop_images/img-3.png",
+            "background_image": "shopify://shop_images/SPECTRA_PREMIER_A_7ae2efae-9998-4cce-bdfa-353d635643b2.jpg",
             "heading": "Milk storage bags",
             "description": "Safe, sterile bags for storing and freezing milk.",
             "link_text": "Shop",
@@ -76,7 +76,7 @@
         "step_PQ33Wc": {
           "type": "step",
           "settings": {
-            "background_image": "shopify://shop_images/img-6.jpg",
+            "background_image": "shopify://shop_images/Motif_lumbar_2.jpg",
             "heading": "Belly Bands & Compression Socks",
             "description": "Comfort and stability during pregnancy and recovery.",
             "link_text": "Shop",
@@ -86,7 +86,7 @@
         "step_ja83em": {
           "type": "step",
           "settings": {
-            "background_image": "shopify://shop_images/img-1.jpg",
+            "background_image": "shopify://shop_images/MyaJoy_PLUS_Pumping_090A6225_10x6_80051a18-cd51-4b5b-b6d1-e8ea455a4b66.jpg",
             "heading": "Postpartum Recovery Garments",
             "description": "Everything else you need for nine months and beyond.",
             "link_text": "Shop",
@@ -299,8 +299,9 @@
         "testimonial_G8jEAj": {
           "type": "testimonial",
           "settings": {
-            "logo": "shopify://shop_images/Placeholder_Logo.png",
+            "logo": "shopify://shop_images/Copy_of_babybudda_logo.png",
             "quote": "This pump made going back to work possible. It's quiet, reliable, and I didn't have to fight with insurance to get it.",
+            "avatar": "shopify://shop_images/M6_Scene_11.jpg",
             "author_name": "Sarah Mitchell",
             "author_role": "Mother of two",
             "link_text": "Read her story",
@@ -310,7 +311,7 @@
         "testimonial_jKCdp9": {
           "type": "testimonial",
           "settings": {
-            "logo": "shopify://shop_images/Placeholder_Logo.png",
+            "logo": "shopify://shop_images/drbrowns_logo.png",
             "quote": "I was overwhelmed by the insurance process until Ardent stepped in. They handled everything and I got my pump in a week.",
             "avatar": "shopify://shop_images/img-7.jpg",
             "author_name": "Jessica Chen",
@@ -322,7 +323,7 @@
         "testimonial_6Hk9bC": {
           "type": "testimonial",
           "settings": {
-            "logo": "shopify://shop_images/Placeholder_Logo.png",
+            "logo": "shopify://shop_images/AMEDA_LOGO.png",
             "quote": "The quality is there and the price is right. No hassle, no confusion, just what I needed when I needed it.",
             "avatar": "shopify://shop_images/img-8.jpg",
             "author_name": "Maria Rodriguez",
