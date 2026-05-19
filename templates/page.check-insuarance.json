@@ -20,7 +20,7 @@
       "type": "inner-banner",
       "name": "Inner Banner",
       "settings": {
-        "background_image": "shopify://shop_images/img-9.jpg",
+        "background_image": "shopify://shop_images/compressed_eufys1pro_lifestlye.jpg",
         "heading": "<p>Your baby deserves the best. Your insurance should cover it.</p>",
         "description": "<p>Not sure what your plan covers? We'll figure it out for you, <br/>then ship the maternity products you need, direct to your door.</p>",
         "show_heading": true,
@@ -56,7 +56,7 @@
         "step_FLaKbE": {
           "type": "step",
           "settings": {
-            "background_image": "shopify://shop_images/img-2.jpg",
+            "background_image": "shopify://shop_images/zomeeZ2_lifestyle.png",
             "heading": "Submit your insurance information",
             "description": "Tell us about your plan and coverage details.",
             "link_text": "Next",
@@ -66,7 +66,7 @@
         "step_Bg9Xki": {
           "type": "step",
           "settings": {
-            "background_image": "shopify://shop_images/img-1.jpg",
+            "background_image": "shopify://shop_images/MomcozyM6_Scene_16.jpg",
             "heading": "We verify your coverage",
             "description": "Our team checks what your insurance will cover.",
             "link_text": "Next",
@@ -86,6 +86,7 @@
         "step_fpaTmF": {
           "type": "step",
           "settings": {
+            "background_image": "shopify://shop_images/Momcozy_S12.jpg",
             "heading": "We deliver direct to your door",
             "description": "Your maternity products arrive when you need them.",
             "link_text": "Done",
@@ -161,8 +162,9 @@
         "testimonial_8yUm3b": {
           "type": "testimonial",
           "settings": {
-            "logo": "shopify://shop_images/Logo_b1f857c9-5ba1-4b9b-ae3f-fc6a3fb877cc.png",
+            "logo": "shopify://shop_images/Copy_of_babybudda_logo.png",
             "quote": "This pump made going back to work possible. It's quiet, reliable, and I didn't have to fight with insurance to get it.",
+            "avatar": "shopify://shop_images/M6_Scene_1.jpg",
             "author_name": "Sarah Mitchell",
             "author_role": "Mother of two",
             "link_text": "Read her story",
@@ -172,8 +174,9 @@
         "testimonial_CWjeJY": {
           "type": "testimonial",
           "settings": {
-            "logo": "shopify://shop_images/Logo_b1f857c9-5ba1-4b9b-ae3f-fc6a3fb877cc.png",
+            "logo": "shopify://shop_images/drbrowns_logo.png",
             "quote": "I was overwhelmed by the insurance process until Ardent stepped in. They handled everything and I got my pump in a week.",
+            "avatar": "shopify://shop_images/M6_Scene_11.jpg",
             "author_name": "Jessica Chen",
             "author_role": "New mother",
             "link_text": "Read her story",
@@ -183,8 +186,9 @@
         "testimonial_fdeNyN": {
           "type": "testimonial",
           "settings": {
-            "logo": "shopify://shop_images/Logo_b1f857c9-5ba1-4b9b-ae3f-fc6a3fb877cc.png",
+            "logo": "shopify://shop_images/AMEDA_LOGO.png",
             "quote": "The quality is there and the price is right. No hassle, no confusion, just what I needed when I needed it.",
+            "avatar": "shopify://shop_images/M6_Scene_23.jpg",
             "author_name": "Maria Rodriguez",
             "author_role": "Breastfeeding mother",
             "link_text": "Read her story",
