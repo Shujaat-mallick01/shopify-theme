@@ -100,7 +100,7 @@
         "primary_cta_link": "",
         "secondary_cta_text": "Contact us",
         "secondary_cta_link": "",
-        "image": "shopify://shop_images/img-3.png",
+        "image": "shopify://shop_images/eufye20_lifstlye.jpg",
         "show_eyebrow": true,
         "show_heading": true,
         "show_description": true,
@@ -196,6 +196,7 @@
         "member_F6jFpW": {
           "type": "member",
           "settings": {
+            "avatar": "shopify://shop_images/M6_Scene_23.jpg",
             "name": "Rachel Feldman",
             "role": "Founder and CEO",
             "bio": "Rachel founded Ardent after her own struggle with insurance coverage. She's driven by making maternity care accessible.",
@@ -207,6 +208,7 @@
         "member_BUbqNM": {
           "type": "member",
           "settings": {
+            "avatar": "shopify://shop_images/M6_Scene_11.jpg",
             "name": "Michael Torres",
             "role": "Chief Operations Officer",
             "bio": "With 15 years in medical supply logistics, Michael ensures every order arrives on time and in perfect condition.",
@@ -218,6 +220,7 @@
         "member_ermWMA": {
           "type": "member",
           "settings": {
+            "avatar": "shopify://shop_images/M6_Scene_1.jpg",
             "name": "Dr. Lisa Wong",
             "role": "Medical Director",
             "bio": "A registered nurse and lactation consultant, Lisa guides our product selection and provider relationships.",
@@ -393,8 +396,9 @@
         "testimonial_6D3Gxc": {
           "type": "testimonial",
           "settings": {
-            "logo": "shopify://shop_images/Placeholder_Logo.png",
+            "logo": "shopify://shop_images/Copy_of_babybudda_logo.png",
             "quote": "Ardent made everything simple. I didn't have to call my insurance or chase down paperwork—they handled it all and my pump arrived in days.",
+            "avatar": "shopify://shop_images/M6_Scene_11.jpg",
             "author_name": "Sarah Mitchell",
             "author_role": "New Mother, Brooklyn",
             "link_text": "Read case study",
@@ -404,8 +408,9 @@
         "testimonial_VBGyaT": {
           "type": "testimonial",
           "settings": {
-            "logo": "shopify://shop_images/Placeholder_Logo.png",
+            "logo": "shopify://shop_images/drbrowns_logo.png",
             "quote": "We've worked with Ardent for years. They know our patients, they know insurance, and they get things done without us having to follow up.",
+            "avatar": "shopify://shop_images/M6_Scene_1.jpg",
             "author_name": "Dr. James Chen",
             "author_role": "OB/GYN, Manhattan clinic",
             "link_text": "Read case study",
@@ -415,8 +420,9 @@
         "testimonial_URf9rq": {
           "type": "testimonial",
           "settings": {
-            "logo": "shopify://shop_images/Placeholder_Logo.png",
+            "logo": "shopify://shop_images/AMEDA_LOGO.png",
             "quote": "I was overwhelmed with everything after birth. Knowing my supplies were covered and on the way took one thing off my plate.",
+            "avatar": "shopify://shop_images/M6_Scene_23.jpg",
             "author_name": "Maria Rodriguez",
             "author_role": "Mother of two, Queens",
             "link_text": "Read case study",
